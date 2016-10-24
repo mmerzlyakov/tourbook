@@ -33,7 +33,7 @@ class BookingController extends Controller
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins', 'operators'],
+                        'roles' => ['GodMode', 'admins', 'operators','supplier'],
                     ],
                 ],
             ],

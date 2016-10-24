@@ -29,7 +29,7 @@ class ManagementController extends Controller
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins', 'operator', 'user'],
+                        'roles' => ['GodMode', 'admins', 'operator', 'user', 'supplier'],
                     ],
                 ],
             ],

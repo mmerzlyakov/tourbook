@@ -83,6 +83,30 @@ echo Menu::widget([
 
 }
 
+
+if(\Yii::$app->user->can('supplier')){
+
+    echo "<h2>Welcome to operators's home page</h2>";
+
+    echo Menu::widget([
+        'items' => [
+            // Important: you need to specify url as 'controller/action',
+            // not just as 'controller' even if default action is used.
+            ['label' => 'Home', 'url' => ['site/index']],
+            // 'Products' menu item will be selected as long as the route is 'product/index'
+            ['label' => 'Booking management', 'url' => ['booking/index'], 'items' => [
+                ['label' => 'New sightseeing', 'url' => ['booking/index', 'tag' => 'new']],
+                ['label' => 'New tour', 'url' => ['booking/index', 'tag' => 'popular']],
+                ['label' => 'New rent', 'url' => ['booking/index', 'tag' => 'popular']],
+                ['label' => 'New hotel booking', 'url' => ['booking/index', 'tag' => 'popular']],
+            ]],
+            ['label' => 'Logout', 'url' => ['site/logout']],
+        ],
+    ]);
+
+}
+
+
 if(\Yii::$app->user->can('user')){
 
 echo "<h2>Welcome to user's account home page</h2>";

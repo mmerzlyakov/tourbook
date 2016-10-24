@@ -39,7 +39,7 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
-            (Yii::$app->user->can('GodMode') || Yii::$app->user->can('admins') || Yii::$app->user->can('operator')) ? (
+            (Yii::$app->user->can('GodMode') || Yii::$app->user->can('admins') || Yii::$app->user->can('operator')  || Yii::$app->user->can('supplier')) ? (
 					['label' => 'Management', 'url' => ['/management']]
 				) : ( 
 					['label' => '', 'url' => ['/management']]
