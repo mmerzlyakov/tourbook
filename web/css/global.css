@@ -1,0 +1,407 @@
+.margin-left {
+    margin-left: 0 !important;
+}
+.margin-right {
+    margin-right: 0 !important;
+}
+a.grey:hover {
+    color: #FF8040;
+    text-decoration: none;
+    border-bottom: 1px solid #FF8040;  
+}
+
+a.black, a.black:link, a.black:visited {
+    color: #000000;
+    text-decoration: none;
+    border-bottom: #B3B3B3 1px solid;
+}
+a.black:hover {
+    color: #8C0606;
+    text-decoration: none; 
+    border: none;  
+}
+
+a.gray, a.gray:link, a.gray:visited {
+    color: #8f9999;
+    text-decoration: none;
+    border: none;
+}
+a.gray:hover {
+    color: #666666;
+    text-decoration: none;
+    border-bottom: #666666 1px solid;
+}
+
+a.cofe{
+    color: #775931;
+    text-decoration: none;
+}
+a.cofe:hover {
+    color: #ff8000;
+    text-decoration: none;
+    border: none;   
+}
+/*?????????????? (?????. ????)*/
+a.brown{
+    color: #74562e;
+    text-decoration: none;
+    border-bottom: 1px solid #d4b68e ;
+}
+a.brown:hover {
+    color: #9f8159;
+    text-decoration: none;
+    border-bottom: 1px solid #9f8159 ;
+}
+/*Белый цвет*/
+a.white{
+    color: #ffffff;
+    text-decoration: none;
+
+}
+a.white:hover {
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 1px solid #ffffff ;
+}
+/*?????? ??? ????????? c ?????????*/
+a.lin {
+    color: #895c34;
+    font-weight: bold;
+    transition: color 200ms linear;
+     -webkit-transition: color 200ms linear;
+      -moz-transition: color 200ms linear;
+       -o-transition: color 200ms linear;
+    border-bottom: 1px solid #ddb088;
+}
+a.lin:hover {
+    color: #FF8000;
+    border-bottom: 1px solid #FF8000;
+    text-decoration: none;
+} 
+/*??? ???????*/
+a.nobor:link, a.nobor:visited {
+    color: #1E5584;
+    text-decoration: none;
+}
+a.nobor:hover {
+    color: #D5120D;
+    text-decoration: none;   
+}
+/*?????*/
+a.dashed:link, a.dashed:visited {
+    color: #1E5584;
+    text-decoration: none;
+    border-bottom: #9FB6CB 1px dashed;
+}
+a.dashed:hover {
+    color: #ff8000;
+    text-decoration: none; 
+    border:none;  
+}
+/*?????*/
+a.dotted:link, a.dotted:visited {
+    color: #008dbc;
+    text-decoration: none;
+    border-bottom: #7fc6dd 1px dotted;
+}
+a.dotted:hover, a.dotted.open {
+    color: #000000;
+    text-decoration: none;
+    border-bottom: #7f7f7f 1px dotted;
+}
+/*????????*/
+p {
+    padding: 0px 0px 5px 0px;
+    margin: 0px;
+}
+/*???????????*/
+img {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+}
+img.rad {
+    width: 100%;
+}
+img.opac:hover {
+    opacity: 0.80;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+     -khtml-opacity: 0.80;
+      -moz-opacity: 0.80;
+    transition: 0.2s 0.01s ease-in;
+     -moz-transition: all 0.2s 0.01s ease-in;
+      -o-transition: all 0.2s 0.01s ease-in;
+       -webkit-transition: all 0.2s 0.01s ease-in;
+}
+.reset-margin-bottom {
+    margin-bottom: 0 !important;
+}
+/*?????*/
+.text {
+    margin: 20px 0px;
+}
+.text-t {
+    font-size: initial;
+    word-spacing: 5px;
+    line-height: 22px; 
+}  
+/*?????*/
+.text-a {
+    font-family: verdana;
+    font-size: 16px;
+    line-height: 22px;
+}  
+/*??????? ????????*/
+.text-m {
+    font-family: verdana;
+    font-size: 16px;
+    line-height: 22px;
+    margin: 25px 0px;
+}
+.grey_text {
+    color: #abb7b7;
+}
+.hidden {
+    display: none;
+}
+.hidden1 {
+    display: none !important;
+}
+.clear {
+    font-size: 0px;
+    clear: both;
+}
+/*???????????,PS,????????*/
+span.ps {
+   color: #9EB9BA;
+}
+:focus {
+    outline: none;
+}
+/*Размер Заголовок*/
+h1.size-1 {
+    font-size: 25px !important;
+}
+h1.size-2 {
+    font-size: 28px;
+}
+h1.size-3 {
+    font-size: 28px;
+}
+/*?????????*/
+h1.name {
+    color: #3A3A38;
+    font-family: Trebuchet MS;
+    font-size: 28px;
+    margin: 13px 0 0 -10px;
+    padding: 7px 0;
+    line-height: normal;
+}
+
+h2.name {
+    color: #2D2D2D;
+    font-family: Trebuchet MS;
+    font-size: 28px;
+    margin: 7px 0 0;
+    line-height: normal;
+}
+h4.name {
+    font-family: caption;
+    font-size: 20px;
+}
+/*???????? */  
+h1.title {
+    font-family: Verdana;
+    font-size: 33px;
+    font-weight: normal;
+    line-height: normal;
+}
+h2.title {
+    font-size: 18px;
+    line-height: normal;
+    margin: 0px 0px 8px;
+}
+h4.title {
+    font-family: Verdana;
+    font-size: 20px;
+}
+
+div.title {
+    font-size: 17px;
+    font-weight: bold;
+    padding: 5px 0px 5px 0px;
+}
+div.name {
+
+}
+div.error {
+    color: red;
+}
+div.suscess {
+
+}
+div.warning {
+
+}
+div.social {
+   margin: 10px 0;
+}
+/*Кнорпки*/
+button.blue {
+    background: #407FCF;
+    color: #fff;
+    padding: 7px 30px;
+}
+button.blue:hover {
+    color:#fff;
+    background: #468fe5;
+}
+button.green {
+    background: #58C84C;
+    color: #fff;
+    padding: 7px 30px;
+}
+button.green:hover {
+    background: #5ad84d;
+    color: #fff;
+    padding: 7px 30px;
+}
+a.no-border {
+    text-decoration: none;
+    border: none;
+}
+a.no-border:hover{
+    text-decoration: none;
+    border: none;
+}
+/*-------------------Модуль-------------------*/
+.image_box___m {
+    position: relative;
+}
+.image_box___m .image {
+    display: block;
+    position: relative;
+}
+.image_box___m .image div.title-img {
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    bottom: 0;
+    left: 0;
+    padding: 15px 5px;
+    position: absolute;
+    right: 0;
+}
+.image_box___m .image div.title-img div {
+    color: #fff;
+    font-size: 16px;
+    margin: 0 0 0 15px;
+}
+.image_box___m .image .name-img {
+    color: #fff;
+    font-size: 70px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 30%;
+}
+/*----Подложка----*/
+.box__min {
+
+}
+.box__min div.image{
+    float: left;
+    width: 254px;
+    padding: 0;
+    position: relative;
+}
+.box__min div.image .name-box {
+    color: #fff;
+    font-size: 40px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 50px;
+}
+.box__min div.block {
+    float: left;
+    padding: 0 0 0 5px;
+    text-align: left;
+    width: 292px;
+}
+.box__min div.block div.next {
+    background: url('../images/icon-next.png') no-repeat;
+    height: 20px;
+    position: absolute;
+    right: 22px;
+    top: 73px;
+    width: 20px;
+    cursor: pointer;
+}
+.box__min div.container-box {
+    background:#fff;
+    border: 1px solid #4583D0;
+    height: 164px;
+    margin: 0 10px;
+    border-radius: 3px;
+}
+.box__min div.block div.text-min{
+    font-size: 10px;
+    height: 58px;
+}
+.box__min div.block div.text-min.min{
+    height: 35px;
+}
+.box__min div.block div.flag img {
+    width: 100px;
+}
+/*Большие*/
+.box__max {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.box__max div.carousel-box{
+
+}
+.box__max div.carousel-box div.item {
+    position: relative;
+    width: 550px;
+}
+.box__max div.carousel-box div.item .name-box {
+    color: #fff;
+    font-size: 100px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 100px;
+}
+.icon-fast {
+   background: url('../images/icon-fast.png') no-repeat;
+}
+.icon-pay {
+    background: url('../images/icon-pay.png') no-repeat;
+}
+.icon-sec {
+    background: url('../images/icon-sec.png') no-repeat;
+}
+.icon-g {
+    background: rgba(0, 0, 0, 0) url("../images/icon-g.png") no-repeat scroll center center;
+    height: 80px;
+    width: 75px;
+}
+.icon-w {
+    background: rgba(0, 0, 0, 0) url("../images/icon-w.png") no-repeat scroll center top / 80px auto;
+    height: 75px;
+    width: 70px;
+}
+
+.icon-w.port {
+    background-position: -3px center;
+}
+.icon-w.mes {
+    background-position: -5px -160px;
+    width: 75px;
+}

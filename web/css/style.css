@@ -1,0 +1,230 @@
+/*Поключение шрифт*/
+/*
+@font-face {
+   font-family: Ampir Deco;
+   src: local("Ampir Deco"),
+   url('fon/ampir_deco.ttf'); 
+}*/
+
+/* End of Yahoo! CSS Reset */
+
+html {
+	height: 100%;
+}
+body {
+    background-color: #fff;
+}
+
+
+.res {
+    outline: 1px solid red;
+}
+
+/*Header*/
+#header {
+    height: 73px;
+    padding: 10px 0px;
+    background: #292929;
+}
+#header div.top {
+
+}
+#header div.top .navbar {
+    min-height: 75px;
+}
+#header div.top .logo {
+    height: 50px;
+    width: 190px;
+}
+#header div.top div.res {
+    height: 50px;
+}
+#header div.top div.float-right {
+   float: right;
+}
+#header div.top div.block {
+    padding-top: 13px;
+}
+#header div.top div.group {
+    margin: 7px 0 0 auto;
+}
+#header div.top div.group .dropdown {
+    text-align: center;
+}
+    /*Center*/
+#center {
+
+}
+/*Footer*/
+#footer {
+
+    width: 100%;
+    background: #292929;
+}
+#footer div.top {
+   background: #424242;
+    padding: 40px 0;
+}
+#footer  div.subscription {
+    margin: 0 0 0 auto;
+}
+#footer  div.info-footer {
+
+}
+#footer  div.info-footer div{
+    color: #fff;
+    font-size: 18px;
+}
+#footer div.center {
+    padding: 20px 0 10px;
+}
+#footer div.center div.menu {
+
+}
+#footer div.center div.menu .title-menu {
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 0;
+ }
+#footer div.center div.menu .white {
+   display: block;
+    border: none;
+}
+#footer div.center div.menu .white:hover{
+    text-decoration: underline;
+}
+#footer div.bottom {
+  border-top:1px solid #424242;
+    padding: 20px 0 10px;
+}
+#footer div.bottom .cop {
+    color: #ffffff;
+}
+/*Главная страница*/
+#main {
+    margin-bottom: 20px;
+}
+#main div.slider{
+
+    margin-bottom: 15px;
+}
+#main div.slider div.item{
+
+}
+/*Поиск*/
+#main div.search{
+    position: relative;
+}
+#main div.search div.search-group {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin: 0 auto;
+}
+#main div.search div.search-group input.search {
+    height: 36px;
+    color: #8e8e8e;
+}
+#main div.search div.search-group button {
+    border-radius: 0px 3px 3px 0px;
+}
+ div.br-hr,  div.br-hr-title {
+    background: #407FCF;
+    padding: 20px 0;
+}
+div.br-hr-title {
+    padding: 10px 0;
+}
+#main div.br-hr-title div {
+    color:#fff;
+    text-align: center;
+    font-weight: bold;
+}
+#main div.block-main {
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+#main div.block-main div.icon {
+
+}
+#main div.block-main div.description {
+    color: #407fcf;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 23px;
+    margin-bottom: 10px;
+}
+#main div.block-main div.title-main {
+    color: #63ac33;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+/**/
+#main div.block-main div.panel-block {
+
+}
+#main div.block-main div.panel-block div.item div.img {
+    background: red none repeat scroll 0 0;
+    height: 35px;
+    width: 45px;
+    margin: 0 10px 0 0;
+    float: left;
+}
+#main div.block-main div.panel-block div.item div.img img{
+    height: 100%;
+}
+#main div.block-main div.panel-block div.item .text-m {
+    font-size: 13px;
+    line-height: 14px;
+    margin: 0;
+    padding: 3px 5px;
+    color: #407FCF;
+}
+#main div.block-main div.panel-block div.item {
+    border: 1px solid #407FCF;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    padding: 10px 5px;
+}
+#main .box__min {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 0px;
+}
+
+/*Инфо*/
+#main div.info-box {
+    margin: 15px 0;
+    padding: 0px;
+}
+#main div.info {
+    background: #000 none repeat scroll 0 0;
+    height: 265px;
+    margin: 0 15px 0 0;
+    position: relative;
+}
+#main div.info.br{
+    background: url('../images/pay.png') no-repeat;
+}
+#main div.info .icon {
+    background-position: center center;
+    background-size: 70px auto;
+    bottom: 95px;
+    height: 110px;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    width: 90px;
+}
+#main div.info .text-min {
+    bottom: 60px;
+    color: #fff;
+    font-size: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
