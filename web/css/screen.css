@@ -1,8 +1,62 @@
 /*Планшет разрешения 800x1043*/
-@media only screen and (min-width: 137px) and (max-width: 1043px) {
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    #main div.block-main div.description {
+        font-size: 16px;
+        margin-left: 15px;
+    }
+    #main div.block-main div.title-main {
+        font-size: 16px;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
 
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 992px) {
+    button.green, button.blue {
+        padding: 7px 25px;
+    }
+    #navbar .btn-group {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+@media only screen and (max-width: 768px) {
+    #navbar .navbar-toggle {
+        left: -5px;
+        position: relative;
+        top: 13px;
+    }
+    /*Меню*/
+    #navbar-collapse {
+        padding: 15px 0;
+        margin-top: 25px;
+    }
+    #navbar div.navigation {
+        padding: 0 20px;
+    }
+    #navbar div.navigation div.login {
+        margin-bottom: 5px;
+        color: #fff;
+    }
+    #navbar div.navigation div.content-nav a.login {
+        margin: 0 5px 0 0;
+    }
+    #navbar div.navigation div.content-nav a.reg {
+        margin-left: 5px;
+    }
 
+}
+@media only screen and (max-width: 540px) {
+    #main div.block-main div.description {
+        font-size: 16px;
+        margin-left: 15px;
+    }
+
+    #main div.block-main div.title-main {
+        font-size: 16px;
+    }
 }

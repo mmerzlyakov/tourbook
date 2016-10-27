@@ -19,7 +19,9 @@ body {
 .res {
     outline: 1px solid red;
 }
-
+div.container {
+    min-width: 320px;
+}
 /*Header*/
 #header {
     height: 73px;
@@ -46,10 +48,13 @@ body {
     padding-top: 13px;
 }
 #header div.top div.group {
-    margin: 7px 0 0 auto;
+    margin: 30px 0 0 auto;
 }
 #header div.top div.group .dropdown {
     text-align: center;
+}
+#navbar .btn-group{
+    padding: 18px 10px;
 }
     /*Center*/
 #center {
@@ -154,6 +159,7 @@ div.br-hr-title {
     font-weight: bold;
     line-height: 23px;
     margin-bottom: 10px;
+    height: 72px;
 }
 #main div.block-main div.title-main {
     color: #63ac33;

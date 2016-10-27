@@ -6,7 +6,7 @@ $this->title = 'TourBook.Net';
 <div id="main">
     <div class="search">
         <form method="post">
-            <div class="input-group search-group col-xs-8">
+            <div class="input-group search-group col-xs-11 col-sm-9 col-md-8">
                 <input type="text" class="form-control search"  value="Поиск" name="search">
                             <span class="input-group-btn">
                                 <button type="button" class="btn blue ">Поиск</button>
@@ -25,28 +25,29 @@ $this->title = 'TourBook.Net';
     <div class="clear"></div>
     <div class="br-hr"></div>
     <div class="container block-main">
-        <div class="col-lg-6 col-md-6 col-xs-6 ">
-            <div class="col-lg-2 col-md-2 col-xs-2 "><div class="icon-g"></div> </div>
-            <div class="col-lg-10 col-md-10 col-xs-10  ">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+
+            <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2 "><div class="icon-g"></div> </div>
+            <div class="col-lg-10 col-md-10  col-sm-10 col-xs-10  ">
                 <div class="description">Новые предложения каждый день БЕСПЛАТНАЯ отмена бронирования для большинства вариантов</div>
             </div>
             <div class="clear "></div>
             <div class="title-main col-xs-12">Посмотрите, как аспекты системы рзметки Bootstrap</div>
 
-            <div class="col-lg-2 col-md-2 col-xs-2 "><div class="icon icon-w"></div> </div>
-            <div class="col-lg-10 col-md-10 col-xs-10  ">
+            <div class="col-lg-2 col-md-2  col-sm-2 col-xs-2 "><div class="icon icon-w"></div> </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10  ">
                 <div class="description">Новые предложения каждый день БЕСПЛАТНАЯ отмена бронирования для большинства вариантов</div>
             </div>
-            <div class="col-lg-2 col-md-2 col-xs-2 "><div class="icon icon-w port"></div> </div>
-            <div class="col-lg-10 col-md-10 col-xs-10 ">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 "><div class="icon icon-w port"></div> </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 ">
                 <div class="description">Новые предложения каждый день БЕСПЛАТНАЯ отмена бронирования для большинства вариантов</div>
             </div>
             <div class="col-lg-2 col-md-2 col-xs-2 "><div class="icon icon-w mes"></div> </div>
-            <div class="col-lg-10 col-md-10 col-xs-10  ">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10  ">
                 <div class="description">Новые предложения каждый день БЕСПЛАТНАЯ отмена бронирования для большинства вариантов</div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-xs-6  image_box___m">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12  image_box___m">
             <div class="panel  panel-info">
                 <div class="panel-heading">Закажите прямо сейчас поездка в </div>
                 <div class="panel-body">
@@ -59,7 +60,7 @@ $this->title = 'TourBook.Net';
             </div>
         </div>
         <div class="clear"></div>
-        <div class="col-lg-6 col-md-6 col-xs-6">
+        <div class="col-lg-6 col-md-6 col-sm-6  col-xs-12">
             <div class="panel panel-primary panel-block">
                 <div class="panel-heading">Присоединяйтесь к миллионам туристов по всему миру</div>
                 <div class="panel-body">
@@ -88,7 +89,7 @@ $this->title = 'TourBook.Net';
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-xs-6  image_box___m">
+        <div class="col-lg-6 col-md-6 col-sm-6    col-xs-12  image_box___m">
             <div class="panel  panel-info">
                 <div class="panel-heading">Закажите прямо сейчас поездка в </div>
                 <div class="panel-body">

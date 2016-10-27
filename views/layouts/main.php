@@ -27,51 +27,19 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div id="br-shadow"></div>
 <div id="header">
-    <div class="top container">
+    <div class="top">
         <?php
         NavBar::begin([
             'brandLabel' => '<img src="/images/logo.png" class="logo" />',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
+                'id'=>'navbar',
             ],
-        ]);
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
-            'items' => [
-                ['label' => 'Главная', 'url' => ['/site/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
-                (Yii::$app->user->can('GodMode') || Yii::$app->user->can('admins') || Yii::$app->user->can('operator')) ? (
-                ['label' => 'Management', 'url' => ['/management']]
-                ) : (
-                ['label' => '', 'url' => ['/management']]
-                ),
-                Yii::$app->user->can('user') ? (
-                ['label' => 'My Account', 'url' => ['/management']]
-                ) : (
-                ['label' => '', 'url' => ['/management']]),
-                Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) : (
-                    '<li>'
-                    . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->name . ')',
-                        ['class' => 'btn btn-link']
-                    )
-                    . Html::endForm()
-                    . '</li>'
-                ),
-            ],
-        ]);
-          ?>
-
-        <?php
-        NavBar::end();
-        ?>
-        <!--Пока скрыл потом норм натяну -->
-        <div class="row hidden">
-            <div class="col-xs-8 block ">
-                <div class="col-xs-6 group">
+        ]); ?>
+            <!--Пока скрыл потом норм натяну -->
+            <div class="hidden-xs col-xs-6 col-sm-5 group col-lg-push-1">
+                <div class="row">
                     <div class="dropdown  col-xs-4 ">
                         <a id="drop1" href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">Флаг <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
@@ -97,13 +65,25 @@ AppAsset::register($this);
                         </ul>
                     </div>
                 </div>
-                <div class="btn-group col-xs-5 float-right">
-                    <div class="col-xs-5"><button type="button" class="btn blue ">Регистрация</button></div>
-                    <div class="col-xs-5 float-right"><button type="button" class="btn green">Войти</button></div>
-                </div>
+            </div>
+            <div class="hidden-xs btn-group col-xs-4 float-right">
+                <div class="col-xs-6 col-md-5 col-sm-4"><button type="button" class="btn blue ">Регистрация</button></div>
+                <div class="col-xs-6 float-right col-md-5 col-sm-5"><button type="button" class="btn green">Войти</button></div>
+                <div class="clearfix visible-xs"></div>
             </div>
             <div class="clear"></div>
-        </div>
+            <div class="navigation visible-xs">
+                <div class="content-nav">
+                   <div class="login">
+                       <a class=" login white" href="#">Войти</a> / <a class="reg white" href="#">Регистрация </a>
+                   </div>
+                </div>
+            </div>
+
+        <?php
+        NavBar::end();
+        ?>
+
 
     </div>
 
