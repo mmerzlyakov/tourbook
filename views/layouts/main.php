@@ -67,8 +67,8 @@ AppAsset::register($this);
                 </div>
             </div>
             <div class="hidden-xs btn-group col-xs-4 float-right">
-                <div class="col-xs-6 col-md-5 col-sm-4"><button type="button" class="btn blue ">Регистрация</button></div>
-                <div class="col-xs-6 float-right col-md-5 col-sm-5"><button type="button" class="btn green">Войти</button></div>
+                <div class="col-xs-6 col-md-5 col-sm-4"> <a class="button btn btn-primary" href="/site/login">Регистрация</a> </div>
+                <div class="col-xs-6 float-right col-md-5 col-lg-6 col-sm-5"> <a class="button btn btn-success green" href="/site/login">Войти</a></div>
                 <div class="clearfix visible-xs"></div>
             </div>
             <div class="clear"></div>
@@ -96,12 +96,12 @@ AppAsset::register($this);
 <div id="footer">
     <div class="top">
         <div class="container">
-            <div class="col-xs-6 info-footer">
+            <div class="col-xs-12 col-sm-6 info-footer">
                 <div>Будьте в курсе последних новостей и обновлений</div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-sm-6 col-xs-12">
                 <form method="post">
-                    <div class="input-group col-xs-10 subscription">
+                    <div class="input-group col-sm-12 col-sm-10 subscription">
                         <input type="text" class="form-control" placeholder="введите ваш email">
                                   <span class="input-group-btn">
                                     <button class="btn btn-success" type="button">Подписаться!</button>
@@ -115,28 +115,28 @@ AppAsset::register($this);
     <div class="center">
         <div class="container">
             <div class="menu">
-                <div class="col-xs-3">
+                <div class="col-xs-6 col-sm-3 menu-footer">
                     <div class="title-menu">СТРАНЫ И РЕГИОНЫ</div>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-6 col-sm-3 menu-footer">
                     <div class="title-menu">СТРАНЫ И РЕГИОНЫ</div>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-6 col-sm-3 menu-footer">
                     <div class="title-menu">СТРАНЫ И РЕГИОНЫ</div>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-6 col-sm-3 menu-footer">
                     <div class="title-menu">СТРАНЫ И РЕГИОНЫ</div>
                     <a class="white" href="#">Условия и положения</a>
                     <a class="white" href="#">Условия и положения</a>

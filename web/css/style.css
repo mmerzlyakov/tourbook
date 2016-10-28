@@ -79,12 +79,16 @@ div.container {
 #footer  div.info-footer div{
     color: #fff;
     font-size: 18px;
+    margin-bottom: 20px;
 }
 #footer div.center {
     padding: 20px 0 10px;
 }
 #footer div.center div.menu {
 
+}
+#footer div.center div.menu .menu-footer {
+    margin-bottom: 10px;
 }
 #footer div.center div.menu .title-menu {
     color: #fff;

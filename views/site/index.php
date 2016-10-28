@@ -60,7 +60,7 @@ $this->title = 'TourBook.Net';
             </div>
         </div>
         <div class="clear"></div>
-        <div class="col-lg-6 col-md-6 col-sm-6  col-xs-12">
+        <div class="col-sm-6  col-xs-12">
             <div class="panel panel-primary panel-block">
                 <div class="panel-heading">Присоединяйтесь к миллионам туристов по всему миру</div>
                 <div class="panel-body">
@@ -89,12 +89,12 @@ $this->title = 'TourBook.Net';
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6    col-xs-12  image_box___m">
+        <div class="col-sm-6 col-xs-12  image_box___m">
             <div class="panel  panel-info">
                 <div class="panel-heading">Закажите прямо сейчас поездка в </div>
                 <div class="panel-body">
                     <a class="image no-border" href="#">
-                        <img src="./images/pod.png" alt="" class="rad"/>
+                        <img src="/images/pod.png" alt="" class="rad"/>
                         <div class="title-img"><div>Гонконг: экскурсии, туры, билеты и многое другое »</div></div>
                         <div class="name-img">Китай</div>
                     </a>
@@ -105,7 +105,7 @@ $this->title = 'TourBook.Net';
     </div>
     <div class="br-hr-title"><div>ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ</div></div>
     <div class="container">
-        <div class="col-xs-6  box__min">
+        <div class="col-xs-12 col-lg-6  box__min">
             <div class="container-box">
                 <div class="image"><img src="./images/12.jpg" alt="" class="rad"> <div class="name-box">Китай</div> </div>
                 <div class="block">
@@ -121,7 +121,7 @@ $this->title = 'TourBook.Net';
                 <div class="clear"></div>
             </div>
         </div>
-        <div class="col-xs-6  box__min">
+        <div class="col-xs-12 col-lg-6 box__min">
             <div class="container-box">
                 <div class="image"><img src="./images/12.jpg" alt="" class="rad"> <div class="name-box">Китай</div></div>
                 <div class="block">
@@ -139,14 +139,14 @@ $this->title = 'TourBook.Net';
         </div>
         <div class="clear"></div>
 
-        <div class="col-xs-6 box__max">
+        <div class="col-xs-12 col-sm-6 box__max">
             <div class="carousel-box">
                 <div class="items">
                     <div class="item"><img src="./images/212.jpg" alt="" class="rad"> <div class="name-box">Китай</div> </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-6 box__max">
+        <div class="col-xs-12 col-sm-6 box__max">
             <div class="carousel-box">
                 <div class="items">
                     <div class="item"><img src="./images/212.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
@@ -154,7 +154,7 @@ $this->title = 'TourBook.Net';
             </div>
         </div>
         <div class="clear"></div>
-        <div class="col-xs-6  box__min">
+        <div class="col-xs-12 col-lg-6  box__min">
             <div class="container-box">
                 <div class="image"><img src="./images/12.jpg" alt="" class="rad"> <div class="name-box">Китай</div> </div>
                 <div class="block">
@@ -170,7 +170,7 @@ $this->title = 'TourBook.Net';
                 <div class="clear"></div>
             </div>
         </div>
-        <div class="col-xs-6  box__min">
+        <div class="col-xs-12 col-lg-6 box__min">
             <div class="container-box">
                 <div class="image"><img src="./images/12.jpg" alt="" class="rad"> <div class="name-box">Китай</div></div>
                 <div class="block">
@@ -188,14 +188,14 @@ $this->title = 'TourBook.Net';
         </div>
         <div class="clear"></div>
 
-        <div class="col-xs-6 box__max">
+        <div class="col-xs-12 col-sm-6 box__max">
             <div class="carousel-box">
                 <div class="items">
                     <div class="item"><img src="./images/212.jpg" alt="" class="rad"> <div class="name-box">Китай</div> </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-6 box__max">
+        <div class="col-xs-12 col-sm-6 box__max">
             <div class="carousel-box">
                 <div class="items">
                     <div class="item"><img src="./images/212.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
@@ -205,7 +205,7 @@ $this->title = 'TourBook.Net';
         <div class="clear"></div>
     </div>
     <div class="br-hr"></div>
-    <div class="col-xs-4 info-box">
+    <div class="col-xs-4 col-sm-4 info-box">
         <div class="info">
             <div class="icon-fast icon"></div>
             <div class="text-min">Мгновеное подтверждения брони</div>
