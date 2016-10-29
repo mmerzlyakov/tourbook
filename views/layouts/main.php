@@ -8,6 +8,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 AppAsset::register($this);
+
+
 ?>
 <?php $this->beginPage() ?>
 <!--TEST-->
@@ -66,20 +68,35 @@ AppAsset::register($this);
                     </div>
                 </div>
             </div>
+            <?php if(Yii::$app->user->isGuest): ?>
             <div class="hidden-xs btn-group col-xs-4 float-right">
                 <div class="col-xs-6 col-md-5 col-sm-4"> <a class="button btn btn-primary" href="/site/login">Регистрация</a> </div>
                 <div class="col-xs-6 float-right col-md-5 col-lg-6 col-sm-5"> <a class="button btn btn-success green" href="/site/login">Войти</a></div>
                 <div class="clearfix visible-xs"></div>
             </div>
+            <?php else: ?>
+            <div class="hidden-xs btn-group col-xs-4 float-right">
+                <div class="user">
+                    <div class="name"><?=Yii::$app->user->identity->name?> </div>
+                   <div> <a class="white" href="/management">My Account</a> / <a href="/site/logout" class="out white">Выйти</a></div>
+                </div>
+            </div>
+            <?php endif; ?>
             <div class="clear"></div>
             <div class="navigation visible-xs">
                 <div class="content-nav">
-                   <div class="login">
-                       <a class=" login white" href="#">Войти</a> / <a class="reg white" href="#">Регистрация </a>
-                   </div>
+                   <?php if(Yii::$app->user->isGuest): ?>
+                       <div class="login">
+                           <a class=" login white" href="#">Войти</a> / <a class="reg white" href="#">Регистрация </a>
+                       </div>
+                  <?php else: ?>
+                       <div class="login">
+                           <div class="name"><?=Yii::$app->user->identity->name?> </div>
+                           <a class=" login white" href="/management">My Account</a> / <a class="reg white" href="/site/logout">Выйти </a>
+                       </div>
+                  <?php endif; ?>
                 </div>
             </div>
-
         <?php
         NavBar::end();
         ?>

@@ -56,6 +56,17 @@ div.container {
 #navbar .btn-group{
     padding: 18px 10px;
 }
+#header div.user {
+    text-align: right;
+    color: #fff;
+}
+#header div.user a {
+    margin: 0 5px;
+}
+#header div.user div.name {
+    font-size: 15px;
+    margin-right: 5px;
+}
     /*Center*/
 #center {
 
@@ -114,8 +125,10 @@ div.container {
     margin-bottom: 20px;
 }
 #main div.slider{
-
-    margin-bottom: 15px;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: -1;
 }
 #main div.slider div.item{
 
@@ -123,6 +136,8 @@ div.container {
 /*Поиск*/
 #main div.search{
     position: relative;
+   /* height: 635px;*/
+
 }
 #main div.search div.search-group {
     left: 0;
@@ -138,7 +153,36 @@ div.container {
 #main div.search div.search-group button {
     border-radius: 0px 3px 3px 0px;
 }
- div.br-hr,  div.br-hr-title {
+#main div.search div.search-group div.prompt{
+    background: #fff none repeat scroll 0 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px 2px #585858;
+    left: 0;
+    min-height: 180px;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 100%;
+    z-index: 100;
+    display: none;
+}
+#main div.search div.search-group div.prompt .panel-block {
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0 -10px;
+    padding: 10px 0;
+}
+#main div.search div.search-group div.prompt .panel-block .title-main {
+    font-size: 16px;
+    color: #222222;
+}
+#main div.search div.search-group div.prompt .panel-block div {
+    color: #5b5b5b;
+}
+#main div.search div.search-group div.prompt table {
+    margin: 15px 0 0;
+}
+div.br-hr,  div.br-hr-title {
     background: #407FCF;
     padding: 20px 0;
 }
@@ -237,4 +281,8 @@ div.br-hr-title {
     position: absolute;
     right: 0;
     text-align: center;
+}
+/*Вход*/
+.site-login{
+    padding: 40px 0 80px;
 }

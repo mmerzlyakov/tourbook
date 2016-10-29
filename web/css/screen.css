@@ -63,6 +63,9 @@
         margin-bottom: 5px;
         color: #fff;
     }
+    #navbar div.navigation div.login .name {
+        padding: 0 0 5px;
+    }
     #navbar div.navigation div.content-nav a.login {
         margin: 0 5px 0 0;
     }

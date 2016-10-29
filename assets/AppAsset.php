@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'scripts/sliders/slider.css',
         'css/style.css',
         'css/global.css',
         'css/screen.css',
@@ -26,6 +27,7 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/script.js',
         'js/global.js',
+        'scripts/sliders/slider.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

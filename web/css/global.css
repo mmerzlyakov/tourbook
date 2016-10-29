@@ -411,3 +411,30 @@ a.no-border:hover{
     background-position: -5px -160px;
     width: 75px;
 }
+/*Таблица*/
+table.table-search tr td {
+    vertical-align: top;
+}
+table.table-search  tr td:nth-child(2n+1) {
+    color: #337ab7;
+    text-align: right;
+    width: 15%;
+    font-weight: bold;
+}
+table.table-search  tr td:nth-child(2n) {
+    color: #9e9e9e;
+    padding-left: 8px;
+}
+table.table-search  tr td:nth-child(2n) span::after {
+    content: "|";
+    float: right;
+    line-height: 12px;
+    padding: 0 10px;
+}
+table.table-search  tr td:nth-child(2n) span {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+table.table-search tr td span:last-child::after {
+    content: "";
+}
