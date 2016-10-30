@@ -19,7 +19,9 @@ body {
 .res {
     outline: 1px solid red;
 }
-
+div.container {
+    min-width: 320px;
+}
 /*Header*/
 #header {
     height: 73px;
@@ -46,10 +48,24 @@ body {
     padding-top: 13px;
 }
 #header div.top div.group {
-    margin: 7px 0 0 auto;
+    margin: 30px 0 0 auto;
 }
 #header div.top div.group .dropdown {
     text-align: center;
+}
+#navbar .btn-group{
+    padding: 18px 10px;
+}
+#header div.user {
+    text-align: right;
+    color: #fff;
+}
+#header div.user a {
+    margin: 0 5px;
+}
+#header div.user div.name {
+    font-size: 15px;
+    margin-right: 5px;
 }
     /*Center*/
 #center {
@@ -74,12 +90,16 @@ body {
 #footer  div.info-footer div{
     color: #fff;
     font-size: 18px;
+    margin-bottom: 20px;
 }
 #footer div.center {
     padding: 20px 0 10px;
 }
 #footer div.center div.menu {
 
+}
+#footer div.center div.menu .menu-footer {
+    margin-bottom: 10px;
 }
 #footer div.center div.menu .title-menu {
     color: #fff;
@@ -105,8 +125,10 @@ body {
     margin-bottom: 20px;
 }
 #main div.slider{
-
-    margin-bottom: 15px;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: -1;
 }
 #main div.slider div.item{
 
@@ -114,6 +136,8 @@ body {
 /*Поиск*/
 #main div.search{
     position: relative;
+   /* height: 635px;*/
+
 }
 #main div.search div.search-group {
     left: 0;
@@ -129,7 +153,36 @@ body {
 #main div.search div.search-group button {
     border-radius: 0px 3px 3px 0px;
 }
- div.br-hr,  div.br-hr-title {
+#main div.search div.search-group div.prompt{
+    background: #fff none repeat scroll 0 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px 2px #585858;
+    left: 0;
+    min-height: 180px;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 100%;
+    z-index: 100;
+    display: none;
+}
+#main div.search div.search-group div.prompt .panel-block {
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0 -10px;
+    padding: 10px 0;
+}
+#main div.search div.search-group div.prompt .panel-block .title-main {
+    font-size: 16px;
+    color: #222222;
+}
+#main div.search div.search-group div.prompt .panel-block div {
+    color: #5b5b5b;
+}
+#main div.search div.search-group div.prompt table {
+    margin: 15px 0 0;
+}
+div.br-hr,  div.br-hr-title {
     background: #407FCF;
     padding: 20px 0;
 }
@@ -154,6 +207,7 @@ div.br-hr-title {
     font-weight: bold;
     line-height: 23px;
     margin-bottom: 10px;
+    height: 72px;
 }
 #main div.block-main div.title-main {
     color: #63ac33;
@@ -227,4 +281,8 @@ div.br-hr-title {
     position: absolute;
     right: 0;
     text-align: center;
+}
+/*Вход*/
+.site-login{
+    padding: 40px 0 80px;
 }

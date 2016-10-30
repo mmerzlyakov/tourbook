@@ -265,7 +265,12 @@ button.green {
 button.green:hover {
     background: #5ad84d;
     color: #fff;
-    padding: 7px 30px;
+}
+a.button {
+    padding: 7px 28%;
+}
+#header .btn:hover, #header .btn:focus, .btn.focus {
+    color:#fff;
 }
 a.no-border {
     text-decoration: none;
@@ -346,6 +351,7 @@ a.no-border:hover{
     height: 164px;
     margin: 0 10px;
     border-radius: 3px;
+    min-width: 550px;
 }
 .box__min div.block div.text-min{
     font-size: 10px;
@@ -367,7 +373,7 @@ a.no-border:hover{
 }
 .box__max div.carousel-box div.item {
     position: relative;
-    width: 550px;
+    width: 100%;
 }
 .box__max div.carousel-box div.item .name-box {
     color: #fff;
@@ -404,4 +410,31 @@ a.no-border:hover{
 .icon-w.mes {
     background-position: -5px -160px;
     width: 75px;
+}
+/*Таблица*/
+table.table-search tr td {
+    vertical-align: top;
+}
+table.table-search  tr td:nth-child(2n+1) {
+    color: #337ab7;
+    text-align: right;
+    width: 15%;
+    font-weight: bold;
+}
+table.table-search  tr td:nth-child(2n) {
+    color: #9e9e9e;
+    padding-left: 8px;
+}
+table.table-search  tr td:nth-child(2n) span::after {
+    content: "|";
+    float: right;
+    line-height: 12px;
+    padding: 0 10px;
+}
+table.table-search  tr td:nth-child(2n) span {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+table.table-search tr td span:last-child::after {
+    content: "";
 }
