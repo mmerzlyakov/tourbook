@@ -2,8 +2,8 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=vesta.beget.com;dbname=nikola16_tour',
-    'username' => 'nikola16_tour',
-    'password' => 'qwert12345',
+    'dsn' => 'mysql:host=localhost;dbname=tourbook',
+    'username' => 'root',
+    'password' => 'root',
     'charset' => 'utf8',
 ];

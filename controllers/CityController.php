@@ -13,7 +13,7 @@ use yii\filters\AccessControl;
 /**
  * CityController implements the CRUD actions for City model.
  */
-class CityController extends Controller
+class CityController extends BackendController
 {
     /**
      * @inheritdoc
@@ -84,12 +84,14 @@ class CityController extends Controller
     public function actionCreate()
     {
         $model = new City();
+        $countries = \app\models\Country::find()->where('status = 1')->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id, 'country_id' => $model->country_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'countries' => $countries,
             ]);
         }
     }

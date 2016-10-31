@@ -13,7 +13,7 @@ use yii\filters\AccessControl;
 /**
  * CodesController implements the CRUD actions for Codes model.
  */
-class CodesController extends Controller
+class CodesController extends BackendController
 {
     /**
      * @inheritdoc

@@ -12,7 +12,7 @@ use yii\filters\AccessControl;
 /**
  * OrdersController implements the CRUD actions for Orders model.
  */
-class OrdersController extends Controller
+class OrdersController extends BackendController
 {
     /**
      * @inheritdoc

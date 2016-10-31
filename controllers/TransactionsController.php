@@ -13,7 +13,7 @@ use yii\filters\AccessControl;
 /**
  * TransactionsController implements the CRUD actions for Transactions model.
  */
-class TransactionsController extends Controller
+class TransactionsController extends BackendController
 {
     /**
      * @inheritdoc

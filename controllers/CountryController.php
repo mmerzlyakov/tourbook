@@ -13,7 +13,7 @@ use yii\filters\AccessControl;
 /**
  * CountryController implements the CRUD actions for Country model.
  */
-class CountryController extends Controller
+class CountryController extends BackendController
 {
     /**
      * @inheritdoc
