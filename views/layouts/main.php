@@ -70,7 +70,7 @@ AppAsset::register($this);
             </div>
             <?php if(Yii::$app->user->isGuest): ?>
             <div class="hidden-xs btn-group col-xs-4 float-right">
-                <div class="col-xs-6 col-md-5 col-sm-4"> <a class="button btn btn-primary" href="/site/login">Регистрация</a> </div>
+                <div class="col-xs-6 col-md-5 col-sm-4"> <a class="button btn btn-primary" href="/site/signup">Регистрация</a> </div>
                 <div class="col-xs-6 float-right col-md-5 col-lg-6 col-sm-5"> <a class="button btn btn-success green" href="/site/login">Войти</a></div>
                 <div class="clearfix visible-xs"></div>
             </div>

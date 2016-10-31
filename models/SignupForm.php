@@ -12,7 +12,6 @@ class SignupForm extends Model
 {
     public $name;
     public $email;
-    public $phone;
     public $password;
 
     /**
@@ -21,18 +20,13 @@ class SignupForm extends Model
     public function rules()
     {
         return [
+            [['name'], 'required'],
             ['name', 'filter', 'filter' => 'trim'],
-            ['name', 'required'],
-            ['name', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Такое имя пользователя уже зарегистрировано'],
+            ['name', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Such username already exists!'],
             ['name', 'string', 'min' => 2, 'max' => 255],
 
-            ['phone', 'filter', 'filter' => 'trim'],
-            ['phone', 'required'],
-            ['phone', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Такой телефон уже зарегистрирован'],
-            ['phone', 'string', 'min' => 2, 'max' => 255],
-
-            ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
+            ['email', 'filter', 'filter' => 'trim'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
@@ -53,15 +47,22 @@ class SignupForm extends Model
             return null;
         }
         
-        $user = new User();
+        $user = new \app\models\User();
         $user->name = $this->name;
-//      $user->email = $this->email;
-        $user->email = $this->phone;
+        $user->email = $this->email;
+        $user->password = $this->password;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-		$user->save();
 
-//		the following three lines were added:
+
+        if(!$user->save()){
+            if(MY_DEBUG) {
+                var_dump($user);
+                var_dump($user->errors);
+                die();
+            }
+        }
+
         $auth = Yii::$app->authManager;
         $authorRole = $auth->getRole('user');
         $auth->assign($authorRole, $user->getId());
