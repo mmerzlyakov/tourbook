@@ -1,102 +1,39 @@
-Yii 2 Basic Project Template
-============================
+Release notes:
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+v. 1.0.0a 31/10/2016
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
+Что нового в релизе
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
+- добавили слайдер на главной странице
+- страницы регистрации и логина кастом
+- Добавлена регистрация пользователей из Frontend-a
+- Добавлено управление пользователями из Backend-a
+  (еще будет дорабатыватся в процессе)
+- Переработано меню управления аккаунтами в зависимости ролей
+- Новые пользователи регистрируются с автоматической ролью "пользователь"
+- Прорабатываются инструменты по управлению буками и заказами
+- Раздел управления заказами https://www.tourbook.biz/orders
 
-DIRECTORY STRUCTURE
--------------------
+Существующий функционал
 
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+- Добавлен логин пользователей
+- Пользователи делятся по ролям (администрация ролей, и прав в меню)
+- Адаптивнй дизайн до разрешения 400px (iPhone 6s) по ширине
+  (уменьшаем до 320 iPhone 5)
+- Добавление Страны, Города, Буки
+- Верстка на Bootstrap 3.0 совместно с Yii 2.0.9
+- Реализация структуры базы данных в директории /database
+  (там же бэкап текущей стабильной версии)
 
+Планируется
 
-
-REQUIREMENTS
-------------
-
-The minimum requirement by this project template that your Web server supports PHP 5.4.0.
-
-
-INSTALLATION
-------------
-
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-Set cookie validation key in `config/web.php` file to some random secret string:
-
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
-
-You can then access the application through the following URL:
-
-~~~
-http://localhost/basic/web/
-~~~
-
-
-### Install via Composer
-
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
-
-You can then install this project template using the following command:
-
-~~~
-php composer.phar global require "fxp/composer-asset-plugin:~1.1.1"
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
-~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
-
-
-CONFIGURATION
--------------
-
-### Database
-
-Edit the file `config/db.php` with real data, for example:
-
-```php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
-];
-```
-
-**NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
+- Верстка виджетов для покупки Буков
+- Создание корзины для покупки нескольких буков сразу
+- Подключение к платежным системам
+- Развитие аккаунта пользователя
+  (Сохраненные кредитки, Персаональные данные, Виш листы)
+- Подключение фотографий / нескольких фотографий / видео
+- Вход через социальные сети
+- Управление транзакциями пользователей (платежи, баланс и т.п.)
+- Языковые переводы (Русский, Анлийский, Тайский, 2 Китайских)
+- Прочие свистелки и перделки типа подписки на новости
