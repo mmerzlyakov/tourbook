@@ -1,14 +1,16 @@
 $(document).ready(function(){
 
-    // Карусель для миниатюр;
-    $('div.images-carousel div.items').owlCarousel({
-        items: 3,
-        responsive: true,
-        itemsDesktop : [1199,4],
-        itemsDesktopSmall : [980,3],
-        itemsTablet: [768,2],
-        itemsMobile : [479,1]
+    // Карусель;
+    $('div.slider div.items').slick({
+        dots: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 6000
     });
-
-
+    $("#main input.search").on('click',function(){
+        $("#main .search-group .prompt").toggle();
+    });
 });
