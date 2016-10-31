@@ -83,9 +83,18 @@ class OrdersController extends BackendController
     {
         $model = new Orders();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save())
+            {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+            else{
+                var_dump($model->errors);
+                //var_dump($model->save());
+                die();
+            }
         } else {
+
             return $this->render('create', [
                 'model' => $model,
             ]);

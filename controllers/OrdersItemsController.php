@@ -8,11 +8,12 @@ use app\models\OrdersItemsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * OrderItemsController implements the CRUD actions for OrdersItems model.
  */
-class OrderItemsController extends Controller
+class OrdersItemsController extends BackendController
 {
     /**
      * @inheritdoc
@@ -20,6 +21,24 @@ class OrderItemsController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => [
+                            'index',
+                            'update',
+                            'create',
+                            'view',
+                            'delete',
+                        ],
+                        'allow' => true,
+                        'roles' => ['GodMode', 'admin', 'operator'],
+                    ],
+                ],
+            ],
+
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -29,12 +48,16 @@ class OrderItemsController extends Controller
         ];
     }
 
+
     /**
      * Lists all OrdersItems models.
      * @return mixed
      */
     public function actionIndex()
     {
+
+      //  var_dump($_SERVER);die();
+
         $searchModel = new OrdersItemsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

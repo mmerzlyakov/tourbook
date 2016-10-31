@@ -18,8 +18,8 @@ class OrdersSearch extends Orders
     public function rules()
     {
         return [
-            [['id', 'user_id', 'date', 'transaction_id', 'status'], 'integer'],
-            [['comment'], 'safe'],
+            [['id', 'user_id', 'transaction_id', 'status'], 'integer'],
+            [['comment', 'date'], 'safe'],
         ];
     }
 
