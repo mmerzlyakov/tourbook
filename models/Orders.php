@@ -35,8 +35,9 @@ class orders extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'booking_id', 'date', 'price', 'bonus', 'status_id', 'comment', 'discount', 'transaction_id', 'status'], 'required'],
-            [['user_id', 'booking_id', 'date', 'price', 'bonus', 'status_id', 'discount', 'transaction_id', 'status'], 'integer'],
+            [['user_id','status'], 'required'],
+            [['user_id','transaction_id','status'], 'integer'],
+            ['date','safe'],
             [['comment'], 'string'],
         ];
     }
@@ -49,13 +50,8 @@ class orders extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'user_id' => Yii::t('app', 'User ID'),
-            'booking_id' => Yii::t('app', 'Booking ID'),
             'date' => Yii::t('app', 'Date'),
-            'price' => Yii::t('app', 'Price'),
-            'bonus' => Yii::t('app', 'Bonus'),
-            'status_id' => Yii::t('app', 'Status ID'),
             'comment' => Yii::t('app', 'Comment'),
-            'discount' => Yii::t('app', 'Discount'),
             'transaction_id' => Yii::t('app', 'Transaction ID'),
             'status' => Yii::t('app', 'Status'),
         ];

@@ -18,7 +18,7 @@ use Yii;
  * @property integer $bonus
  * @property integer $discount
  */
-class booking extends \yii\db\ActiveRecord
+class Booking extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -34,8 +34,9 @@ class booking extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'type_id', 'price', 'options', 'images', 'status', 'bonus', 'discount'], 'required'],
-            [['name', 'description', 'type_id', 'price', 'options', 'images', 'status', 'bonus', 'discount'], 'integer'],
+            [['type_id', 'price', 'images', 'status'], 'required'],
+            [['type_id', 'price', 'status', 'bonus', 'discount'], 'integer'],
+            [['name', 'description','options', 'images'], 'string'],
         ];
     }
 

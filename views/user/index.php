@@ -29,6 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'first_name',
             'second_name',
             'last_name',
+            [
+                'attribute' => 'status',
+                'content' => function($data){
+                    return ($data['status']==1) ? 'Active' : 'Not active';
+                },
+            ],
+
             // 'phone',
             // 'email:email',
             // 'birthday',

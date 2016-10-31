@@ -13,7 +13,7 @@ use yii\filters\AccessControl;
 /**
  * CountryController implements the CRUD actions for Country model.
  */
-class CountryController extends Controller
+class CountryController extends BackendController
 {
     /**
      * @inheritdoc
@@ -33,7 +33,7 @@ class CountryController extends Controller
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins', 'operators'],
+                        'roles' => ['GodMode', 'admin', 'operator'],
                     ],
                 ],
             ],

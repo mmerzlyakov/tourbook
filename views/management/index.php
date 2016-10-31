@@ -26,26 +26,23 @@ echo Menu::widget([
         // not just as 'controller' even if default action is used.
         ['label' => 'Home', 'url' => ['site/index']],
         // 'Products' menu item will be selected as long as the route is 'product/index'
-        ['label' => 'Booking management', 'url' => ['booking/index'], 'items' => [
-            ['label' => 'New sightseeing', 'url' => ['booking/index', 'tag' => 'new']],
-            ['label' => 'New tour', 'url' => ['booking/index', 'tag' => 'popular']],
-            ['label' => 'New rent', 'url' => ['booking/index', 'tag' => 'popular']],
-            ['label' => 'New hotel booking', 'url' => ['booking/index', 'tag' => 'popular']],
-        ]],
         ['label' => 'Country management', 'url' => ['country/index'], 'items' => [
-            ['label' => 'New country', 'url' => ['country/index', 'tag' => 'new']],
+            ['label' => 'New country', 'url' => ['country/create']],
         ]],
         ['label' => 'Cities management', 'url' => ['city/index'], 'items' => [
-            ['label' => 'New city', 'url' => ['city/index', 'tag' => 'new']],
+            ['label' => 'New city', 'url' => ['city/create']],
+        ]],
+        ['label' => 'Booking management', 'url' => ['booking/index'], 'items' => [
+            ['label' => 'New booking', 'url' => ['booking/create']],
         ]],
         ['label' => 'Orders management', 'url' => ['orders/index'], 'items' => [
         ]],
         ['label' => 'Transactions management', 'url' => ['transactions/index'], 'items' => [
-            ['label' => 'New transaction', 'url' => ['transactions/index', 'tag' => 'new']],
-            ['label' => 'New bonus transaction', 'url' => ['transactions/index', 'tag' => 'new']],
+            ['label' => 'New transaction', 'url' => ['transactions/create']],
+            ['label' => 'New bonus transaction', 'url' => ['transactions/create-bonus']],
         ]],
         ['label' => 'Users management', 'url' => ['user/index'], 'items' => [
-            ['label' => 'New user', 'url' => ['user/create', 'tag' => 'new']],
+            ['label' => 'New user', 'url' => ['user/create']],
         ]],
         ['label' => 'Reports', 'url' => ['reports/index']],
         ['label' => 'Logout', 'url' => ['site/logout']],
@@ -63,17 +60,14 @@ echo Menu::widget([
         // not just as 'controller' even if default action is used.
         ['label' => 'Home', 'url' => ['site/index']],
         // 'Products' menu item will be selected as long as the route is 'product/index'
-        ['label' => 'Booking management', 'url' => ['booking/index'], 'items' => [
-            ['label' => 'New sightseeing', 'url' => ['booking/index', 'tag' => 'new']],
-            ['label' => 'New tour', 'url' => ['booking/index', 'tag' => 'popular']],
-            ['label' => 'New rent', 'url' => ['booking/index', 'tag' => 'popular']],
-            ['label' => 'New hotel booking', 'url' => ['booking/index', 'tag' => 'popular']],
-        ]],
         ['label' => 'Country management', 'url' => ['country/index'], 'items' => [
-            ['label' => 'New country', 'url' => ['country/index', 'tag' => 'new']],
+            ['label' => 'New country', 'url' => ['country/create']],
         ]],
         ['label' => 'Cities management', 'url' => ['city/index'], 'items' => [
-            ['label' => 'New city', 'url' => ['city/index', 'tag' => 'new']],
+            ['label' => 'New city', 'url' => ['city/create']],
+        ]],
+        ['label' => 'Booking management', 'url' => ['booking/index'], 'items' => [
+            ['label' => 'New booking', 'url' => ['booking/create']],
         ]],
         ['label' => 'Orders management', 'url' => ['orders/index'], 'items' => [
         ]],
@@ -94,11 +88,14 @@ if(\Yii::$app->user->can('supplier')){
             // not just as 'controller' even if default action is used.
             ['label' => 'Home', 'url' => ['site/index']],
             // 'Products' menu item will be selected as long as the route is 'product/index'
+            ['label' => 'Country management', 'url' => ['country/index'], 'items' => [
+                ['label' => 'New country', 'url' => ['country/create']],
+            ]],
+            ['label' => 'Cities management', 'url' => ['city/index'], 'items' => [
+                ['label' => 'New city', 'url' => ['city/create']],
+            ]],
             ['label' => 'Booking management', 'url' => ['booking/index'], 'items' => [
-                ['label' => 'New sightseeing', 'url' => ['booking/index', 'tag' => 'new']],
-                ['label' => 'New tour', 'url' => ['booking/index', 'tag' => 'popular']],
-                ['label' => 'New rent', 'url' => ['booking/index', 'tag' => 'popular']],
-                ['label' => 'New hotel booking', 'url' => ['booking/index', 'tag' => 'popular']],
+                ['label' => 'New booking', 'url' => ['booking/create']],
             ]],
             ['label' => 'Logout', 'url' => ['site/logout']],
         ],

@@ -9,7 +9,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class ManagementController extends Controller
+class ManagementController extends BackendController
 {
     /**
      * @inheritdoc
@@ -29,7 +29,7 @@ class ManagementController extends Controller
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins', 'operator', 'user', 'supplier'],
+                        'roles' => ['GodMode', 'admin', 'operator', 'user', 'supplier'],
                     ],
                 ],
             ],

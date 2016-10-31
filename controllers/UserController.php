@@ -12,7 +12,7 @@ use yii\filters\AccessControl;
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends Controller
+class UserController extends BackendController
 {
     /**
      * @inheritdoc
@@ -32,7 +32,7 @@ class UserController extends Controller
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins'],
+                        'roles' => ['GodMode', 'admin'],
                     ],
                 ],
             ],

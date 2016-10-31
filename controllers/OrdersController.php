@@ -12,7 +12,7 @@ use yii\filters\AccessControl;
 /**
  * OrdersController implements the CRUD actions for Orders model.
  */
-class OrdersController extends Controller
+class OrdersController extends BackendController
 {
     /**
      * @inheritdoc
@@ -32,7 +32,7 @@ class OrdersController extends Controller
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins', 'operators'],
+                        'roles' => ['GodMode', 'admin', 'operator'],
                     ],
                 ],
             ],
@@ -83,9 +83,18 @@ class OrdersController extends Controller
     {
         $model = new Orders();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save())
+            {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+            else{
+                var_dump($model->errors);
+                //var_dump($model->save());
+                die();
+            }
         } else {
+
             return $this->render('create', [
                 'model' => $model,
             ]);

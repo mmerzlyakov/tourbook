@@ -24,12 +24,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+           // 'id',
             'user_id',
             'order_id',
             'amount',
             'type',
-            // 'date',
+            [
+                'attribute' => 'status',
+                'content' => function($data){
+                    return ($data['status']==1) ? 'Active' : 'Not active';
+                },
+            ],
+
+             'date',
             // 'comment:ntext',
             // 'error_code',
             // 'status',

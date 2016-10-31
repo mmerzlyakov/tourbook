@@ -13,7 +13,7 @@ use yii\filters\AccessControl;
 /**
  * TransactionsController implements the CRUD actions for Transactions model.
  */
-class TransactionsController extends Controller
+class TransactionsController extends BackendController
 {
     /**
      * @inheritdoc
@@ -33,7 +33,7 @@ class TransactionsController extends Controller
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins', 'operators'],
+                        'roles' => ['GodMode', 'admin', 'operator'],
                     ],
                 ],
             ],

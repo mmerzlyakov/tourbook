@@ -9,12 +9,15 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use app\controllers\BackendController;
 
 /**
  * BookingController implements the CRUD actions for Booking model.
  */
-class BookingController extends Controller
+class BookingController extends BackendController
 {
+
+  //  public $layout = 'admin';
     /**
      * @inheritdoc
      */
@@ -33,7 +36,7 @@ class BookingController extends Controller
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins', 'operators','supplier'],
+                        'roles' => ['GodMode', 'admin', 'operator','supplier'],
                     ],
                 ],
             ],
@@ -81,6 +84,10 @@ class BookingController extends Controller
      */
     public function actionCreate()
     {
+
+        $types = \app\models\Types::find()->select('id, name, description')->where('id > 0')->all();
+        $cities = \app\models\City::find()->select('id, name, description')->where('id > 0')->all();
+
         $model = new Booking();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -88,6 +95,8 @@ class BookingController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'types' => $types,
+                'cities' => $cities,
             ]);
         }
     }
@@ -101,12 +110,17 @@ class BookingController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $types = \app\models\Types::find()->select('id, name, description')->where('id > 0')->all();
+        $cities = \app\models\City::find()->select('id, name, description')->where('id > 0')->all();
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'types' => $types,
+                'cities' => $cities,
             ]);
         }
     }

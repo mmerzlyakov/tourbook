@@ -1,8 +1,6 @@
 <?php
 namespace app\models;
 
-//use app\modules\basket\models\BasketLg;
-//use app\modules\catalog\models\Codes;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -32,15 +30,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_FULL_DELETED = -1;
     const STATUS_ACTIVE = 1;
-//    public $city_id = 1001;
-//    public $store_id = 0;
-//    public $discountPercent = 0;
-//    public $moneyCount = 0;
-//    public $moneySpend = 0;
-//    public $moneyDelivery = 0;
-//    public $code=0, $count=0;
-//    public $bonus_sum=0;
-
     /**
      * @inheritdoc
      */
@@ -62,23 +51,16 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-/*    public function rules()
-    {
-        return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED,self::STATUS_FULL_DELETED]],
-            ['name', 'first_name', 'second_name', 'last_name', 'phone' ,'string', 'max' => 255],
-            [['bonus','money','created_at', 'updated_at'],'safe'],
-        ];
-    }
-*/
 
     public function rules()
     {
         return [
-            [['name', 'first_name', 'second_name', 'last_name', 'phone', 'email', 'birthday', 'bonus', 'money', 'created_at', 'updated_at', 'password_reset_token', 'password_hash', 'auth_key'], 'required'],
+            [['name','email','password'],'required'],
+            //[['name','email','password_hash'],'required'],
+            //[['name', 'first_name', 'second_name', 'last_name', 'phone', 'email', 'birthday', 'bonus', 'money', 'created_at', 'updated_at', 'password_reset_token', 'password_hash', 'auth_key'], 'required'],
+
             [['birthday', 'bonus', 'money', 'created_at', 'updated_at', 'status'], 'integer'],
-            [['name', 'first_name', 'second_name', 'last_name', 'email', 'password_reset_token', 'password_hash', 'auth_key'], 'string', 'max' => 255],
+            [['name', 'first_name', 'second_name', 'last_name', 'email', 'password', 'password_reset_token', 'password_hash', 'auth_key'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 15],
             [['phone'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
@@ -106,6 +88,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'updated_at' => Yii::t('app', 'Updated At'),
             'password_reset_token' => Yii::t('app', 'Password Reset Token'),
             'password_hash' => Yii::t('app', 'Password Hash'),
+            'password' => Yii::t('app', 'Password Registration'),
             'auth_key' => Yii::t('app', 'Auth Key'),
             'status' => Yii::t('app', 'Status'),
         ];
@@ -279,23 +262,18 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
-  /*
-    public function getDiscount(){
-        return $this->basket ? $this->basket->promoCodePercent : 0;
-    }
 
-    public function setDiscountPercentValue($value){
-
-    }
-
-    public function getBasket(){
-//        return $this->hasOne(BasketLg::className(), ['user_id' => 'id'])->where(['basket.status' => 0]);
-//        return (new BasketLg())->findCurrentBasket();
-    }
-          */
     public function getUsersPays(){
         return $this->hasMany(Transactions::className(), ['id' => 'user_id']);
     }
+
+    public function getPromoCodes(){
+        return Codes::find()->where(['user_id' => $this->id])->all();
+    }
+
+    //maybe in future we'll try to use thats one
+
+
    /*
     public function setDiscountPercent(){
 //        $this->discountPercent = $this->basket->promoCodePercent;
@@ -304,9 +282,20 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function getCards(){
 //        return UsersCards::find()->where(['user_id' => $this->id])->all();
     }             */
+    /*
+       public function getDiscount(){
+           return $this->basket ? $this->basket->promoCodePercent : 0;
+       }
 
-    public function getPromoCodes(){
-        return Codes::find()->where(['user_id' => $this->id])->all();
-    }
+       public function setDiscountPercentValue($value){
+
+       }
+
+       public function getBasket(){
+   //        return $this->hasOne(BasketLg::className(), ['user_id' => 'id'])->where(['basket.status' => 0]);
+   //        return (new BasketLg())->findCurrentBasket();
+       }
+             */
+
 
 }

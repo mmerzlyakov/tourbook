@@ -31,7 +31,7 @@ class country extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'description', 'full_description', 'options', 'status'], 'required'],
-            [['description', 'full_description', 'options'], 'string'],
+            [['description', 'full_description', 'options', 'flag'], 'string'],
             [['status'], 'integer'],
             [['name'], 'string', 'max' => 255],
         ];

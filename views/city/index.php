@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Country;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CitySearch */
@@ -24,12 +25,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'country_id',
+  //          'id',
+            [
+                'attribute' => 'country_id',
+                'content' => function($data){
+                    $country = Country::find()->select('name')->where('id = '.$data['country_id'])->one();
+                    return $country->name;
+                },
+            ],
             'name',
             'description:ntext',
             'full_description:ntext',
             // 'status',
+            [
+                'attribute' => 'status',
+                'content' => function($data){
+                    return ($data['status']==1) ? 'Active' : 'Not active';
+                },
+            ],
+
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

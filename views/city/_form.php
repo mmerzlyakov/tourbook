@@ -8,7 +8,7 @@ use app\models\Country;
 /* @var $model app\models\City */
 /* @var $form yii\widgets\ActiveForm */
 
-$countries = Country::find()->where('status = 1')->all();
+
 
 ?>
 

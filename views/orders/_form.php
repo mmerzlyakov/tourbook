@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Orders */
@@ -14,23 +15,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_id')->textInput() ?>
 
-    <?= $form->field($model, 'booking_id')->textInput() ?>
-
-    <?= $form->field($model, 'date')->textInput() ?>
-
-    <?= $form->field($model, 'price')->textInput() ?>
-
-    <?= $form->field($model, 'bonus')->textInput() ?>
-
-    <?= $form->field($model, 'status_id')->textInput() ?>
+    <?= $form->field($model, 'date')->widget(DateTimePicker::classname(), [
+        'options' => ['placeholder' => 'Enter event time ...'],
+        'pluginOptions' => [
+            'autoclose' => true
+        ]
+    ]);?>
 
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'discount')->textInput() ?>
+    <?php //= $form->field($model, 'transaction_id')->textInput() ?>
 
-    <?= $form->field($model, 'transaction_id')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

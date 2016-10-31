@@ -13,7 +13,7 @@ use yii\filters\AccessControl;
 /**
  * CodesController implements the CRUD actions for Codes model.
  */
-class CodesController extends Controller
+class CodesController extends BackendController
 {
     /**
      * @inheritdoc
@@ -33,7 +33,7 @@ class CodesController extends Controller
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins', 'operators'],
+                        'roles' => ['GodMode', 'admin', 'operator'],
                     ],
                 ],
             ],
