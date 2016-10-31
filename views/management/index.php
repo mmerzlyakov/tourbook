@@ -88,6 +88,12 @@ if(\Yii::$app->user->can('supplier')){
             // not just as 'controller' even if default action is used.
             ['label' => 'Home', 'url' => ['site/index']],
             // 'Products' menu item will be selected as long as the route is 'product/index'
+            ['label' => 'Country management', 'url' => ['country/index'], 'items' => [
+                ['label' => 'New country', 'url' => ['country/create']],
+            ]],
+            ['label' => 'Cities management', 'url' => ['city/index'], 'items' => [
+                ['label' => 'New city', 'url' => ['city/create']],
+            ]],
             ['label' => 'Booking management', 'url' => ['booking/index'], 'items' => [
                 ['label' => 'New booking', 'url' => ['booking/create']],
             ]],

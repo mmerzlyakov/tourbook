@@ -33,7 +33,7 @@ class CountryController extends BackendController
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins', 'operators'],
+                        'roles' => ['GodMode', 'admin', 'operator'],
                     ],
                 ],
             ],

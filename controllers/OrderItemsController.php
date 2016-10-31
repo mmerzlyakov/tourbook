@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\WishList;
-use app\models\WishListSearch;
+use app\models\OrdersItems;
+use app\models\OrdersItemsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
- * WhisListController implements the CRUD actions for WishList model.
+ * OrderItemsController implements the CRUD actions for OrdersItems model.
  */
-class WishListController extends BackendController
+class OrderItemsController extends Controller
 {
     /**
      * @inheritdoc
@@ -21,23 +20,6 @@ class WishListController extends BackendController
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => [
-                            'index',
-                            'update',
-                            'create',
-                            'view',
-                            'delete',
-                        ],
-                        'allow' => true,
-                        'roles' => ['GodMode', 'admin', 'operator', 'user'],
-                    ],
-                ],
-            ],
-
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -48,12 +30,12 @@ class WishListController extends BackendController
     }
 
     /**
-     * Lists all WishList models.
+     * Lists all OrdersItems models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new WishListSearch();
+        $searchModel = new OrdersItemsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,7 +45,7 @@ class WishListController extends BackendController
     }
 
     /**
-     * Displays a single WishList model.
+     * Displays a single OrdersItems model.
      * @param integer $id
      * @return mixed
      */
@@ -75,13 +57,13 @@ class WishListController extends BackendController
     }
 
     /**
-     * Creates a new WishList model.
+     * Creates a new OrdersItems model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new WishList();
+        $model = new OrdersItems();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -93,7 +75,7 @@ class WishListController extends BackendController
     }
 
     /**
-     * Updates an existing WishList model.
+     * Updates an existing OrdersItems model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -112,7 +94,7 @@ class WishListController extends BackendController
     }
 
     /**
-     * Deletes an existing WishList model.
+     * Deletes an existing OrdersItems model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -125,15 +107,15 @@ class WishListController extends BackendController
     }
 
     /**
-     * Finds the WishList model based on its primary key value.
+     * Finds the OrdersItems model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return WishList the loaded model
+     * @return OrdersItems the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = WishList::findOne($id)) !== null) {
+        if (($model = OrdersItems::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

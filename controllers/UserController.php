@@ -32,7 +32,7 @@ class UserController extends BackendController
                             'delete',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode', 'admins'],
+                        'roles' => ['GodMode', 'admin'],
                     ],
                 ],
             ],

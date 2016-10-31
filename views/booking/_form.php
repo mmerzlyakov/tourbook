@@ -18,7 +18,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'price')->textInput() ?>
     <?= $form->field($model, 'options')->textInput() ?>
-    <?= $form->field($model, 'images')->textInput() ?>
+    <?= $form->field($model, 'images')->fileInput() ?>
     <?= $form->field($model, 'status')->checkbox()->label('Active?') ?>
     <?= $form->field($model, 'bonus')->textInput() ?>
     <?= $form->field($model, 'discount')->textInput()->label('Discount %') ?>

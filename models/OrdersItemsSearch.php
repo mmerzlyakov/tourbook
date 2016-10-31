@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Orders;
+use app\models\OrdersItems;
 
 /**
- * OrdersSearch represents the model behind the search form about `app\models\Orders`.
+ * OrdersItemsSearch represents the model behind the search form about `app\models\OrdersItems`.
  */
-class OrdersSearch extends Orders
+class OrdersItemsSearch extends OrdersItems
 {
     /**
      * @inheritdoc
@@ -18,7 +18,8 @@ class OrdersSearch extends Orders
     public function rules()
     {
         return [
-            [['id', 'user_id', 'date', 'transaction_id', 'status'], 'integer'],
+            [['id', 'order_id', 'book_id', 'bonus', 'status_id', 'status'], 'integer'],
+            [['price', 'discount'], 'number'],
             [['comment'], 'safe'],
         ];
     }
@@ -41,7 +42,7 @@ class OrdersSearch extends Orders
      */
     public function search($params)
     {
-        $query = Orders::find();
+        $query = OrdersItems::find();
 
         // add conditions that should always apply here
 
@@ -60,9 +61,12 @@ class OrdersSearch extends Orders
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'date' => $this->date,
-            'transaction_id' => $this->transaction_id,
+            'order_id' => $this->order_id,
+            'book_id' => $this->book_id,
+            'price' => $this->price,
+            'bonus' => $this->bonus,
+            'discount' => $this->discount,
+            'status_id' => $this->status_id,
             'status' => $this->status,
         ]);
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace app\modules\common\models;
+namespace app\models;
 
-use app\modules\catalog\models\Goods;
-use app\modules\catalog\models\GoodsVariations;
-use app\modules\coders\models\Logs;
+use app\models\Goods;
+use app\models\GoodsVariations;
+use app\models\Logs;
 use Yii;
 
 /**

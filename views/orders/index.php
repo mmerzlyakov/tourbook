@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Orders'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php if(Yii::$app->user->can('GodMode')) {echo  Html::a(Yii::t('app', 'Create Orders'), ['create'], ['class' => 'btn btn-success']); } ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,22 +26,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
           //  'id',
             'user_id',
-            'booking_id',
+            //'booking_id',
             'date',
-            'price',
+            //'price',
+
+            // 'bonus',
+            // 'status_id',
+             'comment:ntext',
+            // 'discount',
+             'transaction_id',
+            // 'status',
             [
                 'attribute' => 'status',
                 'content' => function($data){
                     return ($data['status']==1) ? 'Active' : 'Not active';
                 },
             ],
-
-            // 'bonus',
-            // 'status_id',
-            // 'comment:ntext',
-            // 'discount',
-            // 'transaction_id',
-            // 'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

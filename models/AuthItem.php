@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\common\models\user;
+namespace app\models\user;
 
 use Yii;
 
