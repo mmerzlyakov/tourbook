@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-$this->title = 'TourBook.Net';
+$this->title = 'TourBook.Biz';
 ?>
 <div id="main">
     <div class="search">
