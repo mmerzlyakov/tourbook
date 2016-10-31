@@ -18,7 +18,7 @@ use Yii;
  * @property integer $bonus
  * @property integer $discount
  */
-class booking extends \yii\db\ActiveRecord
+class Booking extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

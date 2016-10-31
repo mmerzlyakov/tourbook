@@ -33,7 +33,7 @@ class OrdersItems extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
+            [['order_id', 'book_id', 'price'], 'required'],
             [['id', 'order_id', 'book_id', 'bonus', 'status_id', 'status'], 'integer'],
             [['price', 'discount'], 'number'],
             [['comment'], 'string'],

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\User;
 use app\models\OrdersItems;
-
+use app\models\Booking;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\OrdersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -52,10 +52,23 @@ $this->params['breadcrumbs'][] = $this->title;
                         $items = OrdersItems::find()->where('order_id = '.$data['id'])->all();
 
                         if(!empty($items)){
-                            $array = "";
+                            $summa = 0;
+
+                            $array = $data['comment']."<br><br>";
                                 foreach($items as $key=>$item){
-                                    $array = $array." ".$item->name."<br>";
+                                    $book = Booking::find()->where('id = '.$item->id)->one();
+                                    $array = $array."<b>Name:</b> "
+                                        .$book->name
+                                        ."<br><b>Description:</b>"
+                                        .$book->description
+                                        ."<br><b>Price:</b>"
+                                        .$book->price
+                                        ."<br><br>";
+
+
+                                    $summa+=$book->price;
                                 }
+                            $array = $array."<b>Summary amount:</b>".$summa."<br><br>";
                             return $array;
                         }
                         else
