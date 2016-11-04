@@ -259,24 +259,26 @@ $this->title = 'TourBook.Biz';
         <div class="clear"></div>
     </div>
     <div class="br-hr"></div>
-    <div class="col-xs-4 col-sm-4 info-box">
-        <div class="info">
-            <div class="icon-fast icon"></div>
-            <div class="text-min">Мгновеное подтверждения брони</div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 info-box">
+            <div class="info">
+                <div class="icon-fast icon"></div>
+                <div class="text-min">Мгновеное подтверждения брони</div>
+            </div>
         </div>
-    </div>
-    <div class="col-xs-4 info-box ">
-        <div class="info br">
-            <div class="icon-sec icon"></div>
-            <div class="text-min">О безопасности платежей</div>
+        <div class="col-xs-12 col-sm-4 info-box ">
+            <div class="info br">
+                <div class="icon-sec icon"></div>
+                <div class="text-min">О безопасности платежей</div>
+            </div>
         </div>
-    </div>
-    <div class="col-xs-4 info-box">
-        <div class="info margin-right">
-            <div class="icon-pay icon"></div>
-            <div class="text-min">О гарантии лучшей цены</div>
+        <div class="col-xs-12 col-sm-4 info-box">
+            <div class="info margin-right">
+                <div class="icon-pay icon"></div>
+                <div class="text-min">О гарантии лучшей цены</div>
+            </div>
         </div>
-    </div>
+      </div>
     <div class="clear"></div>
     <div class="br-hr"></div>
 </div>

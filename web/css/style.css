@@ -261,6 +261,8 @@ div.br-hr-title {
 }
 #main div.info.br{
     background: url('../images/pay.png') no-repeat;
+    background-color: #000;
+    background-position: center center;
 }
 #main div.info .icon {
     background-position: center center;

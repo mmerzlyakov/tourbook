@@ -13,4 +13,6 @@ $(document).ready(function(){
     $("#main input.search").on('click',function(){
         $("#main .search-group .prompt").toggle();
     });
+
+
 });

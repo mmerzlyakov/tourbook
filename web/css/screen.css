@@ -91,16 +91,34 @@
 }
 @media only screen and (max-width: 540px) {
     #main div.block-main div.description {
-        font-size: 16px;
-        margin-left: 15px;
+        font-size: 13px;
+        margin-left: 12px;
+        line-height: 18px;
+        height: 60px;
     }
 
     #main div.block-main div.title-main {
-        font-size: 16px;
+        font-size: 14px;
     }
     .box__max div.carousel-box div.item .name-box {
         font-size: 60px;
         top: 35%;
+    }
+    #main div.block-main .icon-g {
+        height: 60px;
+        width: 60px;
+        background-size: 55px auto;
+    }
+    #main div.block-main div.icon {
+        background-size: 60px auto;
+        height: 60px;
+        width: 60px;
+    }
+    #main div.block-main div.icon.port {
+        background-position: 0 -64px;
+    }
+    #main div.block-main div.icon.mes {
+        background-position: -5px -124px;
     }
     .image_box___m .image div.title-img {
         padding: 15px 5px;

@@ -411,6 +411,9 @@ a.no-border:hover{
     background-position: -5px -160px;
     width: 75px;
 }
+.icon-p {
+    background: url('../images/icon-p.png') no-repeat;
+}
 /*Таблица*/
 table.table-search tr td {
     vertical-align: top;
