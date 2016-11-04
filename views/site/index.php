@@ -66,6 +66,7 @@ $this->title = 'TourBook.Biz';
                     </table>
                 </div>
             </div><!-- /input-group -->
+
         </form>
         <div class="slider">
             <div class="items">
