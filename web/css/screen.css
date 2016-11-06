@@ -47,6 +47,13 @@
 
 }
 @media only screen and (max-width: 768px) {
+    #main h1.title-main {
+        font-size: 30px;
+        top: -108px;
+    }
+    .slick-slide img {
+        height: 380px;
+    }
     #navbar .navbar-toggle {
         left: -5px;
         position: relative;

@@ -1,5 +1,5 @@
 <?php
-
+/*VER 1.0.1*/
 /* @var $this yii\web\View */
 $this->title = 'TourBook.Biz';
 ?>
@@ -7,7 +7,8 @@ $this->title = 'TourBook.Biz';
     <div class="search">
         <form method="post">
             <div class="input-group search-group col-xs-11 col-sm-9 col-md-8">
-                <input type="text" class="form-control search"  value="Поиск" name="search">
+                <h1 class="title-main">Поиск экскурсий и мероприятий</h1>
+                <input type="text" class="form-control search"  value="" placeholder="Быстрый и легкий способ бронирования досуга по всему миру" name="search">
                             <span class="input-group-btn">
                                 <button type="button" class="btn blue ">Поиск</button>
                             </span>

@@ -146,6 +146,14 @@ div.container {
     position: relative;
    /* height: 635px;*/
 }
+#main h1.title-main {
+    color: #fff;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: -130px;
+}
 #main div.search div.search-group {
     left: 0;
     position: absolute;
