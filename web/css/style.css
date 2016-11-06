@@ -8,19 +8,26 @@
 
 /* End of Yahoo! CSS Reset */
 
-html {
+html,body {
 	height: 100%;
 }
 body {
     background-color: #fff;
 }
-
-
 .res {
     outline: 1px solid red;
 }
 div.container {
     min-width: 320px;
+}
+.wrapper {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex-direction: column;
+    height: 100%;
 }
 /*Header*/
 #header {
@@ -69,13 +76,13 @@ div.container {
 }
     /*Center*/
 #center {
-
+    flex: 1 0 auto;
 }
 /*Footer*/
 #footer {
-
     width: 100%;
     background: #292929;
+    flex: 0 0 auto;
 }
 #footer div.top {
    background: #424242;
@@ -123,6 +130,7 @@ div.container {
 /*Главная страница*/
 #main {
     margin-bottom: 20px;
+    overflow: hidden;
 }
 #main div.slider{
     position: relative;
@@ -137,7 +145,6 @@ div.container {
 #main div.search{
     position: relative;
    /* height: 635px;*/
-
 }
 #main div.search div.search-group {
     left: 0;
