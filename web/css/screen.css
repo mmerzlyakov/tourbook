@@ -23,6 +23,20 @@
     .image_box___m .image div.title-img div {
         font-size: 14px;
     }
+    .grid__m div.item.max div.content-item div.image {
+        min-height: 345px;
+    }
+    .grid__m div.item.max div.content-item div.money div.price {
+        font-size: 40px;
+    }
+    .grid__m div.item.max div.content-item div.money{
+        font-size:32px;
+        padding: 7px 35px;
+    }
+
+    .grid__m div.item div.content-item div.image {
+        min-height: 165px;
+    }
 }
 
 @media only screen and (max-width: 992px) {
@@ -50,6 +64,13 @@
     #main h1.title-main {
         font-size: 30px;
         top: -108px;
+    }
+    #main div.info {
+        margin: 0px;
+    }
+    #main div.info.pay,#main div.info.br{
+        background-size: 50% 100%;
+        background-position: center center;
     }
     .slick-slide img {
         height: 380px;
@@ -84,7 +105,26 @@
         font-size: 80px;
         top: 40%;
     }
-
+    #main .advantages {
+        padding: 30px 0 5px;
+    }
+    #main .advantages > div {
+        font-size: 12px;
+        margin-bottom: 30px;
+    }
+    #main .advantages .image-wrapper {
+        height: 80px;
+        margin-bottom: 20px;
+        padding: 12px;
+        width: 80px;
+    }
+    .grid__m div.item {
+        width: 330px;
+        float: unset;
+    }
+    #page-city div.city {
+        padding: 70px 10px;
+    }
 }
 @media only screen and (max-width: 600px) {
     .box__max div.carousel-box div.item .name-box {
@@ -98,6 +138,10 @@
         line-height: 18px;
         margin-bottom: 20px;
         height: 60px;
+    }
+    #main div.info.pay,#main div.info.br{
+        background-size: 100% 100%;
+        background-position: center center;
     }
     #header div.top .logo {
         height: 40px;
