@@ -30,7 +30,7 @@ AppAsset::register($this);
 <div id="br-shadow"></div>
 <div class="wrapper">
     <div id="header">
-        <div class="top">
+        <div class="top ">
             <?php
             NavBar::begin([
                 'brandLabel' => '<img src="/images/logo.png" class="logo" />',
@@ -40,18 +40,18 @@ AppAsset::register($this);
                     'id'=>'navbar',
                 ],
             ]); ?>
-                <!--Пока скрыл потом норм натяну -->
-                <div class="hidden-xs col-xs-6 col-sm-5 group col-lg-push-1">
+
+                <div class="hidden-xs col-sm-6 col-md-3 group col-lg-push-4 col-md-push-3">
                     <div class="row">
-                        <div class="dropdown  col-xs-4 ">
-                            <a id="drop1" href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">Флаг <b class="caret"></b></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Действие</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Другое действие</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Здесь еще что-то</a></li>
+                        <div class="dropdown">
+                            <a id="drop1" href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown"><img class="flag" src="/images/flag/russia.jpg">RUS<b class="caret"></b></a>
+                            <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
                             </ul>
                         </div>
-                        <div class="dropdown  col-xs-4 ">
+                        <div class="dropdown">
                             <a id="drop2" href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">СТРАНА <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Действие</a></li>
@@ -59,12 +59,12 @@ AppAsset::register($this);
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Здесь еще что-то</a></li>
                             </ul>
                         </div>
-                        <div class="dropdown  col-xs-4 ">
+                        <div class="dropdown">
                             <a id="drop3" href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">RUB <b class="caret"></b></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Действие</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Другое действие</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Здесь еще что-то</a></li>
+                            <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">RUB</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">EUR</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CNY</a></li>
                             </ul>
                         </div>
                     </div>
@@ -86,9 +86,35 @@ AppAsset::register($this);
                 <div class="clear"></div>
                 <div class="navigation visible-xs">
                     <div class="content-nav">
+                        <div class="drows">
+                            <div class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown"><img class="flag" src="/images/flag/russia.jpg">RUS<b class="caret"></b></a>
+                                <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <a  href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">СТРАНА <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Действие</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Другое действие</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Здесь еще что-то</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">RUB <b class="caret"></b></a>
+                                <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">RUB</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">EUR</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CNY</a></li>
+                                </ul>
+                            </div>
+                        </div>
                        <?php if(Yii::$app->user->isGuest): ?>
                            <div class="login">
-                               <a class=" login white" href="#">Войти</a> / <a class="reg white" href="#">Регистрация </a>
+                               <a class=" login btn btn-success btn-sm" href="/site/login">Войти</a> / <a class="reg btn btn-sm btn-primary" href="/site/signup">Регистрация </a>
                            </div>
                       <?php else: ?>
                            <div class="login">

@@ -608,3 +608,7 @@ table.table-search tr td span:last-child::after {
     padding: 0px 0px 0px 25px;
     right: 15px;
 }
+/*Boostrap*/
+.dropdown-menu.currency {
+    min-width: 80px;
+}

@@ -48,6 +48,9 @@
         top: 0;
         right: 0;
     }
+    #header div.top div.group {
+        margin-left: 60px;
+    }
     .box__max div.carousel-box div.item .name-box {
         font-size: 60px;
         top: 32%;
@@ -100,6 +103,32 @@
     }
     #navbar div.navigation div.content-nav a.reg {
         margin-left: 5px;
+    }
+    #navbar div.navigation .drows {
+        padding: 5px 0;
+    }
+    #navbar div.navigation .drows .dropdown{
+        font-size: 11px;
+        margin-bottom: 10px;
+    }
+    #navbar div.navigation .drows .dropdown .dropdown-menu {
+        position: static;
+        float:none;
+        border:none;
+        border-radius: 0px;
+        box-shadow: 0 0 0 0 #000;
+        background-color: #222222;
+    }
+    #navbar div.navigation .drows .dropdown .dropdown-menu a {
+        color:#fff;
+    }
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+        background-color: #27282D;
+    }
+    #navbar div.navigation .drows .dropdown .flag {
+        padding: 0 5px 0 0;
+        vertical-align: text-top;
+        width: 22px;
     }
     .box__max div.carousel-box div.item .name-box {
         font-size: 80px;
