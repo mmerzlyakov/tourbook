@@ -8,19 +8,26 @@
 
 /* End of Yahoo! CSS Reset */
 
-html {
+html,body {
 	height: 100%;
 }
 body {
     background-color: #fff;
 }
-
-
 .res {
     outline: 1px solid red;
 }
 div.container {
     min-width: 320px;
+}
+.wrapper {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex-direction: column;
+    height: 100%;
 }
 /*Header*/
 #header {
@@ -35,8 +42,8 @@ div.container {
     min-height: 75px;
 }
 #header div.top .logo {
-    height: 50px;
-    width: 190px;
+    height: 45px;
+    width: 180px;
 }
 #header div.top div.res {
     height: 50px;
@@ -48,10 +55,16 @@ div.container {
     padding-top: 13px;
 }
 #header div.top div.group {
-    margin: 30px 0 0 auto;
+    padding: 25px 0 10px;
+    margin-left: -25px;
 }
 #header div.top div.group .dropdown {
-    text-align: center;
+    float: left;
+    padding: 5px 10px;
+}
+#header div.top div.group .dropdown .flag{
+    padding: 0 5px 0 0;
+    vertical-align: baseline;
 }
 #navbar .btn-group{
     padding: 18px 10px;
@@ -69,13 +82,13 @@ div.container {
 }
     /*Center*/
 #center {
-
+    flex: 1 0 auto;
 }
 /*Footer*/
 #footer {
-
     width: 100%;
     background: #292929;
+    flex: 0 0 auto;
 }
 #footer div.top {
    background: #424242;
@@ -123,6 +136,7 @@ div.container {
 /*Главная страница*/
 #main {
     margin-bottom: 20px;
+    overflow: hidden;
 }
 #main div.slider{
     position: relative;
@@ -137,7 +151,14 @@ div.container {
 #main div.search{
     position: relative;
    /* height: 635px;*/
-
+}
+#main h1.title-main {
+    color: #fff;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: -130px;
 }
 #main div.search div.search-group {
     left: 0;
@@ -215,6 +236,21 @@ div.br-hr-title {
     font-weight: bold;
     padding: 10px 0;
 }
+#main .advantages {
+    background-color: #f4f4f4;
+    color: #407fcf;
+    padding: 30px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+#main .advantages .image-wrapper {
+    border: 2px solid #407fcf;
+    border-radius: 50%;
+    height: 130px;
+    margin: 0 auto 30px;
+    padding: 40px;
+    width: 130px;
+}
 /**/
 #main div.block-main div.panel-block {
 
@@ -255,18 +291,24 @@ div.br-hr-title {
 }
 #main div.info {
     background: #000 none repeat scroll 0 0;
-    height: 265px;
+    height: 205px;
     margin: 0 15px 0 0;
     position: relative;
 }
+#main div.info.pay{
+    background: url('../images/info/pay.png') no-repeat;
+    background-color: #000;
+    background-size: 100% 100%;
+}
 #main div.info.br{
-    background: url('../images/pay.png') no-repeat;
+    background: url('../images/info/reservation.png') no-repeat;
+    background-color: #000;
+    background-size: 100% 100%;
 }
 #main div.info .icon {
     background-position: center center;
-    background-size: 70px auto;
     bottom: 95px;
-    height: 110px;
+    height: 70px;
     left: 0;
     margin: 0 auto;
     position: absolute;
@@ -282,7 +324,102 @@ div.br-hr-title {
     right: 0;
     text-align: center;
 }
+#main .grid__m {
+    margin-top: 30px;
+}
 /*Вход*/
 .site-login{
     padding: 40px 0 80px;
+}
+/*-----Страниц города-----*/
+#page-city  {
+
+}
+#page-city div.city{
+    border-top: 15px solid #000;
+    height: 310px;
+    margin-top: 0;
+    padding: 120px 10px;
+    width: 100%;
+    background: url("/images/city.jpg") no-repeat;
+    background-position: top center;
+}
+#page-city div.city .title {
+    color: #fff;
+    font-size: 60px;
+    padding: 0px;
+}
+#page-city div.city .weather {
+    padding: 12px 0;
+}
+#page-city div.city .weather .title-w {
+    color: #fff;
+    font-size: 31px;
+    text-align: right;
+}
+#page-city div.city .weather .icon {
+    color: #fff;
+    font-size: 35px;
+    height: 40px;
+    margin: -5px -10px 0 auto;
+    text-align: right;
+    width: 100px;
+}
+#page-city div.masonry {
+    position: relative;
+    width: 100%;
+    margin: 10px 0px;
+}
+#page-city div.masonry div.item {
+    /* display: inline-block;*/
+
+    /*margin: 0 20px 25px 0;*/
+
+    /*  width: 360px;*/
+    /*margin-bottom: 20px;
+    float: left;*/
+}
+#page-city div.masonry div.item.max {
+    height: 678px;
+    /*width: 740px;*/
+}
+#page-city div.masonry div.item.navigation {
+    background: #fff;
+}
+#page-city div.masonry div.item.navigation div.content-item {
+    border: none;
+    box-shadow: 0 0 0 0;
+    background: #fff;
+}
+#page-city div.masonry div.item.navigation .nav-item{
+    border: 1px solid #4d88d2;
+    color: #4d88d2;
+    display: block;
+    font-weight: bold;
+    padding: 18px 0;
+    text-decoration: none;
+    position: relative;
+}
+#page-city div.masonry div.item.navigation .nav-item::after {
+    border-color: transparent transparent transparent #4d88d2;
+    border-style: solid;
+    border-width: 7px 10px;
+    content: "→";
+    font-size: 0;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 23px;
+    width: 0;
+}
+#page-city div.masonry div.item.navigation .nav-item div{
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 0 0 0 75px;
+}
+/* clearfix */
+.masonry:after {
+    content: '';
+    display: block;
+    clear: both;
 }

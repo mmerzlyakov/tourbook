@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         'js/script.js',
         'js/global.js',
         'scripts/sliders/slider.js',
+        'scripts/masonry.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
