@@ -366,32 +366,30 @@ a.no-border:hover{
 /*Большие*/
 .box__max {
     padding: 10px;
-    margin-bottom: 10px;
 }
-.box__max div.carousel-box{
-
-}
-.box__max div.carousel-box div.item {
+.box__max div.item{
     position: relative;
-    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
 }
-.box__max div.carousel-box div.item .name-box {
+.box__max div.item .name-box {
     color: #fff;
-    font-size: 100px;
+    font-size: 46px;
+    font-weight: bold;
     left: 0;
     position: absolute;
     right: 0;
     text-align: center;
-    top: 100px;
+    top: 40%;
 }
 .icon-fast {
-   background: url('../images/icon-fast.png') no-repeat;
+   background: url('/images/icon-fast.png') no-repeat;
 }
 .icon-pay {
-    background: url('../images/icon-pay.png') no-repeat;
+    background: url('/images/icon-pay.png') no-repeat;
 }
 .icon-sec {
-    background: url('../images/icon-sec.png') no-repeat;
+    background: url('/images/icon-sec.png') no-repeat;
 }
 .icon-g {
     background: rgba(0, 0, 0, 0) url("../images/icon-g.png") no-repeat scroll center center;
@@ -410,6 +408,76 @@ a.no-border:hover{
 .icon-w.mes {
     background-position: -5px -160px;
     width: 75px;
+}
+.icon-p {
+    background: url('../images/icon-p.png') no-repeat;
+}
+.icon-nav {
+    background: rgba(0, 0, 0, 0) url("../images/icon-catalog.png") no-repeat;
+    background-position: left 8px;
+}
+.icon-nav.nav-1 {
+    background-position: left -60px;
+}
+.icon-nav.nav-2 {
+    background-position: left -132px;
+}
+.icon-nav.nav-3 {
+    background-position: 5px -212px;
+}
+.icon-nav.nav-4 {
+    background-position: left -286px;
+}
+/*Рейтинг*/
+.rating {
+    position: relative;
+    height: 20px;
+}
+.rating-icon {
+    background: url('../images/rating-icon.png') 0px 0px no-repeat;
+    height: 16px;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.rating-icon.rating-1 {
+    background-position: 0px -16px;
+}
+.rating-icon.rating-2 {
+    background-position: 0px -32px;
+}
+.rating-icon.rating-3 {
+    background-position: 0px -48px;
+}
+.rating-icon.rating-4 {
+    background-position: 0px -64px;
+}
+.rating-icon.rating-5 {
+    background-position: 0px -80px;
+}
+
+.max .rating-icon.rating-1 {
+    background-position: 0px -22px;
+}
+.max .rating-icon.rating-2 {
+    background-position: 0 -43px;
+}
+.max .rating-icon.rating-3 {
+    background-position: 0px -63px;
+}
+.max .rating-icon.rating-4 {
+    background-position: 0px -85px;
+}
+.max .rating-icon.rating-5 {
+    background-position: 0px -105px;
+}
+.icon-view {
+    background: url('../images/icon-men.png') no-repeat;
+}
+.icon-like {
+    background: url('../images/icon-laik.png') no-repeat;
 }
 /*Таблица*/
 table.table-search tr td {
@@ -437,4 +505,110 @@ table.table-search  tr td:nth-child(2n) span {
 }
 table.table-search tr td span:last-child::after {
     content: "";
+}
+/*-------Модуль--------*/
+.grid__m {
+
+}
+.grid__m div.item {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+.grid__m div.item.max div.content-item{
+    height: 660px;
+    position: relative;
+}
+.grid__m div.item.max div.content-item .title {
+    font-size: 40px;
+}
+.grid__m div.item.max div.content-item .text-min {
+    font-size: 18px;
+}
+.grid__m div.item div.content-item{
+    border: 1px solid #898989;
+    height: 320px;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 2px #8c8c8c;
+    background: #f3f3f3;
+    position: relative;
+}
+.grid__m div.item div.content-item div.image {
+    min-height: 195px;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    position: relative;
+}
+.grid__m div.item.max div.content-item div.image {
+    min-height: 400px;
+}
+.grid__m div.item div.content-item div.image .like{
+    height: 50px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 50px;
+    cursor: pointer;
+}
+.grid__m div.item div.content-item div.money {
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.5);
+    bottom: 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 3px 25px;
+    position: absolute;
+    font-family: sans-serif;
+    text-shadow: 0 0 3px #3c3c3c;
+}
+.grid__m div.item.max .rating-icon {
+    background-size: 100px 125px;
+    height: 20px;
+}
+.grid__m div.item.max div.content-item div.money {
+    bottom: 17px;
+    font-size: 42px;
+    padding: 11px 33px;
+}
+.grid__m div.item.max div.content-item div.money div.price{
+    font-size: 60px;
+    line-height: 40px;
+}
+.grid__m div.item div.content-item div.image img{
+    width: 100%;
+}
+.grid__m div.item div.content-item .title {
+    color: #4e4e4e;
+    font-size: 20px;
+}
+.grid__m div.item div.content-item .content-text {
+    padding: 5px 15px;
+}
+.grid__m div.item.max div.content-item .content-text {
+    padding: 35px 15px;
+}
+.grid__m div.item div.content-item .text-min {
+    color: #4e4e4e;
+}
+.grid__m div.item div.content-item .rating,.grid__m div.item div.content-item .view {
+    position: absolute;
+    bottom: 5px;
+    height: 30px;
+    width: 115px;
+}
+.grid__m div.item.max div.content-item .rating,.grid__m div.item.max div.content-item .view {
+    bottom: 15px;
+}
+.grid__m div.item div.content-item .view {
+    color: #636363;
+    font-weight: bold;
+    padding: 0px 0px 0px 25px;
+    right: 15px;
+}
+/*Boostrap*/
+.dropdown-menu.currency {
+    min-width: 80px;
 }
