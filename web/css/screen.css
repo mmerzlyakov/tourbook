@@ -12,6 +12,9 @@
 
 
 @media only screen and (max-width: 1200px) {
+    #main div.search {
+        height: auto;
+    }
     .box__max div.carousel-box div.item .name-box {
         top: 75px;
         font-size: 85px;
@@ -37,6 +40,17 @@
     .grid__m div.item div.content-item div.image {
         min-height: 165px;
     }
+
+    #private-tour div.services div.block {
+        border: none;
+        height: auto;
+    }
+    #private-tour div.services div.block span {
+        height: 60px;
+        margin: 0 23px 10px 30px;
+        padding-bottom: 18px;
+        width: 50px;
+    }
 }
 
 @media only screen and (max-width: 992px) {
@@ -61,9 +75,40 @@
     .image_box___m .image div.title-img div {
         font-size: 16px;
     }
+    .sidebar {
+        background: #fff none repeat scroll 0 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        z-index: 500;
+        display: none;
+    }
+    .booking-button-m {
+        display: block;
+    }
+    div.sidebar .close {
+        display: block;
+        font-size: 50px;
+        position: relative;
+        top: -30px;
+    }
+    .sidebar .contact {
+        display: none;
+    }
 
 }
 @media only screen and (max-width: 768px) {
+    .container.md{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .box__max {
+        padding: 5px;
+    }
+    .box__max div.item .name-box {
+        display: none;
+    }
     #main h1.title-main {
         font-size: 30px;
         top: -108px;
@@ -75,7 +120,7 @@
         background-size: 50% 100%;
         background-position: center center;
     }
-    .slick-slide img {
+    #main .slick-slide img {
         height: 380px;
     }
     #navbar .navbar-toggle {
@@ -172,10 +217,7 @@
         background-size: 100% 100%;
         background-position: center center;
     }
-    #header div.top .logo {
-        height: 40px;
-        width: 165px;
-    }
+
     #main div.block-main div.title-main {
         font-size: 14px;
     }

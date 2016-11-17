@@ -1,3 +1,9 @@
+.container.md,#header .container {
+    width:100%;
+    min-width: 320px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
 .margin-left {
     margin-left: 0 !important;
 }
@@ -7,7 +13,7 @@
 a.grey:hover {
     color: #FF8040;
     text-decoration: none;
-    border-bottom: 1px solid #FF8040;  
+    border-bottom: 1px solid #FF8040;
 }
 
 a.black, a.black:link, a.black:visited {
@@ -17,8 +23,8 @@ a.black, a.black:link, a.black:visited {
 }
 a.black:hover {
     color: #8C0606;
-    text-decoration: none; 
-    border: none;  
+    text-decoration: none;
+    border: none;
 }
 
 a.gray, a.gray:link, a.gray:visited {
@@ -39,7 +45,7 @@ a.cofe{
 a.cofe:hover {
     color: #ff8000;
     text-decoration: none;
-    border: none;   
+    border: none;
 }
 /*?????????????? (?????. ????)*/
 a.brown{
@@ -68,16 +74,16 @@ a.lin {
     color: #895c34;
     font-weight: bold;
     transition: color 200ms linear;
-     -webkit-transition: color 200ms linear;
-      -moz-transition: color 200ms linear;
-       -o-transition: color 200ms linear;
+    -webkit-transition: color 200ms linear;
+    -moz-transition: color 200ms linear;
+    -o-transition: color 200ms linear;
     border-bottom: 1px solid #ddb088;
 }
 a.lin:hover {
     color: #FF8000;
     border-bottom: 1px solid #FF8000;
     text-decoration: none;
-} 
+}
 /*??? ???????*/
 a.nobor:link, a.nobor:visited {
     color: #1E5584;
@@ -85,7 +91,7 @@ a.nobor:link, a.nobor:visited {
 }
 a.nobor:hover {
     color: #D5120D;
-    text-decoration: none;   
+    text-decoration: none;
 }
 /*?????*/
 a.dashed:link, a.dashed:visited {
@@ -95,8 +101,8 @@ a.dashed:link, a.dashed:visited {
 }
 a.dashed:hover {
     color: #ff8000;
-    text-decoration: none; 
-    border:none;  
+    text-decoration: none;
+    border:none;
 }
 /*?????*/
 a.dotted:link, a.dotted:visited {
@@ -114,6 +120,19 @@ p {
     padding: 0px 0px 5px 0px;
     margin: 0px;
 }
+/*---Затемнения область---*/
+.br-shadow,#br-show {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 300;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    cursor: pointer;
+}
 /*???????????*/
 img {
     border: 0px;
@@ -127,12 +146,12 @@ img.rad {
 img.opac:hover {
     opacity: 0.80;
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
-     -khtml-opacity: 0.80;
-      -moz-opacity: 0.80;
+    -khtml-opacity: 0.80;
+    -moz-opacity: 0.80;
     transition: 0.2s 0.01s ease-in;
-     -moz-transition: all 0.2s 0.01s ease-in;
-      -o-transition: all 0.2s 0.01s ease-in;
-       -webkit-transition: all 0.2s 0.01s ease-in;
+    -moz-transition: all 0.2s 0.01s ease-in;
+    -o-transition: all 0.2s 0.01s ease-in;
+    -webkit-transition: all 0.2s 0.01s ease-in;
 }
 .reset-margin-bottom {
     margin-bottom: 0 !important;
@@ -144,14 +163,14 @@ img.opac:hover {
 .text-t {
     font-size: initial;
     word-spacing: 5px;
-    line-height: 22px; 
-}  
+    line-height: 22px;
+}
 /*?????*/
 .text-a {
     font-family: verdana;
     font-size: 16px;
     line-height: 22px;
-}  
+}
 /*??????? ????????*/
 .text-m {
     font-family: verdana;
@@ -174,7 +193,7 @@ img.opac:hover {
 }
 /*???????????,PS,????????*/
 span.ps {
-   color: #9EB9BA;
+    color: #9EB9BA;
 }
 :focus {
     outline: none;
@@ -210,7 +229,7 @@ h4.name {
     font-family: caption;
     font-size: 20px;
 }
-/*???????? */  
+/*???????? */
 h1.title {
     font-family: Verdana;
     font-size: 33px;
@@ -245,7 +264,7 @@ div.warning {
 
 }
 div.social {
-   margin: 10px 0;
+    margin: 10px 0;
 }
 /*Кнорпки*/
 button.blue {
@@ -366,12 +385,20 @@ a.no-border:hover{
 /*Большие*/
 .box__max {
     padding: 10px;
+    box-sizing: border-box;
 }
 .box__max div.item{
     position: relative;
     border-radius: 8px;
     overflow: hidden;
+    transform: translateY(0px);
+    transition: all 0.2s ease 0s;
 }
+.box__max div.item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
 .box__max div.item .name-box {
     color: #fff;
     font-size: 46px;
@@ -383,7 +410,7 @@ a.no-border:hover{
     top: 40%;
 }
 .icon-fast {
-   background: url('/images/icon-fast.png') no-repeat;
+    background: url('/images/icon-fast.png') no-repeat;
 }
 .icon-pay {
     background: url('/images/icon-pay.png') no-repeat;
@@ -427,6 +454,9 @@ a.no-border:hover{
 }
 .icon-nav.nav-4 {
     background-position: left -286px;
+}
+.icon-phone {
+    background: url('../images/icon-phone.png') no-repeat;
 }
 /*Рейтинг*/
 .rating {
@@ -479,6 +509,34 @@ a.no-border:hover{
 .icon-like {
     background: url('../images/icon-laik.png') no-repeat;
 }
+/**/
+.icon-balun{
+    background: url("../images/icon-balun.png") no-repeat scroll 0 0 / 16px auto;
+    padding: 0px 0px 0px 20px;
+}
+.icon-service {
+    background: url('../images/icon-service.png') no-repeat;
+    background-position: left center;
+}
+.icon-service.md-1 {
+    background-position: -120px center;
+}
+.icon-service.md-2 {
+    background-position: -223px center;
+}
+.icon-service.md-3 {
+    background-position: -330px center;
+}
+.icon-service.md-4 {
+    background-position: -436px center;
+}
+.icon-service.md-5 {
+    background-position: -543px center;
+}
+.icon-service.md-6 {
+    background-position: right center;
+}
+
 /*Таблица*/
 table.table-search tr td {
     vertical-align: top;
@@ -611,4 +669,77 @@ table.table-search tr td span:last-child::after {
 /*Boostrap*/
 .dropdown-menu.currency {
     min-width: 80px;
+}
+/*Colors*/
+.oran {
+    color: #FFA14D;
+}
+/*Выбор Количество*/
+.counts__m {
+
+}
+.counts__m .label {
+    color: #373737;
+    display: block;
+    text-align: center;
+}
+.counts__m .counts {
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    width: 100px;
+}
+.counts__m .counts .count {
+    margin: 0 4px;
+    cursor: text !important;
+    font-weight: normal !important;
+    border: medium none;
+}
+.counts__m .counts .plus,.counts__m .counts .minus ,.counts__m .counts .count {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+    width: 30px;
+    cursor: pointer;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+.counts__m .counts .plus:hover,.counts__m .counts .minus:hover {
+    background: #606060 none repeat scroll 0 0;
+    color: #fff;
+}
+.booking-button-m {
+    background: #407FCF;
+    border-radius: 100%;
+    bottom: 30px;
+    display: none;
+    height: 100px;
+    position: fixed;
+    right: 30px;
+    width: 100px;
+    padding: 35px 23px;
+    box-shadow: 1px 3px 9px 2px #8b8b8b;
+    cursor: pointer;
+    z-index: 400;
+}
+.booking-button-m .name {
+    bottom: 16px;
+    color: #fff;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+.booking-button-m .glyphicon {
+    color: #fff;
+    display: block;
+    font-size: 45px;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 18px;
+    width: 48px;
 }

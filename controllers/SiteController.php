@@ -122,7 +122,10 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-
+    public function actionBuka()
+    {
+        return $this->render('buka');
+    }
     public function actionSignup()
     {
         $model = new \app\models\SignupForm();
