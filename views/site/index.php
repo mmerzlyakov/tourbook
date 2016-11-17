@@ -82,69 +82,94 @@ $this->title = 'TourBook.Biz';
     <div class="br-hr hidden-xs"></div>
 
     <div class="advantages hidden-xs">
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+        <div class="row center-block">
+            <div class="col-xs-3">
                 <div class="image-wrapper">
                     <img src="/images/payment.png" alt="">
                 </div>
                 БЕЗОПАСНАЯ<br>ОПЛАТА
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-3">
                 <div class="image-wrapper">
                     <img src="/images/checkout.png" alt="">
                 </div>
                 мгновенное<br>подтверждение брони
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-3">
                 <div class="image-wrapper">
                     <img src="/images/support.png" alt="">
                 </div>
                 КРУГЛОСУТОЧНАЯ<br>ПОДДЕРЖКА
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-3">
                 <div class="image-wrapper">
                     <img src="/images/bestprice.png" alt="">
                 </div>
                 гарантия<br>лучшей цены
             </div>
-            <div class="clear"></div>
         </div>
-    <div class="br-hr-title"><div>ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ</div></div>
+            <div class="clear"></div>
+    </div>
+    <h2 class="title-main text-center">ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ</h2>
     <div class="container md box-container">
         <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
-                <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
+                <div class="item">
+                   <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
+                      <div class="name"><div class="name-box">Китай</div></div>
+                   </div>
+                </div>
             </a>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
-                <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
+                <div class="item">
+                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
+                        <div class="name"><div class="name-box">Китай</div></div>
+                    </div>
+                </div>
             </a>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
-                <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
+                <div class="item">
+                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
+                        <div class="name"><div class="name-box">Китай</div></div>
+                    </div>
+                </div>
             </a>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
-                <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
+                <div class="item">
+                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
+                        <div class="name"><div class="name-box">Китай</div></div>
+                    </div>
+                </div>
             </a>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
-                <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
+                <div class="item">
+                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
+                        <div class="name"><div class="name-box">Китай</div></div>
+                    </div>
+                </div>
             </a>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
-                <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
+                <div class="item">
+                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
+                        <div class="name"><div class="name-box">Китай</div></div>
+                    </div>
+                </div>
             </a>
         </div>
         <div class="clear"></div>
     </div>
-    <div class="br-hr"></div>
       <div class="container md">
-         <div class="row">
+
         <div class="col-xs-12 col-sm-4 info-box">
             <div class="info br">
                 <div class="icon-fast icon"></div>
@@ -164,10 +189,9 @@ $this->title = 'TourBook.Biz';
             </div>
         </div>
       </div>
-      </div>
     <div class="clear"></div>
 
-    <div class="br-hr-title"><div>ТЕКСТ</div></div>
+   <h2 class="title-main text-center">РЕКОМЕНДУЕМЫЕ</h2>
     <div class="container md">
         <div class="masonry grid__m ">
             <div class="item col-md-4 col-sm-6 ">

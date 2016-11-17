@@ -98,8 +98,8 @@
     }
 
 }
-@media only screen and (max-width: 768px) {
-    .container.md{
+@media only screen and (max-width: 767px) {
+    .container.md,#header .container{
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -107,7 +107,7 @@
         padding: 5px;
     }
     .box__max div.item .name-box {
-        display: none;
+
     }
     #main h1.title-main {
         font-size: 30px;
@@ -121,10 +121,9 @@
         background-position: center center;
     }
     #main .slick-slide img {
-        height: 380px;
+
     }
     #navbar .navbar-toggle {
-        left: -5px;
         position: relative;
         top: 13px;
     }
@@ -201,11 +200,34 @@
     }
 }
 @media only screen and (max-width: 600px) {
-    .box__max div.carousel-box div.item .name-box {
-
+    #main h1.title-main {
+        font-size: 26px;
+        top: -75px;
+    }
+    #header div.top .navbar {
+        min-height: 50px;
+    }
+    #navbar .navbar-toggle {
+        top: 0px;
+    }
+    .navbar-brand {
+        padding: 10px 15px;
+    }
+    #header div.top .logo {
+        height: 28px;
+        width: 115px;
+    }
+    .box__max div.item {
+        height: 12.5em;
+    }
+    .box__max div.item .name .name-box {
+        font-size: 34px;
     }
 }
 @media only screen and (max-width: 540px) {
+    #main h1.title-main, #main .search form {
+        display: none;
+    }
     #main div.block-main div.description {
         font-size: 13px;
         margin-left: 12px;
@@ -258,4 +280,20 @@
     .image_box___m .image div.title-img {
         padding: 10px 3px;
     }
+    .box__max div.item {
+        height: 9.5em
+    }
+    .box__max div.item .name .name-box {
+        font-size: 28px;
+    }
+
+}
+@media only screen and (max-width: 375px) {
+    .box__max div.item {
+        height: 7.5em
+    }
+    .box__max div.item .name .name-box {
+        font-size: 28px;
+    }
+
 }
