@@ -27,7 +27,7 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div id="br-shadow"></div>
+<div class="br-shadow"></div>
 <div class="wrapper">
     <div id="header">
         <div class="top ">
@@ -40,7 +40,6 @@ AppAsset::register($this);
                     'id'=>'navbar',
                 ],
             ]); ?>
-
                 <div class="hidden-xs col-sm-6 col-md-3 group col-lg-push-4 col-md-push-3">
                     <div class="row">
                         <div class="dropdown">
@@ -127,8 +126,6 @@ AppAsset::register($this);
             <?php
             NavBar::end();
             ?>
-
-
         </div>
 
         <div class="clear"></div>
