@@ -79,9 +79,9 @@ $this->title = 'TourBook.Biz';
         </div>
     </div>
     <div class="clear"></div>
-    <div class="br-hr"></div>
+    <div class="br-hr hidden-xs"></div>
 
-        <div class="advantages">
+    <div class="advantages hidden-xs">
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                 <div class="image-wrapper">
                     <img src="/images/payment.png" alt="">
@@ -109,33 +109,33 @@ $this->title = 'TourBook.Biz';
             <div class="clear"></div>
         </div>
     <div class="br-hr-title"><div>ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ</div></div>
-    <div class="container">
-        <div class="col-xs-12 col-sm-6 col-sm-6 col-md-4 box__max">
+    <div class="container md box-container">
+        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
                 <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
             </a>
         </div>
-        <div class="col-xs-12 col-sm-6 col-sm-6 col-md-4 box__max">
+        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
                 <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
             </a>
         </div>
-        <div class="col-xs-12 col-sm-6 col-sm-6 col-md-4 box__max">
+        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
                 <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
             </a>
         </div>
-        <div class="col-xs-12 col-sm-6 col-sm-6 col-md-4 box__max">
+        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
                 <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
             </a>
         </div>
-        <div class="col-xs-12 col-sm-6 col-sm-6 col-md-4 box__max">
+        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
                 <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
             </a>
         </div>
-        <div class="col-xs-12 col-sm-6 col-sm-6 col-md-4 box__max">
+        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
                 <div class="item"><img src="./images/baly.jpg" alt=""  class="rad"> <div class="name-box">Китай</div></div>
             </a>
@@ -143,7 +143,7 @@ $this->title = 'TourBook.Biz';
         <div class="clear"></div>
     </div>
     <div class="br-hr"></div>
-      <div class="container">
+      <div class="container md">
          <div class="row">
         <div class="col-xs-12 col-sm-4 info-box">
             <div class="info br">
@@ -168,7 +168,7 @@ $this->title = 'TourBook.Biz';
     <div class="clear"></div>
 
     <div class="br-hr-title"><div>ТЕКСТ</div></div>
-    <div class="container">
+    <div class="container md">
         <div class="masonry grid__m ">
             <div class="item col-md-4 col-sm-6 ">
                 <div class="content-item">

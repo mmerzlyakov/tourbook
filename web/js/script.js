@@ -10,6 +10,16 @@ $(document).ready(function(){
         autoplay: true,
         autoplaySpeed: 6000
     });
+    // Карусель;
+    $('div.gallery div.items').slick({
+        dots: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 6000
+    });
     $("#main input.search").on('click',function(){
         $("#main .search-group .prompt").toggle();
     });
@@ -77,4 +87,38 @@ $(document).ready(function(){
         //   columnWidth: '.col-sm-6',
         //  percentPosition: true,
     });
+});
+
+// plus;
+$(document).on('click','.counts__m .plus',function(){
+    var  count =  $(this).siblings(".count").val();
+    count ++;
+    if(count >= 0 && count <= 99) {
+        $(this).siblings(".count").val(count);
+    }
+});
+// minus
+$(document).on('click','.counts__m .minus',function(){
+    var  count =  $(this).siblings(".count").val();
+    count --;
+    if(count >= 0) {
+        $(this).siblings(".count").val(count);
+    }
+});
+
+$(document).on('click','.booking-button-m',function(){
+    $(".sidebar,.br-shadow").fadeIn();
+    $(".booking-button-m").fadeOut();
+    var html = document.documentElement;
+    $(".sidebar").css('top',html.scrollTop);
+    console.log(html.scrollTop);
+});
+$(document).on('click','.br-shadow',function(){
+    $(".sidebar").hide().add(this).hide();
+    $(".booking-button-m").fadeIn();
+});
+$(document).on('click','.sidebar .close',function(){
+    $(".sidebar,.br-shadow").hide();
+    $(".booking-button-m").fadeIn();
+
 });
