@@ -3,6 +3,9 @@
     min-width: 320px;
     padding-left: 30px;
     padding-right: 30px;
+    max-width: 1200px;
+    margin-left :auto;
+    margin-right :auto;
 }
 .margin-left {
     margin-left: 0 !important;
@@ -588,6 +591,10 @@ table.table-search tr td span:last-child::after {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 20px;
+    max-width: 350px;
+}
+.grid__m div.item.max {
+    max-width: 700px;
 }
 .grid__m div.item.max div.content-item{
     height: 660px;
@@ -627,8 +634,8 @@ table.table-search tr td span:last-child::after {
     cursor: pointer;
 }
 .grid__m div.item div.content-item div.money {
-    background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
     bottom: 10px;
     color: #fff;
     font-size: 18px;

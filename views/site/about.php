@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="clearfix visible-xs"></div>
     </div>
-    <div class="container">
+    <div class="container md">
         <div class="masonry grid__m ">
             <div class="item navigation col-md-4 col-sm-6">
                 <div class="content-item">

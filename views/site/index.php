@@ -111,7 +111,7 @@ $this->title = 'TourBook.Biz';
             <div class="clear"></div>
     </div>
     <h2 class="title-main text-center">ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ</h2>
-    <div class="container md box-container">
+    <div class="container md">
         <div class="col-xs-6 col-sm-6 col-md-4 box__max">
             <a class="no-border" href="#">
                 <div class="item">

@@ -209,7 +209,7 @@ div.container {
 }
 div.br-hr,  div.br-hr-title {
   /*  background: #407FCF;*/
-    padding: 20px 0;
+    /*padding: 20px 0;*/
 }
 div.br-hr-title {
     padding: 10px 0;
@@ -246,7 +246,7 @@ div.br-hr-title {
 #main .advantages {
     background-color: #f4f4f4;
     color: #407fcf;
-    padding: 15px 0;
+    padding: 20px 0px;
     text-align: center;
     text-transform: uppercase;
     font-size: 12px;

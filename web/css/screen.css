@@ -295,5 +295,13 @@
     .box__max div.item .name .name-box {
         font-size: 28px;
     }
+}
+@media only screen and (max-width: 360px) {
+    .grid__m div.item {
+        width: 100%;
+    }
+    .grid__m div.item div.content-item {
+        height: 305px;
+    }
 
 }
