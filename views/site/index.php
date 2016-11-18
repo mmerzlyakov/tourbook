@@ -196,8 +196,8 @@ $this->title = 'TourBook.Biz';
         <div class="masonry grid__m ">
             <div class="item col-md-4 col-sm-6 ">
                 <div class="content-item">
-                    <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                    <div class="image"><img src="/files/sity/1.jpg" alt="">
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
@@ -213,8 +213,8 @@ $this->title = 'TourBook.Biz';
             </div>
             <div class="item col-md-4 col-sm-6">
                 <div class="content-item">
-                    <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                    <div class="image"><img src="/files/sity/1.jpg" alt="">
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
@@ -230,8 +230,8 @@ $this->title = 'TourBook.Biz';
             </div>
             <div class="item col-md-4 col-sm-6">
                 <div class="content-item">
-                    <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                    <div class="image"><img src="/files/sity/1.jpg" alt="">
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
