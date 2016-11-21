@@ -3,6 +3,9 @@
     min-width: 320px;
     padding-left: 30px;
     padding-right: 30px;
+    max-width: 1200px;
+    margin-left :auto;
+    margin-right :auto;
 }
 .margin-left {
     margin-left: 0 !important;
@@ -208,7 +211,11 @@ h1.size-2 {
 h1.size-3 {
     font-size: 28px;
 }
-/*?????????*/
+h2.title-main {
+    font-size: 25px;
+    color: #585858;
+}
+    /*?????????*/
 h1.name {
     color: #3A3A38;
     font-family: Trebuchet MS;
@@ -393,22 +400,34 @@ a.no-border:hover{
     overflow: hidden;
     transform: translateY(0px);
     transition: all 0.2s ease 0s;
+    height: 16.5em;
 }
 .box__max div.item:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     transform: translateY(-2px);
 }
-
-.box__max div.item .name-box {
+.box__max div.item .name {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.box__max div.item .image {
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100% !important;
+}
+.box__max div.item .name .name-box {
     color: #fff;
     font-size: 46px;
     font-weight: bold;
     left: 0;
-    position: absolute;
+    position: relative;
     right: 0;
     text-align: center;
-    top: 40%;
+    display: table-cell;
+    vertical-align: middle;
 }
+
 .icon-fast {
     background: url('/images/icon-fast.png') no-repeat;
 }
@@ -572,6 +591,10 @@ table.table-search tr td span:last-child::after {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 20px;
+    max-width: 350px;
+}
+.grid__m div.item.max {
+    max-width: 700px;
 }
 .grid__m div.item.max div.content-item{
     height: 660px;
@@ -584,13 +607,22 @@ table.table-search tr td span:last-child::after {
     font-size: 18px;
 }
 .grid__m div.item div.content-item{
-    border: 1px solid #898989;
+    border: 1px solid #f2f2f2;
     height: 320px;
     padding: 0;
     border-radius: 10px;
-    box-shadow: 0 0 5px 2px #8c8c8c;
     background: #f3f3f3;
     position: relative;
+    transform: translateY(0px);
+    transition: all 0.2s ease 0s;
+}
+.grid__m div.item div.content-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+.grid__m div.item.navigation div.content-item:hover {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+    transform: translateY(0px);
 }
 .grid__m div.item div.content-item div.image {
     min-height: 195px;
@@ -603,16 +635,22 @@ table.table-search tr td span:last-child::after {
     min-height: 400px;
 }
 .grid__m div.item div.content-item div.image .like{
+    cursor: pointer;
+    font-size: 40px;
     height: 50px;
     position: absolute;
-    right: 10px;
+    right: 0;
     top: 5px;
     width: 50px;
-    cursor: pointer;
+    color: #fff;
+    color: rgba(255,255,255,0.8);
+}
+.grid__m div.item div.content-item div.image .like:hover,.grid__m div.item div.content-item div.image .like.open{
+    color: rgba(255,255,255, 1);
 }
 .grid__m div.item div.content-item div.money {
-    background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
     bottom: 10px;
     color: #fff;
     font-size: 18px;

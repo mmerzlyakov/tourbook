@@ -109,9 +109,9 @@ $(document).on('click','.counts__m .minus',function(){
 $(document).on('click','.booking-button-m',function(){
     $(".sidebar,.br-shadow").fadeIn();
     $(".booking-button-m").fadeOut();
-    var html = document.documentElement;
-    $(".sidebar").css('top',html.scrollTop);
-    console.log(html.scrollTop);
+
+    $(".sidebar").css('top',$(window).scrollTop());
+    console.log($(window).scrollTop());
 });
 $(document).on('click','.br-shadow',function(){
     $(".sidebar").hide().add(this).hide();
