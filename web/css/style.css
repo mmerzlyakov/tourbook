@@ -154,6 +154,7 @@ div.container {
 #main div.search{
     position: relative;
     height: 530px;
+    overflow: hidden;
 }
 #main h1.title-main {
     color: #fff;
