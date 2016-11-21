@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="clearfix visible-xs"></div>
     </div>
-    <div class="container">
+    <div class="container md">
         <div class="masonry grid__m ">
             <div class="item navigation col-md-4 col-sm-6">
                 <div class="content-item">
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item col-md-4 col-sm-6 ">
                 <div class="content-item">
                     <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item col-md-4 col-sm-6">
                 <div class="content-item">
                     <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item col-md-4 col-sm-6">
                 <div class="content-item">
                     <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item col-md-4 col-sm-6">
                 <div class="content-item">
                     <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
@@ -110,7 +110,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item col-md-4 col-sm-6">
                 <div class="content-item">
                     <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
@@ -127,7 +127,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item col-md-4 col-sm-6">
                 <div class="content-item">
                     <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
@@ -144,7 +144,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item js-grid max col-md-8 col-sm-6 ">
                 <div class="content-item">
                     <div class="image"><img src="/files/2.jpg" alt="">
-                        <div class="icon-like like"></div>
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div class="price">55 $</div>
@@ -161,7 +161,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item col-md-4 col-sm-6">
                 <div class="content-item">
                     <div class="image"><img src="/files/1.jpg" alt="">
-                        <div class="icon-like like"></div>
+                        <div class="glyphicon glyphicon-heart like"></div>
                         <div class="money">
                             <div>US</div>
                             <div>55 $</div>
