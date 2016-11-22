@@ -225,9 +225,13 @@
     }
 }
 @media only screen and (max-width: 540px) {
-    #main h1.title-main, #main .search form {
+    #main .input-group-btn, #main input.form-control.search {
         display: none;
     }
+    #main h1.title-main {
+        margin-top: 65px;
+    }
+
     #main div.block-main div.description {
         font-size: 13px;
         margin-left: 12px;
@@ -272,6 +276,9 @@
     .image_box___m .image .name-img {
         font-size: 55px;
     }
+    #main h2.title-main {
+        font-size: 20px;
+    }
 }
 @media only screen and (max-width: 465px) {
     .image_box___m .image .name-img {
@@ -286,7 +293,11 @@
     .box__max div.item .name .name-box {
         font-size: 28px;
     }
-
+    #main .grid__m {
+        width: 320px;
+        margin-right: auto;
+        margin-left: auto;
+    }
 }
 @media only screen and (max-width: 375px) {
     .box__max div.item {
@@ -303,5 +314,7 @@
     .grid__m div.item div.content-item {
         height: 305px;
     }
-
+    #main .grid__m {
+        width: auto;
+    }
 }
