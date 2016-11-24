@@ -47,6 +47,9 @@ echo Menu::widget([
         ['label' => 'Reports', 'url' => ['reports/index']],
         ['label' => 'Logout', 'url' => ['site/logout']],
     ],
+    'options'=>[
+        'class' => 'nav-menu-left'
+    ],
 ]);
 
 }
@@ -72,6 +75,10 @@ echo Menu::widget([
         ['label' => 'Orders management', 'url' => ['orders/index'], 'items' => [
         ]],
         ['label' => 'Logout', 'url' => ['site/logout']],
+
+    ],
+    'options'=>[
+        'class' => 'nav-menu-left'
     ],
 ]);
 
@@ -99,6 +106,9 @@ if(\Yii::$app->user->can('supplier')){
             ]],
             ['label' => 'Logout', 'url' => ['site/logout']],
         ],
+        'options'=>[
+            'class' => 'nav-menu-left'
+        ],
     ]);
 
 }
@@ -120,6 +130,10 @@ echo Menu::widget([
         ['label' => 'Previews', 'url' => ['site/index']],
         ['label' => 'Settings', 'url' => ['site/index']],
         ['label' => 'Logout', 'url' => ['site/logout']],
+
+    ],
+    'options'=>[
+        'class' => 'nav-menu-left'
     ],
 ]);
 

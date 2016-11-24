@@ -781,3 +781,52 @@ table.table-search tr td span:last-child::after {
     top: 18px;
     width: 48px;
 }
+/*---Admin menu---*/
+.nav-menu-left {
+    background: #efefef none repeat scroll 0 0;
+    display: block;
+    float: left;
+    padding: 20px 10px;
+    list-style: outside none none;
+}
+.nav-menu-left li{
+    list-style: outside none none;
+    position: relative;
+}
+.nav-menu-left li::after{
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #fff;
+    content: "";
+    display: block;
+    height: 0;
+    position: absolute;
+    right: 8px;
+    top: 11px;
+    width: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+.nav-menu-left li ul li{
+    margin: 0 0 0 -40px;
+    list-style: outside none none;
+}
+.nav-menu-left li ul li::after{
+    display: none;
+}
+.nav-menu-left li a{
+    background: #009ce2 none repeat scroll 0 0;
+    color: #fff;
+    display: block;
+    font-family: Verdana;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 5px 30px 5px 10px;
+    text-decoration: none;
+}
+.nav-menu-left li a:hover {
+    background: #0089c6 none repeat scroll 0 0;
+}
+.nav-menu-left li ul li a {
+    padding-left: 25px;
+}
