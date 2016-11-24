@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\controllers\BackendController;
+use \app\models\UploadForm;
 
 /**
  * BookingController implements the CRUD actions for Booking model.
@@ -34,6 +35,7 @@ class BookingController extends BackendController
                             'create',
                             'view',
                             'delete',
+                            'upload',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
@@ -48,6 +50,21 @@ class BookingController extends BackendController
                 ],
             ],
         ];
+    }
+
+    public function actionUpload()
+    {
+        $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
+            if ($model->upload()) {
+                // file is uploaded successfully
+                return;
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
     }
 
     /**
@@ -89,9 +106,21 @@ class BookingController extends BackendController
         $cities = \app\models\City::find()->select('id, name, description')->where('id > 0')->all();
 
         $model = new Booking();
+        $model = new UploadForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
+
+            if ($model->upload()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+                // file is uploaded successfully
+                //return;
+            }
+            else
+            {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         } else {
             return $this->render('create', [
                 'model' => $model,

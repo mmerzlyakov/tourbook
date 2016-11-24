@@ -18,13 +18,18 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'price')->textInput() ?>
     <?= $form->field($model, 'options')->textInput() ?>
-    <?= $form->field($model, 'images')->fileInput() ?>
+    <?php /* $form->field($model, 'images')->fileInput() */ ?>
+
+
     <?= $form->field($model, 'status')->checkbox()->label('Active?') ?>
     <?= $form->field($model, 'bonus')->textInput() ?>
     <?= $form->field($model, 'discount')->textInput()->label('Discount %') ?>
+
+    <?= $form->field($model, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
+
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') :
+                Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
-    <?php ActiveForm::end(); ?>
 
 </div>
