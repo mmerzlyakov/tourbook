@@ -77,7 +77,9 @@ AppAsset::register($this);
             <?php else: ?>
             <div class="hidden-xs btn-group col-xs-4 float-right">
                 <div class="user">
-                    <div class="name"><?=Yii::$app->user->identity->name?> </div>
+                    <div class="name"><?=Yii::$app->user->identity->name?>,
+                        <?=\app\widgets\WBasket::widget(['model' => Yii::$app->user->identity->getId()]);?>
+                    </div>
                    <div> <a class="white" href="/management">My Account</a> / <a href="/site/logout" class="out white">Выйти</a></div>
                 </div>
             </div>
@@ -108,6 +110,7 @@ AppAsset::register($this);
 </div>
 <div id="center">
 	<div class="container">
+        <br><br><br>
 			 <?=$content?>
 	</div>
 </div>
@@ -128,7 +131,8 @@ AppAsset::register($this);
                     </div><!-- /input-group -->
                 </form>
             </div>
-            <div class="clear"></div>
+            <div class="clear">
+            </div>
         </div>
     </div>
     <div class="center">

@@ -77,7 +77,8 @@ AppAsset::register($this);
                 <?php else: ?>
                 <div class="hidden-xs btn-group col-xs-4 float-right">
                     <div class="user">
-                        <div class="name"><?=Yii::$app->user->identity->name?> </div>
+                        <div class="name"><?=Yii::$app->user->identity->name?>,
+                            <?=\app\widgets\WBasket::widget(['model' => Yii::$app->user->identity->getId()]);?></div>
                        <div> <a class="white" href="/management">My Account</a> / <a href="/site/logout" class="out white">Выйти</a></div>
                     </div>
                 </div>

@@ -9,6 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use app\models\File;
+use yii\web\UploadedFile;
+use app\models\CountryImages;
 
 /**
  * CountryController implements the CRUD actions for Country model.
@@ -31,6 +34,7 @@ class CountryController extends BackendController
                             'create',
                             'view',
                             'delete',
+                            'upload',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator'],
@@ -45,6 +49,28 @@ class CountryController extends BackendController
                 ],
             ],
         ];
+    }
+
+    public function actionUpload($model_id)
+    {
+        $model = new File();
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstances($model, 'imageFile');
+            $path = $model->upload($model_id);
+
+            $str = str_replace('\\','',$path);
+            $str = str_replace('[','',$str);
+            $str = str_replace('"','',$str);
+            $str = str_replace(']','',$str);
+
+            $country = new CountryImages();
+            $country->status=1;
+            $country->path=$str;
+            $country->country_id=$model_id;
+            $country->save();
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -81,6 +107,7 @@ class CountryController extends BackendController
      */
     public function actionCreate()
     {
+        $model_file = new File();
         $model = new Country();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -88,6 +115,7 @@ class CountryController extends BackendController
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'model_file' => $model_file,
             ]);
         }
     }
@@ -100,6 +128,7 @@ class CountryController extends BackendController
      */
     public function actionUpdate($id)
     {
+        $model_file = new File();
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -107,6 +136,7 @@ class CountryController extends BackendController
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'model_file' => $model_file,
             ]);
         }
     }

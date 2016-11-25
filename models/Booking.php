@@ -24,8 +24,6 @@ class Booking extends \yii\db\ActiveRecord
      * @inheritdoc
      */
 
-    public $imageFiles;
-
     public static function tableName()
     {
         return 'booking';
@@ -37,26 +35,11 @@ class Booking extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type_id', 'price', 'images', 'status'], 'required'],
+            [['type_id', 'price', 'status'], 'required'],
             [['type_id', 'price', 'status', 'bonus', 'discount'], 'integer'],
-            [['name', 'description','options', 'images'], 'string'],
-            [['imageFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg', 'maxFiles' => 4],
+            [['name', 'description','options'], 'string'],
         ];
     }
-
-    public function upload()
-    {
-        if ($this->validate()) {
-            foreach ($this->imageFiles as $file) {
-                $file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
     /**
      * @inheritdoc
      */

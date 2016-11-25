@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\Country;
+use app\models\CityImages;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CitySearch */
@@ -37,6 +38,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'full_description:ntext',
             // 'status',
+            [
+                'attribute' => 'status',
+                'label' => 'Photos',
+                'content' => function($model)
+                {
+                    $str = "";
+                    if(!empty($model->id)) {
+                        $images = \app\models\CityImages::find()->where('city_id = ' . $model->id)->all();
+                        if (!empty($images)) {
+                            foreach ($images as $item) {
+                                $str.="<img src='/" . $item->path . "' width=80 id='"
+                                    . $item->id
+                                    . "'>";
+                            }
+                        }
+                    }
+                    return $str;
+                },
+
+            ],
             [
                 'attribute' => 'status',
                 'content' => function($data){

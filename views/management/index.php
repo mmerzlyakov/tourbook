@@ -140,3 +140,5 @@ echo Menu::widget([
 }
 
 ?>
+
+<img width=50% src="/images/xzibit.jpg">

@@ -150,7 +150,7 @@
                     <tr><td>Total amount</td><td><div class="money">23 $</div></td></tr>
                     <tr class="money-total"><td>TOTAL COST</td><td><div class="money">123 $</div></td></tr>
                 </table>
-                <div class="button"><input class="btn btn-warning" type="submit" value="BOOK NOW"/></div>
+                <div class="button"><input id="BOOKNOW" class="btn btn-warning" type="submit" value="BOOK NOW" onClick=""/></div>
                 <div class="button"><button type="button" class="btn btn-grey"><span class="glyphicon glyphicon-heart"></span>ADD TO WHISLIST</button></div>
                 <div class="clear"></div>
             </div>  <!--./Бронь-->
@@ -158,7 +158,7 @@
                 <div class="icon-phone"></div>
                 <div class="text-min">Book by phone</div>
                 <div class="phone">+66 82-422-6466</div>
-                <div class="text-min">Monday-Sanday</div>
+                <div class="text-min">Monday-Sunday</div>
             </div>
         </div>
         <div class="clear"></div>

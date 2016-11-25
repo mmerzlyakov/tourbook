@@ -37,6 +37,26 @@ $this->params['breadcrumbs'][] = $this->title;
                   return ($data['status']==1) ? 'Active' : 'Not active';
               },
             ],
+            [
+                'attribute' => 'status',
+                'label' => 'Photos',
+                'content' => function($model)
+                {
+                    $str = "";
+                    if(!empty($model->id)) {
+                        $images = \app\models\BookingImages::find()->where('booking_id = ' . $model->id)->all();
+                        if (!empty($images)) {
+                            foreach ($images as $item) {
+                               $str.="<img src='/" . $item->path . "' width=80 id='"
+                                    . $item->id
+                                    . "'>";
+                            }
+                        }
+                    }
+                    return $str;
+                },
+
+            ],
             // 'bonus',
             // 'discount',
 
