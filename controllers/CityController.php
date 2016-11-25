@@ -9,6 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use app\models\File;
+use yii\web\UploadedFile;
+use app\models\CityImages;
 
 /**
  * CityController implements the CRUD actions for City model.
@@ -31,6 +34,7 @@ class CityController extends BackendController
                             'create',
                             'view',
                             'delete',
+                            'upload',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator'],
@@ -48,6 +52,28 @@ class CityController extends BackendController
         ];
     }
 
+
+    public function actionUpload($model_id)
+    {
+        $model = new File();
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstances($model, 'imageFile');
+            $path = $model->upload($model_id);
+
+            $str = str_replace('\\','',$path);
+            $str = str_replace('[','',$str);
+            $str = str_replace('"','',$str);
+            $str = str_replace(']','',$str);
+
+            $city = new CityImages();
+            $city->status=1;
+            $city->path=$str;
+            $city->city_id=$model_id;
+            $city->save();
+            return true;
+        }
+        return false;
+    }
     /**
      * Lists all City models.
      * @return mixed
@@ -84,6 +110,7 @@ class CityController extends BackendController
     public function actionCreate()
     {
         $model = new City();
+        $model_file = new File();
         $countries = \app\models\Country::find()->where('status = 1')->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -92,6 +119,7 @@ class CityController extends BackendController
             return $this->render('create', [
                 'model' => $model,
                 'countries' => $countries,
+                'model_file' => $model_file,
             ]);
         }
     }
@@ -105,13 +133,18 @@ class CityController extends BackendController
      */
     public function actionUpdate($id, $country_id)
     {
+        $model_file = new File();
         $model = $this->findModel($id, $country_id);
+        $countries = \app\models\Country::find()->where('status = 1')->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id, 'country_id' => $model->country_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'country_id' => $country_id,
+                'countries' => $countries,
+                'model_file' => $model_file,
             ]);
         }
     }

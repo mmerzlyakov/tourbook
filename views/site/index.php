@@ -81,7 +81,7 @@ $this->title = 'TourBook.Biz';
     <div class="clear"></div>
     <div class="br-hr hidden-xs"></div>
 
-    <div class="advantages hidden-xs">
+    <!-- div class="advantages hidden-xs">
         <div class="row center-block">
             <div class="col-xs-3">
                 <div class="image-wrapper">
@@ -109,63 +109,21 @@ $this->title = 'TourBook.Biz';
             </div>
         </div>
             <div class="clear"></div>
-    </div>
+    </div -->
     <h2 class="title-main text-center">ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ</h2>
     <div class="container md">
-        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
-            <a class="no-border" href="#">
-                <div class="item">
-                   <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
-                      <div class="name"><div class="name-box">Китай</div></div>
-                   </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
-            <a class="no-border" href="#">
-                <div class="item">
-                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
-                        <div class="name"><div class="name-box">Китай</div></div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
-            <a class="no-border" href="#">
-                <div class="item">
-                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
-                        <div class="name"><div class="name-box">Китай</div></div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
-            <a class="no-border" href="#">
-                <div class="item">
-                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
-                        <div class="name"><div class="name-box">Китай</div></div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
-            <a class="no-border" href="#">
-                <div class="item">
-                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
-                        <div class="name"><div class="name-box">Китай</div></div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-4 box__max">
-            <a class="no-border" href="#">
-                <div class="item">
-                    <div class="image" style="background: url('/files/sity/1.jpg') no-repeat;">
-                        <div class="name"><div class="name-box">Китай</div></div>
-                    </div>
-                </div>
-            </a>
-        </div>
+
+        <?php
+            $country = \app\models\Country::find()->where('status = 1')->limit(6)->all();
+            foreach($country as $item){
+                echo \app\widgets\WCountry::widget([
+                    'model' => $item,
+                ]);
+            }
+
+        ?>
+
+
         <div class="clear"></div>
     </div>
       <div class="container md">
@@ -194,6 +152,17 @@ $this->title = 'TourBook.Biz';
    <h2 class="title-main text-center">РЕКОМЕНДУЕМЫЕ</h2>
     <div class="container md">
         <div class="masonry grid__m ">
+
+            <?php
+            $booking = \app\models\Booking::find()->where('status = 1')->limit(6)->all();
+            foreach($booking as $item){
+                echo \app\widgets\WBooking::widget([
+                    'model' => $item,
+                ]);
+            }
+
+            ?>
+
             <div class="item col-md-4 col-sm-6 ">
                 <div class="content-item">
                     <div class="image"><img src="/files/sity/1.jpg" alt="">

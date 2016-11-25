@@ -121,4 +121,24 @@ $(document).on('click','.sidebar .close',function(){
     $(".sidebar,.br-shadow").hide();
     $(".booking-button-m").fadeIn();
 
+
+});
+
+$(document).on('click','#BOOKNOW',function() {
+    $.ajax({
+        url: "/booking/addbook?booking_id=2",
+        type: "GET",
+        data: {},
+        dataType: "JSON",
+        success: function(response) {
+            //console.log(response);
+            if(response) {
+                alert('Успешно добавлено в корзину!');
+                window.location.reload();
+            }
+            else
+                console.error('Error adding book to basket');
+        }
+    });
+
 });

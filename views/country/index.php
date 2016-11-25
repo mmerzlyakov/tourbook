@@ -32,6 +32,26 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'status',
             [
                 'attribute' => 'status',
+                'label' => 'Photos',
+                'content' => function($model)
+                {
+                    $str = "";
+                    if(!empty($model->id)) {
+                        $images = \app\models\CountryImages::find()->where('country_id = ' . $model->id)->all();
+                        if (!empty($images)) {
+                            foreach ($images as $item) {
+                                $str.="<img src='/" . $item->path . "' width=80 id='"
+                                    . $item->id
+                                    . "'>";
+                            }
+                        }
+                    }
+                    return $str;
+                },
+
+            ],
+            [
+                'attribute' => 'status',
                 'content' => function($data){
                     return ($data['status']==1) ? 'Active' : 'Not active';
                 },

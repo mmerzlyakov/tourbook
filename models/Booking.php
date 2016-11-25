@@ -23,6 +23,7 @@ class Booking extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
     public static function tableName()
     {
         return 'booking';
@@ -34,12 +35,11 @@ class Booking extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type_id', 'price', 'images', 'status'], 'required'],
+            [['type_id', 'price', 'status'], 'required'],
             [['type_id', 'price', 'status', 'bonus', 'discount'], 'integer'],
-            [['name', 'description','options', 'images'], 'string'],
+            [['name', 'description','options'], 'string'],
         ];
     }
-
     /**
      * @inheritdoc
      */
