@@ -8,7 +8,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 AppAsset::register($this);
-
+//$session = Yii::$app->session;
 
 ?>
 <?php $this->beginPage() ?>
@@ -197,6 +197,18 @@ AppAsset::register($this);
         </div>
     </div>
 </div>
+<?php
+// Mini basket;
+\yii\bootstrap\Modal::begin([
+    'header' => '<h2>Корзина</h2>',
+    'id' => 'basket-modal',
+    'size' => 'modal-lg',
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
+                 <a href="/basket/" class="btn btn-success no-border" style="color:#fff;">Оформить заказ</a>'
+]);
+//echo app\widgets\WBasketModal::widget();
+\yii\bootstrap\Modal::end();
+?>
 <?php $this->endBody() ?>
 </body>
 </html>

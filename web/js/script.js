@@ -87,6 +87,7 @@ $(document).ready(function(){
         //   columnWidth: '.col-sm-6',
         //  percentPosition: true,
     });
+   /// $('#basket-modal').modal('show');
 });
 
 // plus;
@@ -133,8 +134,10 @@ $(document).on('click','#BOOKNOW',function() {
         success: function(response) {
             //console.log(response);
             if(response) {
-                alert('Успешно добавлено в корзину!');
-                window.location.reload();
+                // Окрываем мини корзина;
+                modalBasket(response)
+              //  alert('Успешно добавлено в корзину!');
+               // window.location.reload();
             }
             else
                 console.error('Error adding book to basket');
@@ -142,3 +145,9 @@ $(document).on('click','#BOOKNOW',function() {
     });
 
 });
+
+// Модальная окно корзины;
+function modalBasket(response){
+    $('#basket-modal .modal-body').html(response);
+    $('#basket-modal').modal();
+}
