@@ -35,10 +35,10 @@ class WCountry extends Widget {
            // var_dump($imagePath);die();
 ?>
             <div class="col-xs-6 col-sm-6 col-md-4 box__max">
-                <a class="no-border" href="#">
+                <a class="no-border" href="/site/buka">
                     <div class="item">
                         <div class="image" style="background: url('/<?=$imagePath->path?>') no-repeat;">
-                            <div class="name"><div class="name-box"><a href="/site/buka" class="white"><?=$this->model->name?></a></div></div>
+                            <div class="name"><div class="name-box"><a href="/site/buka" class="white no-border"><?=$this->model->name?></a></div></div>
                         </div>
                     </div>
                 </a>

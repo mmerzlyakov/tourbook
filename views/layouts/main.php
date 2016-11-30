@@ -119,6 +119,7 @@ AppAsset::register($this);
                       <?php else: ?>
                            <div class="login">
                                <div class="name"><?=Yii::$app->user->identity->name?> </div>
+                               <?=\app\widgets\WBasket::widget(['model' => Yii::$app->user->identity->getId()]);?>
                                <a class=" login white" href="/management">My Account</a> / <a class="reg white" href="/site/logout">Выйти </a>
                            </div>
                       <?php endif; ?>
