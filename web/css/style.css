@@ -31,7 +31,6 @@ div.container {
 }
 /*Header*/
 #header {
-
     padding: 10px 0px;
     background: #292929;
 }
@@ -83,7 +82,25 @@ div.container {
     font-size: 15px;
     margin-right: 5px;
 }
-    /*Center*/
+#header .basket {
+    color: #fff;
+    display: block;
+    float: right;
+    position: relative;
+}
+#header .basket div.count{
+    font-size: 12px;
+    font-weight: bold;
+    left: 19px;
+    padding: 0px 3px;
+    position: absolute;
+    text-align: center;
+    top: -11px;
+}
+#header .basket .glyphicon{
+    font-size: 17pt;
+}
+/*Center*/
 #center {
     flex: 1 0 auto;
 }
@@ -159,16 +176,21 @@ div.container {
 #main h1.title-main {
     color: #fff;
     left: 0;
-    position: absolute;
+    /*position: absolute;*/
+    display: table-caption;
     right: 0;
     text-align: center;
-    top: -130px;
+    top: -150px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px 0px;
 }
 #main div.search div.search-group {
     left: 0;
     position: absolute;
     right: 0;
-    top: 50%;
+   /* top: 50%;*/
+    top: 20%;
     margin: 0 auto;
 }
 #main div.search div.search-group input.search {
@@ -187,7 +209,7 @@ div.container {
     padding: 10px;
     position: absolute;
     right: 0;
-    top: 45px;
+    top: 150px;/*45px;*/
     width: 100%;
     z-index: 100;
     display: none;

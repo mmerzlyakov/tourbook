@@ -74,7 +74,6 @@ $this->title = 'TourBook.Biz';
                 <div class="item"><img src="/files/slider/slider1.png" alt="" class="rad" /> </div>
                 <div class="item"><img src="/files/slider/slider2.png" alt="" class="rad" /> </div>
                 <div class="item"><img src="/files/slider/slider3.png" alt="" class="rad" /> </div>
-                <div class="item"><img src="/files/slider/slider4.png" alt="" class="rad" /> </div>
             </div>
         </div>
     </div>
