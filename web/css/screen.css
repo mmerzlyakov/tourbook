@@ -13,7 +13,7 @@
 
 @media only screen and (max-width: 1200px) {
     #main div.search {
-        height: auto;
+        height: 350px;
     }
     .box__max div.carousel-box div.item .name-box {
         top: 75px;
@@ -50,6 +50,9 @@
         margin: 0 23px 10px 30px;
         padding-bottom: 18px;
         width: 50px;
+    }
+    #main .slick-slide img {
+        min-height: 100%;
     }
 }
 
@@ -111,7 +114,6 @@
     }
     #main h1.title-main {
         font-size: 30px;
-        top: -108px;
     }
     #main div.info {
         margin: 0px;
@@ -121,16 +123,24 @@
         background-position: center center;
     }
     #main .slick-slide img {
-
+        height: 100%;
+        width: 900px;
     }
+
     #navbar .navbar-toggle {
         position: relative;
         top: 13px;
+    }
+    #header .basket {
+        position: absolute;
+        right: 30px;
+        top: 20px;
     }
     /*Меню*/
     #navbar-collapse {
         padding: 15px 0;
         margin-top: 25px;
+        position: relative;
     }
     #navbar div.navigation {
         padding: 0 20px;

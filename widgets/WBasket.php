@@ -36,10 +36,11 @@ class WBasket extends Widget {
 //          echo Yii::$app->user->name;
 
                 $basket = Basket::find()->where('user_id = '.$this->model)->andWhere('status = 1')->all();
-                if(!empty($basket)) {
-
-?>
-                    <a href="/basket/"><?=count($basket);?> pcs. in Basket</a>
+                if(!empty($basket)) { ?>
+                    <a href="/basket/" class="basket no-border">
+                        <div class="count"><?=count($basket);?></div>
+                        <div class="glyphicon glyphicon-shopping-cart"></div>
+                    </a>
 
 <?php } else{ ?>
 

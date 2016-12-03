@@ -66,10 +66,11 @@ class BookingController extends BackendController
             $basket->booking_id = $booking_id;
             $basket->status=1;
 
-            if($basket->save())
+            if($basket->save()) {
                 return true;
-            else
+            }else {
                 return json_encode($basket->errors);
+            }
         }
         else return false;
 
