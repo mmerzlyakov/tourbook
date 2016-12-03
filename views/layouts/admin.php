@@ -109,7 +109,7 @@ AppAsset::register($this);
     <div class="clear"></div>
 </div>
 <div id="center">
-	<div class="container">
+    <div class="container">
         <br><br><br>
 			 <?=$content?>
 	</div>
