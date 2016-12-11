@@ -26,8 +26,36 @@ $this->params['breadcrumbs'][] = $this->title;
 
           //  'id',
             'name',
-            'description:ntext',
-            'full_description:ntext',
+            [
+                'attribute' => 'description',
+                'format' => 'raw',
+                'content' => function($data){
+
+                    return  htmlentities(substr($data['description'], 0, 500), ENT_QUOTES);
+
+                }
+
+            ],
+            [
+                'attribute' => 'full_description',
+                'format' => 'raw',
+                'content' => function($data){
+
+                    return  htmlentities(substr($data['full_description'], 0, 500), ENT_QUOTES);
+
+                }
+
+            ],
+            /*[
+                'attribute' => 'full_description',
+                'format' => 'raw',
+                'content' => function($data){
+                    return substr($data['full_description'], 0, 3000);
+                }
+            ],*/
+
+//            'description:ntext',
+  //          'full_description:ntext',
             'options:ntext',
             // 'status',
             [
@@ -46,6 +74,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             }
                         }
                     }
+                    // $string = substr($str, 0, 200);
+
                     return $str;
                 },
 

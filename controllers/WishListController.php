@@ -13,7 +13,7 @@ use yii\filters\AccessControl;
 /**
  * WhisListController implements the CRUD actions for WishList model.
  */
-class WishListController extends BackendController
+class WishlistController extends BackendController
 {
     /**
      * @inheritdoc

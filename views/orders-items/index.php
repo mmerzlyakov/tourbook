@@ -32,7 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'discount',
             // 'comment:ntext',
             // 'status_id',
-            // 'status',
+            [
+                'attribute'=>'status',
+                'label' => 'Статус',
+                'content' => function($model){
+                    return $model->status ? "<span class='text-success'>Активный</span>" : "<span class='text-danger'>Не активный</span>";
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

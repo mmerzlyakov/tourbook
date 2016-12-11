@@ -12,11 +12,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?php //= $form->field($model, 'user_id')->textInput() ?>
 
     <?= $form->field($model, 'wish')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

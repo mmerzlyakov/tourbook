@@ -31,9 +31,10 @@ class country extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'description', 'full_description', 'options', 'status'], 'required'],
-            [['description', 'full_description', 'options', 'flag'], 'string'],
-            [['status'], 'integer'],
+            [['description', 'full_description', 'options', ], 'string'],
+            [['status', 'language'], 'integer'],
             [['name'], 'string', 'max' => 255],
+            [['currency'], 'safe'],
         ];
     }
 
@@ -48,7 +49,9 @@ class country extends \yii\db\ActiveRecord
             'description' => Yii::t('app', 'Description'),
             'full_description' => Yii::t('app', 'Full Description'),
             'options' => Yii::t('app', 'Options'),
+            'language' => Yii::t('app', 'We`re working on this language'),
             'status' => Yii::t('app', 'Status'),
+            'currency' => Yii::t('app', 'Currency'),
         ];
     }
 }

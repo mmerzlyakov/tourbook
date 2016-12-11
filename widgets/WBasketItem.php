@@ -38,7 +38,7 @@ class WBasketItem extends Widget {
 
                 <div class="item col-md-4 col-sm-6">
                     <div class="content-item">
-                        <div class="image"><a href="/site/buka"><img style="width: 250px; !important;" src="/<?= $imagePath->path ?>" alt=""></a>
+                        <div class="image"><a href="/site/booking?id=<?=$this->model->id?>"><img style="width: 250px; !important;" src="/<?= $imagePath->path ?>" alt=""></a>
                             <div class="glyphicon glyphicon-heart like"></div>
                             <div class="money">
                                 <div>US</div>
