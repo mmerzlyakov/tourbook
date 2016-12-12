@@ -12,6 +12,8 @@ use dosamigos\tinymce\TinyMce;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+
+
 <div class="booking-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
@@ -30,10 +32,17 @@ use dosamigos\tinymce\TinyMce;
     <?= $form->field($model, 'bonus')->textInput() ?>
     <?= $form->field($model, 'discount')->textInput()->label('Discount %') ?>
 
+    <?= $form->field($model, 'coords_lat')->hiddenInput(['id' => 'coords_lat'])->label('') ?>
+    <?= $form->field($model, 'coords_lng')->hiddenInput(['id' => 'coords_lng'])->label('') ?>
+
+    <div id="map" style="width: 100%; height: 200px;"></div>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') :
                 Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
+
+
 
     <?php ActiveForm::end(); ?>
 
@@ -78,3 +87,54 @@ use dosamigos\tinymce\TinyMce;
     ?>
 
 </div>
+
+<script type="text/javascript">
+
+    var map;
+    function initMap() {
+
+        <?php if(!empty($model->coords_lat) && !empty($model->coords_lng)){ ?>
+
+            var myLatlng = new google.maps.LatLng(<?=$model->coords_lat?>,<?=$model->coords_lng?>);
+
+        <?php } else { ?>
+
+        var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+
+        <?php } ?>
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: myLatlng,
+            zoom: 12
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title: "<?=$model->name?>"
+        });
+
+        // To add the marker to the map, call setMap();
+        marker.setMap(map);
+
+        google.maps.event.addListener(map, "click", function(event) {
+            var lat = event.latLng.lat();
+            var lng = event.latLng.lng();
+
+            $('#coords_lat').val(lat);
+            $('#coords_lng').val(lng);
+            // populate yor box/field with lat, lng
+            alert("Yo`ve choosen new coordinates\nLat=" + lat + "; Lng=" + lng);
+
+            /*var infowindow = new google.maps.InfoWindow({
+                content: 'You`ve choosen new coordinates for this booking: ['+lat+']['+lng+']';
+            });*/
+
+        });
+    }
+
+
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlrEqXZtD1KWOgkKpUv6JCwh1N4YdC4vU&callback=initMap">
+</script>

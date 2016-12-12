@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Baskets');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="basket-index">
+<p class="basket-index">
     <div class="container">
         <BR><BR><BR>
 
@@ -39,8 +39,35 @@ $this->params['breadcrumbs'][] = $this->title;
               }
 
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+           // ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header'=>'Действия',
+                'headerOptions' => ['width' => '80'],
+                'template' => '{delete}',
+                'buttons' => [
+                    'view' => function ($url,$model) {
+                        return
+                            Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'id' => $model->id], [
+                                'class' => 'btn btn-danger',
+                                'data' => [
+                                    'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                                    'method' => 'post',
+                                ],
+                            ]);
+                            //Html::a('<span class="glyphicon glyphicon-trash"></span>','delete?id='.$model->id);
+                    },
+                ],
+
+            ],
+
         ],
     ]); ?>
+
+<p>
+    <?= Html::a(Yii::t('app', 'Перейти к оплате'), ['payment'], ['class' => 'btn btn-success']) ?>
+</p>
+
     </div>
+
 </div>

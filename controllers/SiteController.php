@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Booking;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -122,10 +123,30 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
     public function actionBuka()
     {
         return $this->render('buka');
     }
+
+
+
+    public function actionBooking($id)
+    {
+        if(!empty($id))
+            return $this->render('booking',[
+                'model' => Booking::findOne($id),
+            ]);
+        else
+            return $this->render('/site/error',
+                [
+                    'name' => 'No such booking found!',
+                    'message' => 'Cannot find booking ID',
+                ]);
+    }
+
+    
+
     public function actionSignup()
     {
         $model = new \app\models\SignupForm();

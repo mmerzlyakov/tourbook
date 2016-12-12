@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Basket;
 use app\models\BookingImages;
+use app\models\WishList;
 use Yii;
 use app\models\Booking;
 use app\models\BookingSearch;
@@ -40,10 +41,17 @@ class BookingController extends BackendController
                             'view',
                             'delete',
                             'upload',
-                            'addbook',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
+                    ],
+                    [
+                        'actions' => [
+                            'addbook',
+                            'addwish',
+                        ],
+                        'allow' => true,
+                        'roles' => ['GodMode','user', 'admin', 'operator','supplier'],
                     ],
                 ],
             ],
@@ -67,9 +75,52 @@ class BookingController extends BackendController
             $basket->status=1;
 
             if($basket->save()) {
-                return true;
+                //return true;
+
+                $currentBasket = Basket::find()->where('user_id = '.$basket->user_id)
+                                                ->andWhere('status = 1')->all();
+
+                //var_dump($currentBasket);die();
+
+                $currentBasketData="";
+                $currentBasketAmount=0;
+
+                foreach ($currentBasket as $item) {
+                    $booking = Booking::find()->where('id = '.$item->booking_id)->one();
+
+                    //var_dump($booking);die();
+
+                    $currentBasketData.=$booking->name;
+                    $currentBasketData.=" (".$booking->price."$)<br>";
+                    $currentBasketAmount+=$booking->price;
+                }
+
+                $currentBasketData.="<br> Amount: ".$currentBasketAmount."<br>";
+
+                //$booking = Booking::find()->where('id = '.$booking_id)->one();
+                return json_encode($currentBasketData);
             }else {
                 return json_encode($basket->errors);
+            }
+        }
+        else return false;
+
+    }
+
+
+    public function actionAddwish($booking_id)
+    {
+        $user = Yii::$app->user->identity->getId();
+        if(!empty($user) && !empty($booking_id)){
+            $wish = new WishList();
+            $wish->user_id = Yii::$app->user->identity->getId();
+            $wish->wish = $booking_id;
+            $wish->status=1;
+
+            if($wish->save()) {
+                return true;
+            }else {
+                return json_encode($wish->errors);
             }
         }
         else return false;

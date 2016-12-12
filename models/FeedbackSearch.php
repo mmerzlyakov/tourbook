@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\basket;
+use app\models\Feedback;
 
 /**
- * BasketSearch represents the model behind the search form about `app\models\basket`.
+ * FeedbackSearch represents the model behind the search form about `app\models\Feedback`.
  */
-class BasketSearch extends basket
+class FeedbackSearch extends Feedback
 {
     /**
      * @inheritdoc
@@ -18,7 +18,8 @@ class BasketSearch extends basket
     public function rules()
     {
         return [
-            [['id', 'user_id', 'booking_id', 'status'], 'integer'],
+            [['id', 'user_id', 'booking_id', 'rate', 'status'], 'integer'],
+            [['description', 'date'], 'safe'],
         ];
     }
 
@@ -40,8 +41,7 @@ class BasketSearch extends basket
      */
     public function search($params)
     {
-        $user = Yii::$app->user->identity->getId();
-        $query = basket::find()->where('user_id = '.$user);
+        $query = Feedback::find();
 
         // add conditions that should always apply here
 
@@ -62,38 +62,11 @@ class BasketSearch extends basket
             'id' => $this->id,
             'user_id' => $this->user_id,
             'booking_id' => $this->booking_id,
+            'rate' => $this->rate,
             'status' => $this->status,
         ]);
 
-        return $dataProvider;
-    }
-
-    public function searchActiveBasket($params)
-    {
-        $user = Yii::$app->user->identity->getId();
-        $query = basket::find()->where('user_id = '.$user);
-
-        // add conditions that should always apply here
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
-
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
-
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'user_id' => $this->user_id,
-            'booking_id' => $this->booking_id,
-            'status' => 1,
-        ]);
+        $query->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

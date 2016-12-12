@@ -43,28 +43,64 @@ AppAsset::register($this);
                 <div class="hidden-xs col-sm-6 col-md-3 group col-lg-push-4 col-md-push-3">
                     <div class="row">
                         <div class="dropdown">
-                            <a id="drop1" href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown"><img class="flag" src="/images/flag/russia.jpg">RUS<b class="caret"></b></a>
+
+                            <?php
+
+
+                            $countiesFlags = \app\models\Country::find()->where('language = 1')->andWhere('status = 1')->all();
+
+                            $flagsImages = [];
+                            $index = 0;
+                            foreach ($countiesFlags as $item){
+
+                                if(empty($index))
+                                    $index = $item->id;
+
+                                $temp = \app\models\CountryFlags::find()->where('country_id = '.$item->id)->one();
+
+                                $flagsImages[$item->id]['id'] = $item->id;
+                                $flagsImages[$item->id]['name'] = $item->name;
+                                $flagsImages[$item->id]['path'] = $temp->path;
+                                $flagsImages[$item->id]['currency'] = $item->currency;
+                            }
+
+
+//                            var_dump($flagsImages);die();
+
+                            ?>
+
+                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown">
+
+                                Language  <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30"><?=$flagsImages[$index]['name']?><b class="caret"></b></a>
+
                             <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
+
+                                <?php foreach($flagsImages as $item){ ?>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>"><?=$item['name']?></a></li>
+                                <?php } ?>
                             </ul>
+
+
                         </div>
-                        <div class="dropdown">
+
+                        <!-- div class="dropdown">
                             <a id="drop2" href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">СТРАНА <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Действие</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Другое действие</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Здесь еще что-то</a></li>
                             </ul>
-                        </div>
+                        </div -->
                         <div class="dropdown">
-                            <a id="drop3" href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">RUB <b class="caret"></b></a>
+                            <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
+
                             <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">RUB</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">EUR</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CNY</a></li>
+
+                                <?php foreach($flagsImages as $item){ ?>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?=$item['currency']?></a></li>
+                                <?php } ?>
                             </ul>
+
                         </div>
                     </div>
                 </div>
@@ -88,28 +124,64 @@ AppAsset::register($this);
                     <div class="content-nav">
                         <div class="drows">
                             <div class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown"><img class="flag" src="/images/flag/russia.jpg">RUS<b class="caret"></b></a>
+
+                                <?php
+
+
+                                    $countiesFlags = \app\models\Country::find()->where('language = 1')->andWhere('status = 1')->all();
+
+                                    $flagsImages = [];
+                                    $index = 0;
+                                    foreach ($countiesFlags as $item){
+
+                                        if(empty($index))
+                                            $index = $item->id;
+
+                                        $temp = \app\models\CountryFlags::find()->where('country_id = '.$item->id)->one();
+
+                                        $flagsImages[$item->id]['id'] = $item->id;
+                                        $flagsImages[$item->id]['name'] = $item->name;
+                                        $flagsImages[$item->id]['path'] = $temp->path;
+                                        $flagsImages[$item->id]['currency'] = $item->currency;
+                                    }
+
+
+                               //     var_dump($flagsImages);die();
+
+                                ?>
+
+                                <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown">
+
+                                Language <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30"><?=$flagsImages[$index]['name']?><b class="caret"></b></a>
+
                                 <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" src="/images/flag/russia.jpg">RUS</a></li>
+
+                                    <?php foreach($flagsImages as $item){ ?>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>"><?=$item['name']?></a></li>
+                                    <?php } ?>
                                 </ul>
+                                
+                                
                             </div>
-                            <div class="dropdown">
+
+                            <!-- div class="dropdown">
                                 <a  href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">СТРАНА <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Действие</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Другое действие</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="http://bootstrap-ru.ru" target="_blank">Здесь еще что-то</a></li>
                                 </ul>
-                            </div>
+                            </div -->
                             <div class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown">RUB <b class="caret"></b></a>
+                                <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
+
                                 <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">RUB</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">EUR</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CNY</a></li>
+
+                                    <?php foreach($flagsImages as $item){ ?>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?=$item['currency']?></a></li>
+                                    <?php } ?>
                                 </ul>
+
                             </div>
                         </div>
                        <?php if(Yii::$app->user->isGuest): ?>
@@ -205,8 +277,15 @@ AppAsset::register($this);
     'id' => 'basket-modal',
     'size' => 'modal-lg',
     'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
-                 <a href="/basket/" class="btn btn-success no-border" style="color:#fff;">Оформить заказ</a>'
+                 <a href="/basket/payment" class="btn btn-success no-border" style="color:#fff;">Оформить заказ</a>'
 ]);
+
+?>
+
+
+
+<?php
+
 //echo app\widgets\WBasketModal::widget();
 \yii\bootstrap\Modal::end();
 ?>

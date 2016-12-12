@@ -26,6 +26,9 @@ echo Menu::widget([
         // not just as 'controller' even if default action is used.
         ['label' => 'Home', 'url' => ['site/index']],
         // 'Products' menu item will be selected as long as the route is 'product/index'
+        ['label' => 'Tags management', 'url' => ['tags/index'], 'items' => [
+            ['label' => 'New tags', 'url' => ['tags/create']],
+        ]],
         ['label' => 'Country management', 'url' => ['country/index'], 'items' => [
             ['label' => 'New country', 'url' => ['country/create']],
         ]],
@@ -44,6 +47,7 @@ echo Menu::widget([
         ['label' => 'Users management', 'url' => ['user/index'], 'items' => [
             ['label' => 'New user', 'url' => ['user/create']],
         ]],
+        ['label' => 'Feedback', 'url' => ['feedback/index']],
         ['label' => 'Reports', 'url' => ['reports/index']],
         ['label' => 'Logout', 'url' => ['site/logout']],
     ],
@@ -52,7 +56,30 @@ echo Menu::widget([
     ],
 ]);
 
+    echo "<h2>Users Menu<br>(for your consideration)</h2>";
+
+    echo Menu::widget([
+        'items' => [
+            // Important: you need to specify url as 'controller/action',
+            // not just as 'controller' even if default action is used.
+            ['label' => 'My Account', 'url' => ['site/index']],
+            ['label' => 'Booking', 'url' => ['site/index']],
+            ['label' => 'Wish list', 'url' => ['site/index']],
+            ['label' => 'Credits', 'url' => ['site/index']],
+            ['label' => 'Invite friends', 'url' => ['site/index']],
+            ['label' => 'Previews', 'url' => ['site/index']],
+            ['label' => 'Settings', 'url' => ['site/index']],
+            ['label' => 'Logout', 'url' => ['site/logout']],
+
+        ],
+        'options'=>[
+            'class' => 'nav-menu-left'
+        ],
+    ]);
+
+
 }
+
 if(\Yii::$app->user->can('operator')){
 
 echo "<h2>Welcome to operators's home page</h2>";

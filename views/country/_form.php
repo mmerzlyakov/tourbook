@@ -28,15 +28,57 @@ use dosamigos\tinymce\TinyMce;
         'options' => ['rows' => 6],
     ]) ?>
 
+    <?= $form->field($model, 'currency')->textInput(['rows' => 6]) ?>
     <?= $form->field($model, 'options')->textInput(['rows' => 6]) ?>
-    <?= $form->field($model, 'flag')->fileInput() ?>
+    <?php // = $form->field($model, 'flag')->fileInput() ?>
     <?= $form->field($model, 'status')->checkbox() ?>
+    <?= $form->field($model, 'language')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
+
+
+    <?php
+    //output images
+    if(!empty($model->id) && !empty($model->language)) {
+        $images = \app\models\CountryFlags::find()->where('country_id = ' . $model->id)->all();
+        if (!empty($images)) {
+            ?>
+
+            <h3>Флаг</h3>
+            <?php
+
+            foreach ($images as $item) {
+                echo "<img src='/" . $item->path . "' width=250 id='"
+                    . $item->id
+                    . "'>";
+            }
+        }
+    }
+    //add images
+    if(!empty($model->id) && !empty($model->language)) {
+        ?>
+
+        <h3>Добавить флаг</h3>
+
+        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
+
+        echo $form->field($model_file_flag, 'imageFileFlag[]')->widget(
+            FileInput::classname(), [
+                'options' => ['multiple' => true],
+                'pluginOptions' => ['previewFileType' => 'any',
+                                    'uploadUrl' => Url::to(
+                                        ['/country/upload-flag?model_id=' . $model->id]
+                                    )],
+            ]
+        );
+
+        ActiveForm::end();
+    }
+    ?>
 
 
     <?php

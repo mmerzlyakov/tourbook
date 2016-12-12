@@ -12,7 +12,8 @@ use yii\filters\AccessControl;
 use app\models\File;
 use yii\web\UploadedFile;
 use app\models\CountryImages;
-
+use app\models\FileFlag;
+use app\models\CountryFlags;
 /**
  * CountryController implements the CRUD actions for Country model.
  */
@@ -35,9 +36,18 @@ class CountryController extends BackendController
                             'view',
                             'delete',
                             'upload',
+                            'upload-flag',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator'],
+                    ],
+                    [
+                        'actions' => [
+                            'country-view',
+                            //'addwish',
+                        ],
+                        'allow' => true,
+                        'roles' => ['GodMode','user', 'admin', 'operator','supplier'],
                     ],
                 ],
             ],
@@ -73,6 +83,29 @@ class CountryController extends BackendController
         return false;
     }
 
+
+    public function actionUploadFlag($model_id)
+    {
+        $model = new FileFlag();
+        if (Yii::$app->request->isPost) {
+            $model->imageFileFlag = UploadedFile::getInstances($model, 'imageFileFlag');
+            $path = $model->upload($model_id);
+
+            $str = str_replace('\\','',$path);
+            $str = str_replace('[','',$str);
+            $str = str_replace('"','',$str);
+            $str = str_replace(']','',$str);
+
+            $countryFlag = new CountryFlags();
+            $countryFlag->status=1;
+            $countryFlag->path=$str;
+            $countryFlag->country_id=$model_id;
+            $countryFlag->save();
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Lists all Country models.
      * @return mixed
@@ -93,9 +126,9 @@ class CountryController extends BackendController
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionCountryView($id)
     {
-        return $this->render('view', [
+        return $this->render('country-view', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -108,6 +141,7 @@ class CountryController extends BackendController
     public function actionCreate()
     {
         $model_file = new File();
+        $model_file_flag = new FileFlag();
         $model = new Country();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -116,6 +150,7 @@ class CountryController extends BackendController
             return $this->render('create', [
                 'model' => $model,
                 'model_file' => $model_file,
+                'model_file_flag' => $model_file_flag,
             ]);
         }
     }
@@ -129,6 +164,7 @@ class CountryController extends BackendController
     public function actionUpdate($id)
     {
         $model_file = new File();
+        $model_file_flag = new FileFlag();
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -137,6 +173,7 @@ class CountryController extends BackendController
             return $this->render('update', [
                 'model' => $model,
                 'model_file' => $model_file,
+                'model_file_flag' => $model_file_flag,
             ]);
         }
     }

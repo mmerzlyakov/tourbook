@@ -125,9 +125,42 @@ $(document).on('click','.sidebar .close',function(){
 
 });
 
-$(document).on('click','#BOOKNOW',function() {
+$(document).on('click','#MAKEWISH',function() {
+
+    var id = $('#BOOKID').val();
+
+ //   alert(id);
+
     $.ajax({
-        url: "/booking/addbook?booking_id=2",
+        url: "/booking/addwish?booking_id="+id,
+        type: "GET",
+        data: {},
+        dataType: "JSON",
+        success: function(response) {
+            //console.log(response);
+            if(response) {
+                alert('Успешно добавлено в WishList!');
+                // Окрываем мини корзина;
+               // modalBasket(response);
+                //  alert('Успешно добавлено в корзину!');
+                // window.location.reload();
+            }
+            else
+                console.error('Error adding book to basket');
+        }
+    });
+
+});
+
+
+$(document).on('click','#BOOKNOW',function() {
+
+    var id = $('#BOOKID').val();
+
+  //  alert(id);
+
+    $.ajax({
+        url: "/booking/addbook?booking_id="+id,
         type: "GET",
         data: {},
         dataType: "JSON",
@@ -135,8 +168,8 @@ $(document).on('click','#BOOKNOW',function() {
             //console.log(response);
             if(response) {
                 // Окрываем мини корзина;
-                modalBasket(response)
-              //  alert('Успешно добавлено в корзину!');
+                modalBasket(response);
+                //alert('Успешно добавлено в WishList!');
                // window.location.reload();
             }
             else
@@ -149,5 +182,6 @@ $(document).on('click','#BOOKNOW',function() {
 // Модальная окно корзины;
 function modalBasket(response){
     $('#basket-modal .modal-body').html(response);
+    //$('#basket-modal .modal-body').append(' Тут данные из корзины чувачка');
     $('#basket-modal').modal();
 }

@@ -3,17 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\basket;
-use app\models\BasketSearch;
+use app\models\Tags;
+use app\models\TagsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * BasketController implements the CRUD actions for basket model.
+ * TagsController implements the CRUD actions for Tags model.
  */
-class BasketController extends Controller
+class TagsController extends BackendController
 {
     public function behaviors()
     {
@@ -33,66 +33,36 @@ class BasketController extends Controller
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
                     ],
-                    [
-                        'actions' => [
-                            'index',
-                            'delete',
-                            'payment',
-                        ],
-                        'allow' => true,
-                        'roles' => ['GodMode','user', 'admin', 'operator','supplier'],
-                    ],
                 ],
             ],
 
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                  //  'delete' => ['GET'],
+                    //  'delete' => ['GET'],
                 ],
             ],
         ];
     }
 
+
     /**
-     * Lists all basket models.
+     * Lists all Tags models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $user = Yii::$app->user->identity->getId();
+        $searchModel = new TagsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        if(!empty($user)) {
-            $searchModel = new BasketSearch();
-            $dataProvider = $searchModel->searchActiveBasket(
-                Yii::$app->request->queryParams
-            );
-
-            return $this->render(
-                'index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-            ]
-            );
-        }
-        else
-            return $this->render('empty');
-    }
-
-    /**
-     * Displays a single basket model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionPayment($basket_id = null)
-    {
-        return $this->render('payment', [
-           // 'model' => $this->findModel($basket_id),
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single basket model.
+     * Displays a single Tags model.
      * @param integer $id
      * @return mixed
      */
@@ -104,13 +74,13 @@ class BasketController extends Controller
     }
 
     /**
-     * Creates a new basket model.
+     * Creates a new Tags model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new basket();
+        $model = new Tags();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -122,7 +92,7 @@ class BasketController extends Controller
     }
 
     /**
-     * Updates an existing basket model.
+     * Updates an existing Tags model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -141,30 +111,28 @@ class BasketController extends Controller
     }
 
     /**
-     * Deletes an existing basket model.
+     * Deletes an existing Tags model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        $model = $this->findModel($id);
-        $model->status = 0;//->delete();
-        $model->save();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the basket model based on its primary key value.
+     * Finds the Tags model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return basket the loaded model
+     * @return Tags the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = basket::findOne($id)) !== null) {
+        if (($model = Tags::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

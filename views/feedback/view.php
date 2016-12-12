@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\basket */
+/* @var $model app\models\Feedback */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Baskets'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Feedbacks'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="basket-view">
+<div class="feedback-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,6 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'user_id',
             'booking_id',
+            'description:ntext',
+            'rate',
             'status',
         ],
     ]) ?>
