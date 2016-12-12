@@ -29,6 +29,7 @@ class TagsController extends BackendController
                             'view',
                             'delete',
                             'upload',
+                            'get-tags-list',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
@@ -43,6 +44,12 @@ class TagsController extends BackendController
                 ],
             ],
         ];
+    }
+
+    public function actionGetTagsList($q = null, $id = null){
+        $out = ['options' => ['id' => '0', 'text' => 'reddings']];
+
+        return json_encode($out);
     }
 
 
