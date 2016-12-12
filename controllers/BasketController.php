@@ -33,6 +33,7 @@ class BasketController extends Controller
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
                     ],
+
                     [
                         'actions' => [
                             'index',

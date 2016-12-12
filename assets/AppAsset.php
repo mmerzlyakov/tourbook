@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         'css/global.css',
         'css/screen.css',
 
+
     ];
     public $js = [
         'js/script.js',

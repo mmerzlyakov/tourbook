@@ -60,7 +60,12 @@ AppAsset::register($this);
 
                             $flagsImages[$item->id]['id'] = $item->id;
                             $flagsImages[$item->id]['name'] = $item->name;
-                            $flagsImages[$item->id]['path'] = $temp->path;
+
+                            if(!empty($temp->path))
+                                $flagsImages[$item->id]['path'] = $temp->path;
+                            else
+                                $flagsImages[$item->id]['path'] = "";
+
                             $flagsImages[$item->id]['currency'] = $item->currency;
                         }
 

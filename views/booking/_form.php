@@ -10,9 +10,27 @@ use dosamigos\tinymce\TinyMce;
 /* @var $this yii\web\View */
 /* @var $model app\models\Booking */
 /* @var $form yii\widgets\ActiveForm */
+
+
+/*******
+ * View
+ ******/
+
+// The controller action that will render the list
+// $url = \yii\helpers\Url::to(['city-list']);
+
+// The widget
+// use kartik\widgets\Select2; // or kartik\select2\Select2
+
+use kartik\select2\Select2;
+use yii\web\JsExpression;
+// use app\models\City;
+// Get the initial city description
+// $cityDesc = empty($model->city) ? '' : City::findOne($model->city)->description;
+// The controller action that will render the list
+$url = \yii\helpers\Url::to(['/tags/get-tags-list']);
+
 ?>
-
-
 
 <div class="booking-form">
 
@@ -27,7 +45,55 @@ use dosamigos\tinymce\TinyMce;
     ]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
-    <?= $form->field($model, 'options')->textInput() ?>
+    <?= $form->field($model, 'options')->textInput(['class' => 'tags-input']) ?>
+
+    <?php
+/*
+    $data = [
+        "red" => "red",
+        "green" => "green",
+        "blue" => "blue",
+        "orange" => "orange",
+        "white" => "white",
+        "black" => "black",
+        "purple" => "purple",
+        "cyan" => "cyan",
+        "teal" => "teal"
+    ];
+
+    echo $form->field($model, 'options')->widget(Select2::classname(), [
+        'data' => $data,
+        'options' => ['placeholder' => 'Select a color ...',],
+        'pluginOptions' => [
+            'tags' => true,
+            'tokenSeparators' => [',', ' '],
+            'maximumInputLength' => 10
+        ],
+    ])->label('Tag Multiple');
+*/
+
+    echo $form->field($model, 'options[]')->widget(Select2::classname(), [
+        'initValueText' => 'Tags', //$cityDesc, // set the initial display text
+        'options' => ['placeholder' => 'Search for a tags ...', ],//'multiple' => true,
+        'pluginOptions' => [
+        'allowClear' => true,
+        'minimumInputLength' => 1,
+            'language' => [
+                'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
+            ],
+            'ajax' => [
+                'url' => $url,
+                'dataType' => 'json',
+                'data' => new JsExpression('function(params) { return {q:params.term}; }')
+            ],
+            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+            'templateResult' => new JsExpression('function(options) { return options.text; }'),
+            'templateSelection' => new JsExpression('function (options) { return options.text; }'),
+        ],
+    ]);
+
+    ?>
+
     <?= $form->field($model, 'status')->checkbox()->label('Active?') ?>
     <?= $form->field($model, 'bonus')->textInput() ?>
     <?= $form->field($model, 'discount')->textInput()->label('Discount %') ?>
@@ -58,9 +124,11 @@ use dosamigos\tinymce\TinyMce;
             <?php
 
             foreach ($images as $item) {
-                echo "<img src='/" . $item->path . "' width=250 id='"
+
+
+                echo "<div style='margin: 5px; position: relative; display: inline-block;'><div class='close' style='opacity: 1; font-size: 26pt; color: red; position: absolute; right: 0px; top 0px; ' onClick='return BookImageDelete('. $item->id .')'>&times;</div><img src='/" . $item->path . "' width=250 id='"
                     . $item->id
-                    . "'>";
+                    . "'></div>";
             }
         }
     }
