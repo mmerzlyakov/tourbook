@@ -45,9 +45,75 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
     ]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
-    <?= $form->field($model, 'options')->textInput(['class' => 'tags-input']) ?>
+    <?php //= $form->field($model, 'options')->textInput() ?>
 
     <?php
+    $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
+
+    // Get the initial city description
+    //$tagsDesc = empty($model->tags) ? '' : \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->one()->description;
+
+    //$data=['5','4','3','2'];
+  //  var_dump($data);
+
+
+    $tagsLinks = \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->andWhere('status = 1')->all();
+    $arr=[];
+    foreach ($tagsLinks as $i=>$item)
+        $arr[]=\app\models\Tags::find()->select('name')->where('id = '.$item->tag_id)->andWhere('status = 1')->one()->name;
+
+    $model->tags =$arr;
+    echo $form->field($model, 'tags')->widget(Select2::classname(), [
+        'initValueText' => $model->tags,
+        'options' => ['placeholder' => 'Search for a tags ...', 'multiple' => true],
+        'id' => 'tagsLinks',
+        'pluginOptions' => [
+            'allowClear' => true,
+            'minimumInputLength' => 2,
+            'language' => [
+                'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
+            ],
+            'ajax' => [
+                'url' => $url,
+                'dataType' => 'json',
+                'cache' => true,
+                'data' => new JsExpression('function(params) { return {q:params.term}; }')
+            ],
+            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+            'templateResult' => new JsExpression('function(item) { return item.text; }'),
+            'templateSelection' => new JsExpression('function (item) { return item.text; }'),
+        ],
+        'pluginEvents' => [
+            'select2:unselecting' =>
+                new JsExpression('
+                function(e) { 
+                    //console.log(e.params.args.data);
+                     if(confirm(\'Are you sure?\')){
+                    $.get(\'/tags/del-book-links\',
+                    {
+                        tag_name: e.params.args.data.id, 
+                        booking_id: '.$model->id.'
+                    })
+                    .done(function( data ) { if(data==1)alert(\'Successfully deleted!\'); else alert(data); });
+                    
+                } else { alert(\'Canceled\'); return false; }}'),
+
+            'select2:selecting' =>
+                new JsExpression(
+                'function(e) { 
+                    //console.log(e.params.args.data);
+                     if(confirm(\'Are you sure?\')){
+                    $.get(\'/tags/add-book-links\',
+                    {
+                        tag_id: e.params.args.data.id, 
+                        booking_id: '.$model->id.'
+                    })
+                    .done(function( data ) { if(data==1)alert(\'Successfully added!\'); else alert(data); });
+                }else { alert(\'Canceled\');  return false; } }'),
+        ],
+    ]);
+
+
 /*
     $data = [
         "red" => "red",
@@ -61,9 +127,11 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
         "teal" => "teal"
     ];
 
-    echo $form->field($model, 'options')->widget(Select2::classname(), [
+    // Tagging support Multiple
+    $model->tags =  ['red', 'green']; // initial value
+    echo $form->field($model, 'tags')->widget(Select2::classname(), [
         'data' => $data,
-        'options' => ['placeholder' => 'Select a color ...',],
+            'options' => ['placeholder' => 'Select a color ...', 'multiple' => true],
         'pluginOptions' => [
             'tags' => true,
             'tokenSeparators' => [',', ' '],
@@ -71,27 +139,6 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
         ],
     ])->label('Tag Multiple');
 */
-
-    echo $form->field($model, 'options[]')->widget(Select2::classname(), [
-        'initValueText' => 'Tags', //$cityDesc, // set the initial display text
-        'options' => ['placeholder' => 'Search for a tags ...', ],//'multiple' => true,
-        'pluginOptions' => [
-        'allowClear' => true,
-        'minimumInputLength' => 1,
-            'language' => [
-                'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
-            ],
-            'ajax' => [
-                'url' => $url,
-                'dataType' => 'json',
-                'data' => new JsExpression('function(params) { return {q:params.term}; }')
-            ],
-            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-            'templateResult' => new JsExpression('function(options) { return options.text; }'),
-            'templateSelection' => new JsExpression('function (options) { return options.text; }'),
-        ],
-    ]);
-
     ?>
 
     <?= $form->field($model, 'status')->checkbox()->label('Active?') ?>

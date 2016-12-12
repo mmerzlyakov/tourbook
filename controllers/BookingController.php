@@ -242,6 +242,9 @@ class BookingController extends BackendController
         $model = Booking::find()->where('id = '.$id)->one();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            //var_dump($model);die();
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
