@@ -28,7 +28,7 @@ class BookingImages extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['booking_id','status', 'path', 'imageFile'], 'safe'],
+            [['booking_id','status', 'path', 'imageFile', 'main'], 'safe'],
         ];
     }
 
@@ -42,6 +42,7 @@ class BookingImages extends \yii\db\ActiveRecord
             'booking_id' => Yii::t('app', 'Booking'),
             'imageFile' => Yii::t('app', 'imageFile'),
             'path' => Yii::t('app', 'Path'),
+            'main' => Yii::t('app', 'Main'),
             'status' => Yii::t('app', 'Status'),
         ];
     }
