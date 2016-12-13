@@ -58,6 +58,9 @@
     button.green, button.blue {
         padding: 7px 25px;
     }
+    .navbar-inverse .navbar-toggle {
+        border:none;
+    }
     #navbar .btn-group {
         position: absolute;
         top: 0;
@@ -100,6 +103,9 @@
 
 }
 @media only screen and (max-width: 767px) {
+    #header .navbar-inverse {
+        background-color: #222222;
+    }
     .container.md,#header .container{
         padding-left: 10px;
         padding-right: 10px;
@@ -224,6 +230,7 @@
     #header div.top .logo {
         height: 28px;
         width: 115px;
+        margin: 0px;
     }
     .box__max div.item {
         height: 12.5em;

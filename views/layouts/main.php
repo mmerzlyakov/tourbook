@@ -74,12 +74,9 @@ AppAsset::register($this);
 
                             ?>
 
-                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown">
-
-                                Language  <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30"><?=$flagsImages[$index]['name']?><b class="caret"></b></a>
-
+                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown" data-toggle="tooltip" data-placement="top" title="Choose language">
+                                <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30"><?=$flagsImages[$index]['name']?><b class="caret"></b></a>
                             <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
-
                                 <?php foreach($flagsImages as $item){ ?>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>"><?=$item['name']?></a></li>
                                 <?php } ?>
