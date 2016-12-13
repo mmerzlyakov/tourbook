@@ -31,7 +31,18 @@ class WBooking extends Widget {
         if(!$this->model){
             return false;
         }else {
-            $imagePath = BookingImages::find()->where('booking_id = '.$this->model->id)->one();
+            $imagePath = BookingImages::find()
+                ->where('booking_id = '.$this->model->id)
+                ->andWhere('main = 1')
+                ->one();
+
+            if(empty($imagePath)){
+                $imagePath = BookingImages::find()
+                    ->where('booking_id = '.$this->model->id)
+                    //->andWhere('main = 1')
+                    ->one();
+            }
+
             if(!empty($imagePath)) {
                 // var_dump($imagePath);die();
                 ?>

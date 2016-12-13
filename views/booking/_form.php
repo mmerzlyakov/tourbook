@@ -94,7 +94,7 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
                         tag_name: e.params.args.data.id, 
                         booking_id: '.$model->id.'
                     })
-                    .done(function( data ) { if(data==1)alert(\'Successfully deleted!\'); else alert(data); });
+                    .done(function( data ) { if(data==1) alert(\'Successfully deleted!\'); else alert(data); });
                     
                 } else { alert(\'Canceled\'); return false; }}'),
 
@@ -102,14 +102,14 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
                 new JsExpression(
                 'function(e) { 
                     //console.log(e.params.args.data);
-                     if(confirm(\'Are you sure?\')){
+
                     $.get(\'/tags/add-book-links\',
                     {
                         tag_id: e.params.args.data.id, 
                         booking_id: '.$model->id.'
                     })
-                    .done(function( data ) { if(data==1)alert(\'Successfully added!\'); else alert(data); });
-                }else { alert(\'Canceled\');  return false; } }'),
+                    .done(function( data ) { });
+                } '),
         ],
     ]);
 
@@ -141,7 +141,7 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 */
     ?>
 
-    <?= $form->field($model, 'status')->checkbox()->label('Active?') ?>
+    <?= $form->field($model, 'status')->checkbox()->label('') ?>
     <?= $form->field($model, 'bonus')->textInput() ?>
     <?= $form->field($model, 'discount')->textInput()->label('Discount %') ?>
 
@@ -163,7 +163,8 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
     <?php
     //output images
     if(!empty($model->id)) {
-        $images = \app\models\BookingImages::find()->where('booking_id = ' . $model->id)->all();
+        $images = \app\models\BookingImages::find()->where('booking_id = ' . $model->id)
+            ->andWhere('status = 1')->all();
         if (!empty($images)) {
             ?>
 
@@ -173,9 +174,20 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
             foreach ($images as $item) {
 
 
-                echo "<div style='margin: 5px; position: relative; display: inline-block;'><div class='close' style='opacity: 1; font-size: 26pt; color: red; position: absolute; right: 0px; top 0px; ' onClick='return BookImageDelete('. $item->id .')'>&times;</div><img src='/" . $item->path . "' width=250 id='"
-                    . $item->id
-                    . "'></div>";
+                echo "<div style='margin: 5px; position: relative; display: inline-block;'>";
+
+                if($item->main==1)
+                    echo "<div class='close' style='opacity: 1; font-size: 14pt; color: greenyellow; position: absolute; right: 30px; top: 10px; '>V</div>";
+
+            ?>
+                <div class='close' style='opacity: 1; font-size: 26pt; color: red; position: absolute; right: 3px; top: 3px; '
+                     onClick='return delImage(<?=$item->id?>)'>&times;
+                </div>
+                     <img src='/<?=$item->path?>' width=250 id='<?=$item->id ?>'
+                     onClick='return setMainImage(<?=$model->id?>, <?=$item->id?>)'>
+                </div>
+
+            <?php
             }
         }
     }
@@ -247,6 +259,17 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
         });
     }
 
+    function delImage(i){
+        $.get('/booking/del-booking-image', {image_id: i});
+        location.reload();
+        return true;
+    }
+
+    function setMainImage(b,i){
+        $.get('/booking/add-main-image-status', {booking_id: b , image_id: i });
+        location.reload();
+        return true;
+    }
 
 </script>
 
