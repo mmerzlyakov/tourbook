@@ -45,7 +45,6 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
     ]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
-    <?php //= $form->field($model, 'options')->textInput() ?>
 
     <?php
     $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
@@ -114,6 +113,7 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
     ]);
 
 
+
 /*
     $data = [
         "red" => "red",
@@ -139,6 +139,14 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
         ],
     ])->label('Tag Multiple');
 */
+    ?>
+    <?php //= $form->field($model, 'options')->textInput()
+
+
+    echo Html::input('text', 'tag_name', '', ['class' => 'form-control', 'minlength' => 4, 'maxlength' => 100, 'id' => 'tag_name']);
+    echo Html::a('Create a new tag', '', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary',
+    'onClick'=>'return addNewTag();']);
+
     ?>
 
     <?= $form->field($model, 'status')->checkbox()->label('') ?>
@@ -269,6 +277,14 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
         $.get('/booking/add-main-image-status', {booking_id: b , image_id: i });
         location.reload();
         return true;
+    }
+
+    function addNewTag(){
+        var name = $('#tag_name').val();
+        $.get('/tags/add-new-tag', {tag_name: name });
+        $('#tag_name').val('');
+        //location.reload();
+        return false;
     }
 
 </script>
