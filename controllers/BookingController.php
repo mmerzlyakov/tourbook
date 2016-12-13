@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Basket;
 use app\models\BookingImages;
+use app\models\TagsLinks;
 use app\models\WishList;
 use Yii;
 use app\models\Booking;
@@ -65,6 +66,8 @@ class BookingController extends BackendController
         ];
     }
 
+    //AJAX
+
     public function actionAddbook($booking_id)
     {
         $user = Yii::$app->user->identity->getId();
@@ -108,6 +111,7 @@ class BookingController extends BackendController
     }
 
 
+    //AJAX
     public function actionAddwish($booking_id)
     {
         $user = Yii::$app->user->identity->getId();
@@ -124,8 +128,8 @@ class BookingController extends BackendController
             }
         }
         else return false;
-
     }
+
     /**
      * Lists all Booking models.
      * @return mixed
@@ -165,6 +169,8 @@ class BookingController extends BackendController
 
         $model_file = new File();
         $model = new Booking();
+
+        $tagsList = []; //new TagsLinks();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return
@@ -230,11 +236,15 @@ class BookingController extends BackendController
         $model = $this->findModel($id);
         $types = \app\models\Types::find()->select('id, name, description')->where('id > 0')->all();
         $cities = \app\models\City::find()->select('id, name, description')->where('id > 0')->all();
+        //$tagsList = TagsLinks::find()->where('booking_id = '.$model->id)->all();
 
         $model_file = new File();
         $model = Booking::find()->where('id = '.$id)->one();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            //var_dump($model);die();
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -242,6 +252,7 @@ class BookingController extends BackendController
                 'model_file' => $model_file,
                 'types' => $types,
                 'cities' => $cities,
+                //'tagsList' => $tagsList,
             ]);
         }
     }

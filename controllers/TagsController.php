@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\TagsLinks;
 use Yii;
 use app\models\Tags;
 use app\models\TagsSearch;
@@ -29,6 +30,9 @@ class TagsController extends BackendController
                             'view',
                             'delete',
                             'upload',
+                            'get-tags-list',
+                            'add-book-links',
+                            'del-book-links',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
@@ -43,6 +47,74 @@ class TagsController extends BackendController
                 ],
             ],
         ];
+    }
+
+    public function actionDelBookLinks($tag_name=null, $booking_id = null)
+    {
+        if(!empty($tag_name) && !empty($booking_id))
+        {
+            $tag_IDs = Tags::find()
+                ->andFilterWhere(['like','name',$tag_name])
+                //->where('name = '.$tag_name)
+                ->all();
+
+            //var_dump($tag_IDs);
+
+            //return json_encode($tag_IDs);
+
+            if(!empty($tag_IDs)){
+                foreach ($tag_IDs as $tag_id) {
+
+                $tagsLinks = TagsLinks::find()
+                    ->where('tag_id = '.$tag_id->id)
+                    ->andWhere('booking_id = '.$booking_id)
+                    ->andWhere('status = 1')->all();
+
+                    foreach ($tagsLinks as $item) {
+                        $item->status=0;
+                        $item->save();
+                    }
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    public function actionAddBookLinks($tag_id=null, $booking_id = null)
+    {
+        if(!empty($tag_id) && !empty($booking_id))
+        {
+            $tagsLinks = new TagsLinks();
+            $tagsLinks->tag_id=$tag_id;
+            $tagsLinks->booking_id=$booking_id;
+            $tagsLinks->status=1;
+            if($tagsLinks->save())
+                return true;
+            else
+                return json_encode($tagsLinks->errors);
+        }
+        return false;
+    }
+
+    public function actionGetTagsList($q = null, $id = null){
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = ['results' => ['id' => '', 'text' => '']];
+        if (!is_null($q)) {
+
+            $data = Tags::find()->select('id, name AS text')
+                ->andWhere('status = 1')
+                ->andFilterWhere(['like','name',$q])
+                ->asArray()->limit(20)->all();
+
+            $out['results'] = array_values($data);
+        }
+        elseif ($id > 0) {
+            $out['results'] = ['id' => $id, 'text' => Tags::find($id)->name];
+        }
+        return $out;
     }
 
 
@@ -102,6 +174,9 @@ class TagsController extends BackendController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
+            
+            
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

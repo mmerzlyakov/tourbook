@@ -145,6 +145,8 @@
                 </table>
                 <div class="button"><input id="BOOKNOW" class="btn btn-warning" type="submit" value="BOOK NOW" onClick=""/>
                     <input id="BOOKID" class="btn btn-warning" type="hidden" value="<?=$model->id?>" onClick=""/></div>
+
+                <!-- AJAX action@script.js click booknow -->
                 <div class="button"><button type="button" id="MAKEWISH" class="btn btn-grey"><span class="glyphicon glyphicon-heart"></span>ADD TO WHISLIST</button></div>
                 <div class="clear"></div>
             </div>  <!--./Бронь-->

@@ -10,9 +10,27 @@ use dosamigos\tinymce\TinyMce;
 /* @var $this yii\web\View */
 /* @var $model app\models\Booking */
 /* @var $form yii\widgets\ActiveForm */
+
+
+/*******
+ * View
+ ******/
+
+// The controller action that will render the list
+// $url = \yii\helpers\Url::to(['city-list']);
+
+// The widget
+// use kartik\widgets\Select2; // or kartik\select2\Select2
+
+use kartik\select2\Select2;
+use yii\web\JsExpression;
+// use app\models\City;
+// Get the initial city description
+// $cityDesc = empty($model->city) ? '' : City::findOne($model->city)->description;
+// The controller action that will render the list
+$url = \yii\helpers\Url::to(['/tags/get-tags-list']);
+
 ?>
-
-
 
 <div class="booking-form">
 
@@ -27,7 +45,102 @@ use dosamigos\tinymce\TinyMce;
     ]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
-    <?= $form->field($model, 'options')->textInput() ?>
+    <?php //= $form->field($model, 'options')->textInput() ?>
+
+    <?php
+    $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
+
+    // Get the initial city description
+    //$tagsDesc = empty($model->tags) ? '' : \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->one()->description;
+
+    //$data=['5','4','3','2'];
+  //  var_dump($data);
+
+
+    $tagsLinks = \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->andWhere('status = 1')->all();
+    $arr=[];
+    foreach ($tagsLinks as $i=>$item)
+        $arr[]=\app\models\Tags::find()->select('name')->where('id = '.$item->tag_id)->andWhere('status = 1')->one()->name;
+
+    $model->tags =$arr;
+    echo $form->field($model, 'tags')->widget(Select2::classname(), [
+        'initValueText' => $model->tags,
+        'options' => ['placeholder' => 'Search for a tags ...', 'multiple' => true],
+        'id' => 'tagsLinks',
+        'pluginOptions' => [
+            'allowClear' => true,
+            'minimumInputLength' => 2,
+            'language' => [
+                'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
+            ],
+            'ajax' => [
+                'url' => $url,
+                'dataType' => 'json',
+                'cache' => true,
+                'data' => new JsExpression('function(params) { return {q:params.term}; }')
+            ],
+            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+            'templateResult' => new JsExpression('function(item) { return item.text; }'),
+            'templateSelection' => new JsExpression('function (item) { return item.text; }'),
+        ],
+        'pluginEvents' => [
+            'select2:unselecting' =>
+                new JsExpression('
+                function(e) { 
+                    //console.log(e.params.args.data);
+                     if(confirm(\'Are you sure?\')){
+                    $.get(\'/tags/del-book-links\',
+                    {
+                        tag_name: e.params.args.data.id, 
+                        booking_id: '.$model->id.'
+                    })
+                    .done(function( data ) { if(data==1)alert(\'Successfully deleted!\'); else alert(data); });
+                    
+                } else { alert(\'Canceled\'); return false; }}'),
+
+            'select2:selecting' =>
+                new JsExpression(
+                'function(e) { 
+                    //console.log(e.params.args.data);
+                     if(confirm(\'Are you sure?\')){
+                    $.get(\'/tags/add-book-links\',
+                    {
+                        tag_id: e.params.args.data.id, 
+                        booking_id: '.$model->id.'
+                    })
+                    .done(function( data ) { if(data==1)alert(\'Successfully added!\'); else alert(data); });
+                }else { alert(\'Canceled\');  return false; } }'),
+        ],
+    ]);
+
+
+/*
+    $data = [
+        "red" => "red",
+        "green" => "green",
+        "blue" => "blue",
+        "orange" => "orange",
+        "white" => "white",
+        "black" => "black",
+        "purple" => "purple",
+        "cyan" => "cyan",
+        "teal" => "teal"
+    ];
+
+    // Tagging support Multiple
+    $model->tags =  ['red', 'green']; // initial value
+    echo $form->field($model, 'tags')->widget(Select2::classname(), [
+        'data' => $data,
+            'options' => ['placeholder' => 'Select a color ...', 'multiple' => true],
+        'pluginOptions' => [
+            'tags' => true,
+            'tokenSeparators' => [',', ' '],
+            'maximumInputLength' => 10
+        ],
+    ])->label('Tag Multiple');
+*/
+    ?>
+
     <?= $form->field($model, 'status')->checkbox()->label('Active?') ?>
     <?= $form->field($model, 'bonus')->textInput() ?>
     <?= $form->field($model, 'discount')->textInput()->label('Discount %') ?>
@@ -58,9 +171,11 @@ use dosamigos\tinymce\TinyMce;
             <?php
 
             foreach ($images as $item) {
-                echo "<img src='/" . $item->path . "' width=250 id='"
+
+
+                echo "<div style='margin: 5px; position: relative; display: inline-block;'><div class='close' style='opacity: 1; font-size: 26pt; color: red; position: absolute; right: 0px; top 0px; ' onClick='return BookImageDelete('. $item->id .')'>&times;</div><img src='/" . $item->path . "' width=250 id='"
                     . $item->id
-                    . "'>";
+                    . "'></div>";
             }
         }
     }
