@@ -109,6 +109,24 @@ $this->title = 'TourBook.Biz';
         </div>
             <div class="clear"></div>
     </div -->
+
+    <h2 class="title-main text-center">ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ</h2>
+    <div class="container md">
+
+        <?php
+        $country = \app\models\City::find()->where('status = 1')->limit(9)->all();
+        foreach($country as $item){
+            echo \app\widgets\WCity::widget([
+                'model' => $item,
+            ]);
+        }
+
+        ?>
+
+
+        <div class="clear"></div>
+    </div>
+
     <h2 class="title-main text-center">ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ</h2>
     <div class="container md">
 
