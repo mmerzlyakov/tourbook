@@ -3,12 +3,14 @@
 namespace app\controllers;
 
 use app\models\Booking;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\UserOnce;
 
 class SiteController extends Controller
 {
@@ -32,7 +34,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    //'logout' => ['post'],
+                    'set-locale' => ['post'],
                 ],
             ],
         ];
@@ -52,6 +54,29 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function actionSetLocale(){
+
+        $name=\Yii::$app->request->post('locale_name');
+        if(!\Yii::$app->user->isGuest){
+            $user_id = \Yii::$app->user->identity->getId();
+            if(!empty($user_id)) {
+                if (!empty($name)) {
+                    $user = UserOnce::find()->where('id = '.$user_id)->one();
+                    $user->locale=$name;
+                    if($user->save())
+                        return true;
+                    else
+                        return json_encode($user->errors);
+                }
+            }
+        }
+        else{
+            \Yii::$app->session->set("locale",$name);
+            return true;
+        }
+        return false;
     }
 
     /**

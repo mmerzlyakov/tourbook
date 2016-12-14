@@ -39,6 +39,13 @@ class CityController extends BackendController
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator'],
                     ],
+                    [
+                        'actions' => [
+                            'city-view',
+                        ],
+                        'allow' => true,
+                        'roles' => ['users', 'GodMode', 'admin', 'operator'],
+                    ],
                 ],
             ],
 
@@ -50,6 +57,19 @@ class CityController extends BackendController
                 ],
             ],
         ];
+    }
+
+
+    /**
+     * Displays a single Country model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionCityView($id)
+    {
+        return $this->render('city-view', [
+            'model' => $this->findById($id),
+        ]);
     }
 
 
@@ -174,6 +194,15 @@ class CityController extends BackendController
     protected function findModel($id, $country_id)
     {
         if (($model = City::findOne(['id' => $id, 'country_id' => $country_id])) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function findById($id)
+    {
+        if (!empty($model = City::find()->where(['id' => $id])->one())) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -14,7 +14,7 @@ use Yii;
  * @property string $full_description
  * @property integer $status
  */
-class city extends \yii\db\ActiveRecord
+class City extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
