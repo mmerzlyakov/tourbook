@@ -31,6 +31,7 @@ class TagsController extends BackendController
                             'delete',
                             'upload',
                             'get-tags-list',
+                            'add-new-tag',
                             'add-book-links',
                             'del-book-links',
                         ],
@@ -48,6 +49,24 @@ class TagsController extends BackendController
             ],
         ];
     }
+
+    /**
+     * @return Action
+     */
+    public function actionAddNewTag($tag_name = null)
+    {
+        if(!empty($tag_name)){
+            $tag = new Tags();
+            $tag->name = $tag_name;
+            $tag->status = 1;
+            if($tag->save())
+                return true;
+            else
+                return json_encode($tag->errors);
+        }
+        return false;
+    }
+    
 
     public function actionDelBookLinks($tag_name=null, $booking_id = null)
     {

@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 {
                     $str = "";
                     if(!empty($model->id)) {
-                        $images = \app\models\BookingImages::find()->where('booking_id = ' . $model->id)->all();
+                        $images = \app\models\BookingImages::find()->where('booking_id = ' . $model->id)->andWhere('status = 1')->all();
                         if (!empty($images)) {
                             foreach ($images as $item) {
                                $str.="<img src='/" . $item->path . "' width=80 id='"

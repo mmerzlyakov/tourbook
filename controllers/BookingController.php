@@ -42,6 +42,8 @@ class BookingController extends BackendController
                             'view',
                             'delete',
                             'upload',
+                            'add-main-image-status',
+                            'del-booking-image',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
@@ -64,6 +66,48 @@ class BookingController extends BackendController
                 ],
             ],
         ];
+    }
+
+    public function actionDelBookingImage($image_id = null)
+    {
+        if(!empty($image_id)) {
+            $bookingImages = BookingImages::find()
+                ->where('id = '.$image_id)->one();
+            $bookingImages->status=0;
+            if($bookingImages->save()) {
+                return true;
+            }else {
+                return json_encode($bookingImages->errors);
+            }
+        }
+        return false;
+    }
+
+
+    public function actionAddMainImageStatus($booking_id = null, $image_id = null)
+    {
+        if(!empty($image_id) && !empty($booking_id)) {
+            $bookingImages = BookingImages::find()
+                ->where('booking_id = '.$booking_id)->all();
+
+            foreach ($bookingImages as $bookingImage) {
+                $bookingImage->main=0;
+                $bookingImage->save();
+            }
+
+            $bookingImages = BookingImages::find()
+                ->where('booking_id = '.$booking_id)
+                ->andWhere('id = '.$image_id)->one();
+            $bookingImages->main=1;
+            $bookingImages->status=1;
+
+            if($bookingImages->save()) {
+                return true;
+            }else {
+                return json_encode($bookingImages->errors);
+            }
+        }
+        return false;
     }
 
     //AJAX
