@@ -87,9 +87,10 @@ $(document).ready(function(){
         //   columnWidth: '.col-sm-6',
         //  percentPosition: true,
     });
+
    /// $('#basket-modal').modal('show');
   //  $('#header .dropdown-toggle').tooltip('toggle').tooltip('hide');
-    // Выпадашка header;
+    // Выпадашка header;scaf
     /*
     $(document).on('mouseenter','#header .dropdown-toggle',function() {
         // Удаляем интервал;
