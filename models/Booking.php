@@ -37,7 +37,7 @@ class Booking extends \yii\db\ActiveRecord
     {
         return [
             [['type_id', 'price', 'status'], 'required'],
-            [['type_id', 'price', 'status', 'bonus', 'discount', 'city_id'], 'integer'],
+            [['type_id', 'price', 'price_child', 'child_before','status', 'bonus', 'discount', 'city_id'], 'integer'],
             [['name', 'description','options', 'coords_lat', 'coords_lng'], 'string'],
             ['tags', 'safe'],
         ];
@@ -53,6 +53,8 @@ class Booking extends \yii\db\ActiveRecord
             'description' => Yii::t('app', 'Description'),
             'type_id' => Yii::t('app', 'Type ID'),
             'price' => Yii::t('app', 'Price'),
+            'price_child' => Yii::t('app', 'Price Child'),
+            'child_before' => Yii::t('app', 'Child before'),
             'options' => Yii::t('app', 'Options'),
             'images' => Yii::t('app', 'Images'),
             'status' => Yii::t('app', 'Status'),

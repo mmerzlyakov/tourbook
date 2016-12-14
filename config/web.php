@@ -3,9 +3,11 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'tourbook',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    //'sourceLanguage' => 'en-US',
+    'language' => 'en',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -48,7 +50,19 @@ $config = [
             'rules' => [
             ],
         ],
-        
+
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en',
+                ],
+                'fileMap' => [
+                    'app'=>'app.php',
+                ],
+            ],
+        ],
     ],
     'params' => $params,
 ];

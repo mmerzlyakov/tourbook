@@ -45,16 +45,16 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
     ]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
+    <?= $form->field($model, 'price_child')->textInput() ?>
+    <?= $form->field($model, 'child_before')->textInput() ?>
 
     <?php
     $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 
-    // Get the initial city description
+    //Get the initial city description
     //$tagsDesc = empty($model->tags) ? '' : \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->one()->description;
-
     //$data=['5','4','3','2'];
-  //  var_dump($data);
-
+    //var_dump($data);
 
     $tagsLinks = \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->andWhere('status = 1')->all();
     $arr=[];
@@ -70,7 +70,8 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
             'allowClear' => true,
             'minimumInputLength' => 2,
             'language' => [
-                'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
+                'errorLoading' =>
+                    new JsExpression("function () { return 'Waiting for results...'; }"),
             ],
             'ajax' => [
                 'url' => $url,
