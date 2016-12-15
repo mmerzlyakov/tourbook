@@ -11,6 +11,7 @@ use app\models\User;
 $this->title = 'Request password reset';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="container">
 <div class="site-request-password-reset">
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,4 +30,5 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php ActiveForm::end(); ?>
         </div>
     </div>
+</div>
 </div>
