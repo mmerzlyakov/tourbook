@@ -12,8 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="booking-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <h1>Preview: <?= Html::encode($this->title) ?></h1>
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
@@ -29,8 +28,24 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
-            'description',
+            [
+                'attribute' => 'id',
+                'format' => 'raw',
+                'value'=>'<a href=/site/booking?id='.$model->id.'>https://extremeshop.ru/site/booking?id='.$model->id.'</a>',
+            ],
+//            'name',
+            [
+                'attribute' => 'name',
+                'format' => 'raw',
+                'value' => $model->name,
+            ],
+            [
+                'attribute' => 'description',
+                'format' => 'raw',
+                'value' => $model->description,
+            ],
+//            'description',
+
             'type_id',
             'price',
             'options',

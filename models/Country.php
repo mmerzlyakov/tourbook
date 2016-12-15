@@ -35,6 +35,7 @@ class country extends \yii\db\ActiveRecord
             [['status', 'language'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['currency'], 'safe'],
+            [['locale'], 'string', 'max' => 5],
         ];
     }
 
@@ -51,6 +52,7 @@ class country extends \yii\db\ActiveRecord
             'options' => Yii::t('app', 'Options'),
             'language' => Yii::t('app', 'We`re working on this language'),
             'status' => Yii::t('app', 'Status'),
+            'locale' => Yii::t('app', 'Locale'),
             'currency' => Yii::t('app', 'Currency'),
         ];
     }

@@ -24,30 +24,31 @@ echo Menu::widget([
     'items' => [
         // Important: you need to specify url as 'controller/action',
         // not just as 'controller' even if default action is used.
-        ['label' => 'Home', 'url' => ['site/index']],
+       // ['label' => 'Home', 'url' => ['site/index']],
         // 'Products' menu item will be selected as long as the route is 'product/index'
         ['label' => 'Tags management', 'url' => ['tags/index'], 'items' => [
-            ['label' => 'New tags', 'url' => ['tags/create']],
+            //['label' => 'New tags', 'url' => ['tags/create']],
         ]],
-        ['label' => 'Country management', 'url' => ['country/index'], 'items' => [
-            ['label' => 'New country', 'url' => ['country/create']],
+        ['label' => 'Countries management', 'url' => ['country/index'], 'items' => [
+            //['label' => 'New country', 'url' => ['country/create']],
         ]],
         ['label' => 'Cities management', 'url' => ['city/index'], 'items' => [
-            ['label' => 'New city', 'url' => ['city/create']],
+            //['label' => 'New city', 'url' => ['city/create']],
         ]],
         ['label' => 'Booking management', 'url' => ['booking/index'], 'items' => [
-            ['label' => 'New booking', 'url' => ['booking/create']],
+            //['label' => 'New booking', 'url' => ['booking/create']],
         ]],
         ['label' => 'Orders management', 'url' => ['orders/index'], 'items' => [
         ]],
         ['label' => 'Transactions management', 'url' => ['transactions/index'], 'items' => [
-            ['label' => 'New transaction', 'url' => ['transactions/create']],
-            ['label' => 'New bonus transaction', 'url' => ['transactions/create-bonus']],
+            //['label' => 'New transaction', 'url' => ['transactions/create']],
+            //['label' => 'New bonus transaction', 'url' => ['transactions/create-bonus']],
         ]],
         ['label' => 'Users management', 'url' => ['user/index'], 'items' => [
-            ['label' => 'New user', 'url' => ['user/create']],
+            //['label' => 'New user', 'url' => ['user/create']],
         ]],
         ['label' => 'Feedback', 'url' => ['feedback/index']],
+        ['label' => 'Subscribe', 'url' => ['subscribe/index']],
         ['label' => 'Reports', 'url' => ['reports/index']],
         ['label' => 'Logout', 'url' => ['site/logout']],
     ],
@@ -140,6 +141,11 @@ if(\Yii::$app->user->can('supplier')){
 
 }
 
+?>
+
+<br>
+
+<?php
 
 if(\Yii::$app->user->can('user')){
 
@@ -168,4 +174,4 @@ echo Menu::widget([
 
 ?>
 
-<img width=50% src="/images/xzibit.jpg">
+<!-- img width=50% src="/images/xzibit.jpg" -->

@@ -10,6 +10,20 @@ use app\assets\AppAsset;
 AppAsset::register($this);
 //$session = Yii::$app->session;
 
+$lang = \Yii::$app->session->get("locale");
+if(!empty($lang))
+    \Yii::$app->language=$lang;
+else
+{
+    if(!\Yii::$app->user->isGuest)
+    {
+        $user_id = \Yii::$app->user->identity->getId();
+        $user = \app\models\User::find()->where('id = '.$user_id)->one();
+        \Yii::$app->language=$user->locale;
+    }
+}
+
+
 ?>
 <?php $this->beginPage() ?>
 <!--TEST-->
@@ -27,6 +41,7 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+
 <div class="br-shadow"></div>
 <div class="wrapper">
     <div id="header">
@@ -74,11 +89,16 @@ AppAsset::register($this);
 
                             ?>
 
-                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown" data-toggle="tooltip" data-placement="top" title="Choose language">
-                                <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30"><?=$flagsImages[$index]['name']?><b class="caret"></b></a>
+                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown">
+
+                                <?=\Yii::t('app','Language')?>  <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
+                                <?=\Yii::t('app',$flagsImages[$index]['name'])?><b class="caret"></b></a>
+
                             <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
+
                                 <?php foreach($flagsImages as $item){ ?>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>"><?=$item['name']?></a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>">
+                                            <a href="#" onClick='return setLocale("<?=$item['locale']?>");'><?=\Yii::t('app',$item['name'])?></a></li>
                                 <?php } ?>
                             </ul>
 
@@ -108,8 +128,8 @@ AppAsset::register($this);
                 </div>
                 <?php if(Yii::$app->user->isGuest): ?>
                 <div class="hidden-xs btn-group col-xs-3 float-right">
-                    <div class="col-xs-4" style="margin-right: 30px;"> <a class="button btn btn-primary btn-xs" href="/site/signup">Регистрация</a> </div>
-                    <div class="col-xs-5"> <a class="button btn btn-success green btn-xs" href="/site/login">Войти</a></div>
+                    <div class="col-md-5 col-sm-4 col-xs-4"  style="margin-right: 30px;"> <a class="button btn btn-primary" href="/site/signup"><?=\Yii::t('app','Signup')?></a> </div>
+                    <div class="col-xs-5 float-right col-md-5 col-lg-6 col-sm-5"> <a class="button btn btn-success green" href="/site/login"><?=\Yii::t('app','Login')?></a></div>
                     <div class="clearfix visible-xs"></div>
                 </div>
                 <?php else: ?>
@@ -117,7 +137,7 @@ AppAsset::register($this);
                     <div class="user">
                         <div class="name"><?=Yii::$app->user->identity->name?>,
                             <?=\app\widgets\WBasket::widget(['model' => Yii::$app->user->identity->getId()]);?></div>
-                       <div> <a class="white" href="/management">My Account</a> / <a href="/site/logout" class="out white">Выйти</a></div>
+                       <div> <a class="white" href="/management"><?=\Yii::t('app','My account')?></a> / <a href="/site/logout" class="out white"><?=\Yii::t('app','Logout')?></a></div>
                     </div>
                 </div>
                 <?php endif; ?>
@@ -143,6 +163,7 @@ AppAsset::register($this);
 
                                         $flagsImages[$item->id]['id'] = $item->id;
                                         $flagsImages[$item->id]['name'] = $item->name;
+                                        $flagsImages[$item->id]['locale'] = $item->locale;
 
                                         if(!empty($temp->path))
                                             $flagsImages[$item->id]['path'] = $temp->path;
@@ -159,12 +180,14 @@ AppAsset::register($this);
 
                                 <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown">
 
-                                Language <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30"><?=$flagsImages[$index]['name']?><b class="caret"></b></a>
+                                    <?=\Yii::t('app','Language')?>  <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
+                                    <?=\Yii::t('app',$flagsImages[$index]['name'])?><b class="caret"></b></a>
 
                                 <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
 
                                     <?php foreach($flagsImages as $item){ ?>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>"><?=$item['name']?></a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>">
+                                                <a href="#" onClick='return setLocale("<?=$item['locale']?>");'><?=\Yii::t('app',$item['name'])?></a></li>
                                     <?php } ?>
                                 </ul>
                                 
@@ -193,13 +216,13 @@ AppAsset::register($this);
                         </div>
                        <?php if(Yii::$app->user->isGuest): ?>
                            <div class="login">
-                               <a class=" login btn btn-success btn-sm" href="/site/login">Войти</a> / <a class="reg btn btn-sm btn-primary" href="/site/signup">Регистрация </a>
+                               <a class=" login btn btn-success btn-sm" href="/site/login"><?=\Yii::t('app','Login')?></a> / <a class="reg btn btn-sm btn-primary" href="/site/signup"><?=\Yii::t('app','Signup')?> </a>
                            </div>
                       <?php else: ?>
                            <div class="login">
                                <div class="name"><?=Yii::$app->user->identity->name?> </div>
                                <?=\app\widgets\WBasket::widget(['model' => Yii::$app->user->identity->getId()]);?>
-                               <a class=" login white" href="/management">My Account</a> / <a class="reg white" href="/site/logout">Выйти </a>
+                               <a class=" login white" href="/management"><?=\Yii::t('app','My account')?></a> / <a class="reg white" href="/site/logout"><?=\Yii::t('app','Logout')?> </a>
                            </div>
                       <?php endif; ?>
                     </div>
@@ -288,6 +311,8 @@ AppAsset::register($this);
 ]);
 
 ?>
+
+
 
 
 

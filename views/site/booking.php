@@ -22,6 +22,13 @@
             <li><a href="#">Библиотека</a></li>
             <li>Данные</li>
         </ol>
+
+        <?php if(Yii::$app->user->can('GodMode')){ ?>
+
+        <h2><a href="/booking/update?id=<?=$model->id?>">EDIT</a></h2>
+
+        <?php } ?>
+
         <div class="col-xs-12 col-md-8">
             <div class="services">
                 <div class="block">
@@ -39,6 +46,26 @@
             <div class="text">
                 <?=$model->description?>
             </div>
+
+
+            <div class="info-text">
+            <ul>
+            <?php
+            $tags = \app\models\Tags::find()
+                    ->select('tags.*, tags_links.*')
+                    ->leftJoin('tags_links','tags.id = tags_links.tag_id')
+                    ->where('booking_id = '.$model->id)
+                    ->andWhere('tags.status = 1')
+                    ->andWhere('tags_links.status = 1')
+                    ->all();
+//            var_dump($tags);die();
+            foreach ($tags as $item) {
+            ?>
+                <li><?=$item->name?></li>
+
+            <?php } ?>
+            </ul></div>
+
             <div class="info-text">
                 <ul>
                     <li>Советы:<br>
@@ -98,9 +125,9 @@
         <div class="col-xs-12 col-md-4 sidebar ">
             <button type="button" class="close" aria-hidden="true">&times;</button>
             <h4 class="oran">Стоимость:</h4>
-            <div class="price"><b>взрослый - <?=$model->price?>$</b></div>
-            <div class="price"><b>дестский - <?=$model->price?>$</b></div>
-            <div class="sh">дети до 5 лет бесплатно</div>
+            <div class="price"><b>взрослый - <?=$model->price?></b></div>
+            <div class="price"><b>дестский - <?=$model->price_child?></b></div>
+            <div class="sh">дети до <?=$model->child_before?> лет бесплатно</div>
             <div class="button map"><div class="oran">
 
                     <div id="map" style="width: 100%; height: 200px;"></div>

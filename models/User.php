@@ -62,6 +62,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['birthday', 'bonus', 'money', 'created_at', 'updated_at', 'status'], 'integer'],
             [['name', 'first_name', 'second_name', 'last_name', 'email', 'password', 'password_reset_token', 'password_hash', 'auth_key'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 15],
+            [['locale'], 'string', 'max' => 5],
             [['phone'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED,self::STATUS_FULL_DELETED]],
@@ -90,6 +91,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'password_hash' => Yii::t('app', 'Password Hash'),
             'password' => Yii::t('app', 'Password Registration'),
             'auth_key' => Yii::t('app', 'Auth Key'),
+            'locale' => Yii::t('app', 'Locale'),
             'status' => Yii::t('app', 'Status'),
         ];
     }
