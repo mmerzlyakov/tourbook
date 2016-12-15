@@ -3,18 +3,40 @@
 /* @var $this yii\web\View */
 $this->title = 'TourBook.Biz';
 
+
 $lang = \Yii::$app->session->get("locale");
-if(!empty($lang))
-    \Yii::$app->language=$lang;
-else
-{
-    if(!\Yii::$app->user->isGuest)
-    {
-        $user_id = \Yii::$app->user->identity->getId();
-        $user = \app\models\User::find()->where('id = '.$user_id)->one();
-        \Yii::$app->language=$user->locale;
+
+if(!\Yii::$app->user->isGuest) {
+    $user_id = \Yii::$app->user->identity->getId();
+
+    if (!empty($user_id)) {
+        $user = \app\models\User::find()->where('id = ' . $user_id)->one();
+        \Yii::$app->language = $user->locale;
+        \Yii::$app->session->set("locale",$lang);
     }
 }
+elseif(!empty($lang)) {
+    \Yii::$app->language = $lang;
+}
+
+//$lang = \Yii::$app->session->get("locale");
+//if(!empty($lang))
+//    \Yii::$app->language=$lang;
+//else
+//{
+//    if(!\Yii::$app->user->isGuest)
+//    {
+//        $user_id = \Yii::$app->user->identity->getId();
+//        $user = \app\models\User::find()->where('id = '.$user_id)->one();
+//        \Yii::$app->language=$user->locale;
+//    }
+//}
+//
+
+
+//var_dump($lang);
+//var_dump(Yii::$app->language);die();
+
 
 
 ?>

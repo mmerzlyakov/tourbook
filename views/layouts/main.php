@@ -18,7 +18,8 @@ if(!\Yii::$app->user->isGuest) {
 
     if (!empty($user_id)) {
         $user = \app\models\User::find()->where('id = ' . $user_id)->one();
-    \Yii::$app->language = $user->locale;
+        \Yii::$app->language = $user->locale;
+        \Yii::$app->session->set("locale",$lang);
     }
 }
 elseif(!empty($lang)) {
