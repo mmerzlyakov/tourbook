@@ -10,6 +10,6 @@ namespace app\controllers;
 
 class BackendController extends \yii\web\Controller
 {
-    public $layout = 'admin';
+    public $layout = 'new-admin';
 
 }
