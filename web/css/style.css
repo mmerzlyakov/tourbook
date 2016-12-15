@@ -71,11 +71,18 @@ div.container {
     vertical-align: middle;
 }
 #navbar .btn-group{
-    padding: 5px 10px;
+    color: #fff;
+}
+#navbar .btn-group .reg {
+    margin-right: 5px;
+}
+#navbar .btn-group .login {
+    margin-left: 5px;
 }
 #header div.user {
     text-align: right;
     color: #fff;
+    padding: 15px 0;
 }
 #header div.user a {
     margin: 0 5px;
@@ -89,7 +96,6 @@ div.container {
     display: block;
     float: right;
     position: relative;
-    top: 8px;
     left: 5px;
 }
 #header .basket div.count{
@@ -104,9 +110,10 @@ div.container {
 #header .basket .glyphicon{
     font-size: 17pt;
 }
-#header .navbar-inverse {
+#header .navbar-inverse{
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.6);
+    border: none;
 }
 /*Center*/
 #center {
