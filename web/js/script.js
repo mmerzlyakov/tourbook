@@ -87,7 +87,23 @@ $(document).ready(function(){
         //   columnWidth: '.col-sm-6',
         //  percentPosition: true,
     });
+
    /// $('#basket-modal').modal('show');
+  //  $('#header .dropdown-toggle').tooltip('toggle').tooltip('hide');
+    // Выпадашка header;scaf
+    /*
+    $(document).on('mouseenter','#header .dropdown-toggle',function() {
+        // Удаляем интервал;
+        clearTimeout($.data(this, 'timer'));
+        $(this).parent('.dropdown').addClass('open');
+        $(this).attr('aria-expanded',true);
+    }).on('mouseleave','.dropdown',function() {
+        // Интервал закрытия блок;
+        $.data(this, 'timer', setTimeout($.proxy(function () {
+            $(this).removeClass('open');
+            $(this).children('.dropdown-toggle').attr('aria-expanded',false);
+        }, this), 1600));
+    });*/
 });
 
 // plus;

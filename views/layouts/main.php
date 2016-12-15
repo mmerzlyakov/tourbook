@@ -55,13 +55,10 @@ else
                     'id'=>'navbar',
                 ],
             ]); ?>
-                <div class="hidden-xs col-sm-6 col-md-3 group col-lg-push-4 col-md-push-3">
+                <div class="hidden-xs col-sm-5 col-md-3 group col-lg-push-4 col-md-push-3">
                     <div class="row">
                         <div class="dropdown">
-
                             <?php
-
-
                             $countiesFlags = \app\models\Country::find()->where('language = 1')->andWhere('status = 1')->all();
 
                             $flagsImages = [];
@@ -75,7 +72,6 @@ else
 
                                 $flagsImages[$item->id]['id'] = $item->id;
                                 $flagsImages[$item->id]['name'] = $item->name;
-                                $flagsImages[$item->id]['locale'] = $item->locale;
 
                                 if(!empty($temp->path))
                                     $flagsImages[$item->id]['path'] = $temp->path;
@@ -84,12 +80,7 @@ else
 
                                 $flagsImages[$item->id]['currency'] = $item->currency;
                             }
-
-
-//                            var_dump($flagsImages);die();
-
                             ?>
-
                             <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown">
 
                                 <?=\Yii::t('app','Language')?>  <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
@@ -99,11 +90,9 @@ else
 
                                 <?php foreach($flagsImages as $item){ ?>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>">
-                                            <a href="#" onClick='return setLocale("<?=$item['locale']?>");'><?=\Yii::t('app',$item['name'])?></a></li>
+                                            <a href="#" onClick='return setLocale("<?=isset($item['locale']) ? $item['locale'] : ''?>");'><?=\Yii::t('app',$item['name'])?></a></li>
                                 <?php } ?>
                             </ul>
-
-
                         </div>
 
                         <!-- div class="dropdown">
@@ -128,17 +117,15 @@ else
                     </div>
                 </div>
                 <?php if(Yii::$app->user->isGuest): ?>
-                <div class="hidden-xs btn-group col-xs-4 float-right">
-                    <div class="col-xs-6 col-md-5 col-sm-4"> <a class="button btn btn-primary" href="/site/signup"><?=\Yii::t('app','Signup')?></a> </div>
-                    <div class="col-xs-6 float-right col-md-5 col-lg-6 col-sm-5"> <a class="button btn btn-success green" href="/site/login"><?=\Yii::t('app','Login')?></a></div>
+                <div class="hidden-xs btn-group col-sm-3 col-md-2 float-right">
+                    <div class="col-xs-12 white" style="padding: 14px 0px;"> <a class="white reg" href="/site/signup"><?=\Yii::t('app','Signup')?></a> / <a class="white login" href="/site/login"><?=\Yii::t('app','Login')?></a> </div>
                     <div class="clearfix visible-xs"></div>
                 </div>
                 <?php else: ?>
                 <div class="hidden-xs btn-group col-xs-4 float-right">
                     <div class="user">
-                        <div class="name"><?=Yii::$app->user->identity->name?>,
-                            <?=\app\widgets\WBasket::widget(['model' => Yii::$app->user->identity->getId()]);?></div>
-                       <div> <a class="white" href="/management"><?=\Yii::t('app','My account')?></a> / <a href="/site/logout" class="out white"><?=\Yii::t('app','Logout')?></a></div>
+                        <div class="name"><?=\app\widgets\WBasket::widget(['model' => Yii::$app->user->identity->getId()]);?></div>
+                       <div><a class="white" href="/management"><?=\Yii::t('app',Yii::$app->user->identity->name)?></a> / <a href="/site/logout" class="out white"><?=\Yii::t('app','Logout')?></a></div>
                     </div>
                 </div>
                 <?php endif; ?>
@@ -217,13 +204,12 @@ else
                         </div>
                        <?php if(Yii::$app->user->isGuest): ?>
                            <div class="login">
-                               <a class=" login btn btn-success btn-sm" href="/site/login"><?=\Yii::t('app','Login')?></a> / <a class="reg btn btn-sm btn-primary" href="/site/signup"><?=\Yii::t('app','Signup')?> </a>
+                               <a class="login white" href="/site/login"><?=\Yii::t('app','Login')?></a> / <a class="reg white" href="/site/signup"><?=\Yii::t('app','Signup')?> </a>
                            </div>
                       <?php else: ?>
                            <div class="login">
-                               <div class="name"><?=Yii::$app->user->identity->name?> </div>
                                <?=\app\widgets\WBasket::widget(['model' => Yii::$app->user->identity->getId()]);?>
-                               <a class=" login white" href="/management"><?=\Yii::t('app','My account')?></a> / <a class="reg white" href="/site/logout"><?=\Yii::t('app','Logout')?> </a>
+                               <a class=" login white" href="/management"><?=\Yii::t('app',Yii::$app->user->identity->name)?></a> / <a class="reg white" href="/site/logout"><?=\Yii::t('app','Logout')?> </a>
                            </div>
                       <?php endif; ?>
                     </div>
@@ -293,10 +279,8 @@ else
                 <div class="clear"></div>
             </div>
         </div>
-
         <div class="bottom">
             <div class="cop">
-                <p class="text-center"><?=Yii::t('app','Example text...')?> </p>
                 <p class="text-center">TOURBOOK — часть группы мирового лидера в сфере онлайн-туризма и сопутствующих услуг.</p>
                 <p class="text-center">Copyright ©  <?= date('Y') ?>  TOURBOOK. Все права защищены.</p>
             </div>
@@ -324,9 +308,6 @@ else
 //echo app\widgets\WBasketModal::widget();
 \yii\bootstrap\Modal::end();
 ?>
-
-
-
 <?php $this->endBody() ?>
 </body>
 </html>

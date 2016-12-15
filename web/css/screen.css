@@ -9,8 +9,6 @@
         font-size: 16px;
     }
 }
-
-
 @media only screen and (max-width: 1200px) {
     #main div.search {
         height: 350px;
@@ -60,6 +58,12 @@
     button.green, button.blue {
         padding: 7px 25px;
     }
+    .navbar-inverse .navbar-toggle {
+        border:none;
+    }
+    .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+        background: none;
+    }
     #navbar .btn-group {
         position: absolute;
         top: 0;
@@ -102,6 +106,9 @@
 
 }
 @media only screen and (max-width: 767px) {
+    #header .navbar-inverse {
+
+    }
     .container.md,#header .container{
         padding-left: 10px;
         padding-right: 10px;
@@ -129,12 +136,12 @@
 
     #navbar .navbar-toggle {
         position: relative;
-        top: 13px;
     }
     #header .basket {
         position: absolute;
         right: 30px;
         top: 20px;
+        left: auto;
     }
     /*Меню*/
     #navbar-collapse {
@@ -170,14 +177,13 @@
         float:none;
         border:none;
         border-radius: 0px;
-        box-shadow: 0 0 0 0 #000;
-        background-color: #222222;
+        background-color: rgba(0,0,0,0.5);
     }
     #navbar div.navigation .drows .dropdown .dropdown-menu a {
         color:#fff;
     }
     .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-        background-color: #27282D;
+        background-color: rgba(0,0,0,0.5);
     }
     #navbar div.navigation .drows .dropdown .flag {
         padding: 0 5px 0 0;
@@ -226,6 +232,7 @@
     #header div.top .logo {
         height: 28px;
         width: 115px;
+        margin: 0px;
     }
     .box__max div.item {
         height: 12.5em;

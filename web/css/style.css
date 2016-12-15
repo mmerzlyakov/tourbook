@@ -31,8 +31,7 @@ div.container {
 }
 /*Header*/
 #header {
-    padding: 10px 0px;
-    background: #292929;
+    width: 100%;
 }
 #header .container {
 
@@ -41,11 +40,14 @@ div.container {
 
 }
 #header div.top .navbar {
-    min-height: 70px;
+    min-height: 50px;
 }
 #header div.top .logo {
-    height: 35px;
-    width: 150px;
+    height: 30px;
+    width: 125px;
+}
+#header .navbar-brand {
+    padding: 10px 15px;
 }
 #header div.top div.res {
     height: 50px;
@@ -57,7 +59,7 @@ div.container {
     padding-top: 13px;
 }
 #header div.top div.group {
-    padding: 25px 0 10px;
+    padding:10px 0 10px;
     margin-left: -25px;
 }
 #header div.top div.group .dropdown {
@@ -66,14 +68,21 @@ div.container {
 }
 #header div.top div.group .dropdown .flag{
     padding: 0 5px 0 0;
-    vertical-align: baseline;
+    vertical-align: middle;
 }
 #navbar .btn-group{
-    padding: 18px 10px;
+    color: #fff;
+}
+#navbar .btn-group .reg {
+    margin-right: 5px;
+}
+#navbar .btn-group .login {
+    margin-left: 5px;
 }
 #header div.user {
     text-align: right;
     color: #fff;
+    padding: 15px 0;
 }
 #header div.user a {
     margin: 0 5px;
@@ -87,6 +96,7 @@ div.container {
     display: block;
     float: right;
     position: relative;
+    left: 5px;
 }
 #header .basket div.count{
     font-size: 12px;
@@ -99,6 +109,11 @@ div.container {
 }
 #header .basket .glyphicon{
     font-size: 17pt;
+}
+#header .navbar-inverse{
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
 }
 /*Center*/
 #center {
@@ -364,7 +379,7 @@ div.br-hr-title {
     margin-top: 30px;
 }
 /*Вход*/
-.site-login{
+.site-login,.site-signup,.site-request-password-reset,.site-reset-password{
     padding: 40px 0 80px;
 }
 /*-----Страниц города-----*/
