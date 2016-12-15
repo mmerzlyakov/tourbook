@@ -54,7 +54,7 @@ class BookingController extends BackendController
                             'addwish',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode','user', 'admin', 'operator','supplier'],
+                        'roles' => ['?', '@'],
                     ],
                 ],
             ],

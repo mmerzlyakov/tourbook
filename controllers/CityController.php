@@ -44,7 +44,7 @@ class CityController extends BackendController
                             'city-view',
                         ],
                         'allow' => true,
-                        'roles' => ['users', 'GodMode', 'admin', 'operator'],
+                        'roles' => ['?', '@'],
                     ],
                 ],
             ],

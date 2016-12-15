@@ -41,7 +41,7 @@ class BasketController extends Controller
                             'payment',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode','user', 'admin', 'operator','supplier'],
+                        'roles' => ['?', '@'],
                     ],
                 ],
             ],

@@ -38,7 +38,7 @@ class FeedbackController extends BackendController
                             'addbook',
                         ],
                         'allow' => true,
-                        'roles' => ['GodMode','user', 'admin', 'operator','supplier'],
+                        'roles' => ['?', '@'],
                     ],
                 ],
             ],
