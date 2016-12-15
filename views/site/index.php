@@ -132,19 +132,19 @@ else
 
     <div class="container md">
 
-        <div class="col-xs-10 col-sm-4 info-box">
+        <div class="col-xs-12 col-sm-4 info-box">
             <div class="info br">
                 <div class="icon-fast icon"></div>
                 <div class="text-min">Мгновеное подтверждения брони</div>
             </div>
         </div>
-        <div class="col-xs-10 col-sm-4 info-box ">
+        <div class="col-xs-12 col-sm-4 info-box ">
             <div class="info pay">
                 <div class="icon-sec icon"></div>
                 <div class="text-min">О безопасности платежей</div>
             </div>
         </div>
-        <div class="col-xs-10 col-sm-4 info-box">
+        <div class="col-xs-12 col-sm-4 info-box">
             <div class="info br margin-right">
                 <div class="icon-pay icon"></div>
                 <div class="text-min">О гарантии лучшей цены</div>

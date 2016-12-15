@@ -87,10 +87,11 @@ $(document).ready(function(){
         //   columnWidth: '.col-sm-6',
         //  percentPosition: true,
     });
-
-   /// $('#basket-modal').modal('show');
-  //  $('#header .dropdown-toggle').tooltip('toggle').tooltip('hide');
-    // Выпадашка header;scaf
+    //Выпадашка и подсказака;
+    $('#header .dropdown-toggle').tooltip('toggle').tooltip('hide');
+    $('#header .dropdown').on('show.bs.dropdown', function () {
+        $('#header .dropdown-toggle').tooltip('hide');
+    });
     /*
     $(document).on('mouseenter','#header .dropdown-toggle',function() {
         // Удаляем интервал;
@@ -265,7 +266,6 @@ function tag_add(index, tag_group, tag_id, tag_name,check) {
         var variation_id = $("tr.variation").eq(index).attr("variation");
         var variationForOwner = false;
 
-
         if($("tr.variation").eq(index).length > 0){
             variationForOwner = $("tr.variation").eq(index);
             variationForOwner = variationForOwner.data('variationforowner');
@@ -287,5 +287,16 @@ function tag_add(index, tag_group, tag_id, tag_name,check) {
     }
 }
 
-
+// Добавить бук в избранное;
+$(document).on('click','.grid__m .like',function(){
+    var id = $(this).data("id");
+    $(this).addClass('open').add(".grid__m .like").not(this).removeClass('open');
+    //
+    $.post(window.document.href, {
+        'favorite' : true,
+        'id': id
+    }, function(data) {
+        //
+    },'JSON');
+});
 
