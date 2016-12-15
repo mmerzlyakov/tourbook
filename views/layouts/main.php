@@ -32,6 +32,10 @@ else
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google web fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
     <?= Html::csrfMetaTags() ?>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -81,9 +85,9 @@ else
                                 $flagsImages[$item->id]['currency'] = $item->currency;
                             }
                             ?>
-                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown" data-placement="left" title="<?=\Yii::t('app','Language')?> ">
 
-                                <?=\Yii::t('app','Language')?>  <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
+                                 <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
                                 <?=\Yii::t('app',$flagsImages[$index]['name'])?><b class="caret"></b></a>
 
                             <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
@@ -104,7 +108,7 @@ else
                             </ul>
                         </div -->
                         <div class="dropdown">
-                            <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
+                            <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown" data-placement="right" title="Currency"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
 
                             <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
 
@@ -134,10 +138,7 @@ else
                     <div class="content-nav">
                         <div class="drows">
                             <div class="dropdown">
-
                                 <?php
-
-
                                     $countiesFlags = \app\models\Country::find()->where('language = 1')->andWhere('status = 1')->all();
 
                                     $flagsImages = [];
