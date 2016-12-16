@@ -70,7 +70,7 @@
         right: 0;
     }
     #header div.top div.group {
-        margin-left: 60px;
+        margin-left: 190px;
     }
     .box__max div.carousel-box div.item .name-box {
         font-size: 60px;
@@ -108,6 +108,9 @@
 @media only screen and (max-width: 767px) {
     #header .navbar-inverse {
 
+    }
+    #main div.search {
+        height: 250px;
     }
     .container.md,#header .container{
         padding-left: 10px;
@@ -208,8 +211,7 @@
         width: 80px;
     }
     .grid__m div.item {
-        width: 330px;
-        float: unset;
+        width: 50%;
     }
     #page-city div.city {
         padding: 70px 10px;
@@ -236,6 +238,10 @@
     }
     .box__max div.item {
         height: 12.5em;
+    }
+    .grid__m div.item {
+        width: 100%;
+        float: unset;
     }
     .box__max div.item .name .name-box {
         font-size: 34px;
@@ -310,10 +316,10 @@
     .box__max div.item .name .name-box {
         font-size: 28px;
     }
-    #main .grid__m {
-        width: 320px;
-        margin-right: auto;
-        margin-left: auto;
+    .grid__m div.item div.content-item .title {
+        font-size: 17px;
+        height: 33px;
+        overflow: hidden;
     }
 }
 @media only screen and (max-width: 375px) {

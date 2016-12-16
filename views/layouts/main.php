@@ -7,21 +7,27 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+
 AppAsset::register($this);
 //$session = Yii::$app->session;
 
 $lang = \Yii::$app->session->get("locale");
-if(!empty($lang))
-    \Yii::$app->language=$lang;
-else
-{
-    if(!\Yii::$app->user->isGuest)
-    {
-        $user_id = \Yii::$app->user->identity->getId();
-        $user = \app\models\User::find()->where('id = '.$user_id)->one();
-        \Yii::$app->language=$user->locale;
+
+if(!\Yii::$app->user->isGuest) {
+    $user_id = \Yii::$app->user->identity->getId();
+
+    if (!empty($user_id)) {
+        $user = \app\models\User::find()->where('id = ' . $user_id)->one();
+        \Yii::$app->language = $user->locale;
+        \Yii::$app->session->set("locale",$lang);
     }
 }
+elseif(!empty($lang)) {
+    \Yii::$app->language = $lang;
+}
+
+//var_dump($lang);
+//var_dump(Yii::$app->language);die();
 
 ?>
 
@@ -32,6 +38,10 @@ else
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google web fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
     <?= Html::csrfMetaTags() ?>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -67,11 +77,14 @@ else
 
                                 if(empty($index))
                                     $index = $item->id;
+                                if(strval($item->locale)==strval(\Yii::$app->language))
+                                    $index = $item->id;
 
                                 $temp = \app\models\CountryFlags::find()->where('country_id = '.$item->id)->one();
 
                                 $flagsImages[$item->id]['id'] = $item->id;
                                 $flagsImages[$item->id]['name'] = $item->name;
+                                $flagsImages[$item->id]['locale'] = $item->locale;
 
                                 if(!empty($temp->path))
                                     $flagsImages[$item->id]['path'] = $temp->path;
@@ -81,18 +94,18 @@ else
                                 $flagsImages[$item->id]['currency'] = $item->currency;
                             }
                             ?>
-                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown" data-placement="left" title="<?=\Yii::t('app','Language')?> ">
 
-                                <?=\Yii::t('app','Language')?>  <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
+                                <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
                                 <?=\Yii::t('app',$flagsImages[$index]['name'])?><b class="caret"></b></a>
 
                             <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
 
                                 <?php foreach($flagsImages as $item){ ?>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>">
-                                            <a href="#" onClick='return setLocale("<?=isset($item['locale']) ? $item['locale'] : ''?>");'><?=\Yii::t('app',$item['name'])?></a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><a href="#" onClick='return setLocale("<?=isset($item['locale']) ? $item['locale'] : ''?>");'><img class="flag" width=30 src="/<?=$item['path']?>"><?=\Yii::t('app',$item['name'])?></a></li>
                                 <?php } ?>
                             </ul>
+
                         </div>
 
                         <!-- div class="dropdown">
@@ -104,7 +117,7 @@ else
                             </ul>
                         </div -->
                         <div class="dropdown">
-                            <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
+                            <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown" data-placement="right" title="<?=\Yii::t('app','Currency')?>"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
 
                             <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
 
@@ -134,10 +147,7 @@ else
                     <div class="content-nav">
                         <div class="drows">
                             <div class="dropdown">
-
                                 <?php
-
-
                                     $countiesFlags = \app\models\Country::find()->where('language = 1')->andWhere('status = 1')->all();
 
                                     $flagsImages = [];
@@ -145,6 +155,8 @@ else
                                     foreach ($countiesFlags as $item){
 
                                         if(empty($index))
+                                            $index = $item->id;
+                                        if(strval($item->locale)==strval(\Yii::$app->language))
                                             $index = $item->id;
 
                                         $temp = \app\models\CountryFlags::find()->where('country_id = '.$item->id)->one();
@@ -166,16 +178,15 @@ else
 
                                 ?>
 
-                                <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown" title="<?=\Yii::t('app','Language')?>">
 
-                                    <?=\Yii::t('app','Language')?>  <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
+                                    <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
                                     <?=\Yii::t('app',$flagsImages[$index]['name'])?><b class="caret"></b></a>
 
                                 <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
 
                                     <?php foreach($flagsImages as $item){ ?>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ><img class="flag" width=30 src="/<?=$item['path']?>">
-                                                <a href="#" onClick='return setLocale("<?=$item['locale']?>");'><?=\Yii::t('app',$item['name'])?></a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><a href="#" onClick='return setLocale("<?=$item['locale']?>");'><img class="flag" width=30 src="/<?=$item['path']?>"><?=\Yii::t('app',$item['name'])?></a></li>
                                     <?php } ?>
                                 </ul>
                                 
@@ -191,7 +202,7 @@ else
                                 </ul>
                             </div -->
                             <div class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
+                                <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown" title="<?=\Yii::t('app','Currency')?>"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
 
                                 <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
 
@@ -222,21 +233,21 @@ else
         <div class="clear"></div>
     </div>
     <div id="center">
-     <?=$content?>
+        <?=$content?>
     </div>
     <!--Content-->
     <div id="footer">
         <div class="top">
             <div class="container">
                 <div class="col-xs-12 col-sm-6 info-footer">
-                    <div>Будьте в курсе последних новостей и обновлений</div>
+                    <div><?=\Yii::t('app','Get updated about fresh news and tours')?></div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
                     <form method="post">
                         <div class="input-group col-sm-12 col-sm-10 subscription">
-                            <input type="text" class="form-control" placeholder="введите ваш email">
+                            <input type="text" class="form-control" placeholder="<?=\Yii::t('app','Your e-mail');?>">
                                       <span class="input-group-btn">
-                                        <button class="btn btn-success" type="button">Подписаться!</button>
+                                        <button class="btn btn-success" type="button"><?=\Yii::t('app','Subscribe')?></button>
                                       </span>
                         </div><!-- /input-group -->
                     </form>
@@ -248,32 +259,32 @@ else
             <div class="container">
                 <div class="menu">
                     <div class="col-xs-6 col-sm-3 menu-footer">
-                        <div class="title-menu">СТРАНЫ И РЕГИОНЫ</div>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
+                        <div class="title-menu"><?=\Yii::t('app','Countries and regions');?></div>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
                     </div>
                     <div class="col-xs-6 col-sm-3 menu-footer">
-                        <div class="title-menu">СТРАНЫ И РЕГИОНЫ</div>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
+                        <div class="title-menu"><?=\Yii::t('app','Countries and regions');?></div>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
                     </div>
                     <div class="col-xs-6 col-sm-3 menu-footer">
-                        <div class="title-menu">СТРАНЫ И РЕГИОНЫ</div>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
+                        <div class="title-menu"><?=\Yii::t('app','Countries and regions');?></div>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
                     </div>
                     <div class="col-xs-6 col-sm-3 menu-footer">
-                        <div class="title-menu">СТРАНЫ И РЕГИОНЫ</div>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
-                        <a class="white" href="#">Условия и положения</a>
+                        <div class="title-menu"><?=\Yii::t('app','Countries and regions');?></div>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
+                        <a class="white" href="#"><?=\Yii::t('app','Terms of use');?></a>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -281,8 +292,8 @@ else
         </div>
         <div class="bottom">
             <div class="cop">
-                <p class="text-center">TOURBOOK — часть группы мирового лидера в сфере онлайн-туризма и сопутствующих услуг.</p>
-                <p class="text-center">Copyright ©  <?= date('Y') ?>  TOURBOOK. Все права защищены.</p>
+                <p class="text-center">TOURBOOK — <?=\Yii::t('app','the part of tour booking leader operator');?>.</p>
+                <p class="text-center">Copyright ©  <?= date('Y') ?>  TOURBOOK. <?=\Yii::t('app','All rights reserved');?>.</p>
             </div>
         </div>
     </div>
@@ -290,11 +301,11 @@ else
 <?php
 // Mini basket;
 \yii\bootstrap\Modal::begin([
-    'header' => '<h2>Корзина</h2>',
+    'header' => '<h2>'.\Yii::t('app','Basket').'</h2>',
     'id' => 'basket-modal',
     'size' => 'modal-lg',
-    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
-                 <a href="/basket/payment" class="btn btn-success no-border" style="color:#fff;">Оформить заказ</a>'
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">'.\Yii::t('app','More booking').'</button>
+                 <a href="/basket/payment" class="btn btn-success no-border" style="color:#fff;">'.\Yii::t('app','Checkout').'</a>'
 ]);
 
 ?>

@@ -216,9 +216,12 @@ h2.title-main {
     color: #585858;
 }
     /*?????????*/
+h1,h2,h3,h4,h5 {
+    font-family:"Lato",Arial, sans-serif;
+}
 h1.name {
     color: #3A3A38;
-    font-family: Trebuchet MS;
+
     font-size: 28px;
     margin: 13px 0 0 -10px;
     padding: 7px 0;
@@ -227,18 +230,18 @@ h1.name {
 
 h2.name {
     color: #2D2D2D;
-    font-family: Trebuchet MS;
+
     font-size: 28px;
     margin: 7px 0 0;
     line-height: normal;
 }
 h4.name {
-    font-family: caption;
+
     font-size: 20px;
 }
 /*???????? */
 h1.title {
-    font-family: Verdana;
+
     font-size: 33px;
     font-weight: normal;
     line-height: normal;
@@ -249,7 +252,7 @@ h2.title {
     margin: 0px 0px 8px;
 }
 h4.title {
-    font-family: Verdana;
+
     font-size: 20px;
 }
 
@@ -257,6 +260,9 @@ div.title {
     font-size: 17px;
     font-weight: bold;
     padding: 5px 0px 5px 0px;
+}
+p{
+    margin: 0 0 20px;
 }
 div.name {
 
@@ -426,6 +432,7 @@ a.no-border:hover{
     text-align: center;
     display: table-cell;
     vertical-align: middle;
+    font-family: Lato,Helvetica;
 }
 
 .icon-fast {
@@ -591,7 +598,7 @@ table.table-search tr td span:last-child::after {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 20px;
-    max-width: 350px;
+    /*max-width: 370px; /*350px;*/
 }
 .grid__m div.item.max {
     max-width: 700px;
@@ -625,11 +632,12 @@ table.table-search tr td span:last-child::after {
     transform: translateY(0px);
 }
 .grid__m div.item div.content-item div.image {
-    min-height: 195px;
+    height: 195px;
     overflow: hidden;
     width: 100%;
     border-radius: 10px 10px 0px 0px;
     position: relative;
+    background-color: #6b6b6b;
 }
 .grid__m div.item.max div.content-item div.image {
     min-height: 400px;
@@ -645,8 +653,8 @@ table.table-search tr td span:last-child::after {
     color: #fff;
     color: rgba(255,255,255,0.8);
 }
-.grid__m div.item div.content-item div.image .like:hover,.grid__m div.item div.content-item div.image .like.open{
-    color: rgba(255,255,255, 1);
+.grid__m div.item div.content-item div.image .like:hover, .grid__m div.item div.content-item div.image .like.open{
+    color: rgba(0,164,235, 0.8);
 }
 .grid__m div.item div.content-item div.money {
     background: rgb(0, 0, 0);
@@ -688,6 +696,8 @@ table.table-search tr td span:last-child::after {
 }
 .grid__m div.item div.content-item .text-min {
     color: #4e4e4e;
+    height: 25px;
+    overflow: hidden;
 }
 .grid__m div.item div.content-item .rating,.grid__m div.item div.content-item .view {
     position: absolute;

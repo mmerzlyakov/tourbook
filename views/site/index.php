@@ -3,18 +3,40 @@
 /* @var $this yii\web\View */
 $this->title = 'TourBook.Biz';
 
+
 $lang = \Yii::$app->session->get("locale");
-if(!empty($lang))
-    \Yii::$app->language=$lang;
-else
-{
-    if(!\Yii::$app->user->isGuest)
-    {
-        $user_id = \Yii::$app->user->identity->getId();
-        $user = \app\models\User::find()->where('id = '.$user_id)->one();
-        \Yii::$app->language=$user->locale;
+
+if(!\Yii::$app->user->isGuest) {
+    $user_id = \Yii::$app->user->identity->getId();
+
+    if (!empty($user_id)) {
+        $user = \app\models\User::find()->where('id = ' . $user_id)->one();
+        \Yii::$app->language = $user->locale;
+        \Yii::$app->session->set("locale",$lang);
     }
 }
+elseif(!empty($lang)) {
+    \Yii::$app->language = $lang;
+}
+
+//$lang = \Yii::$app->session->get("locale");
+//if(!empty($lang))
+//    \Yii::$app->language=$lang;
+//else
+//{
+//    if(!\Yii::$app->user->isGuest)
+//    {
+//        $user_id = \Yii::$app->user->identity->getId();
+//        $user = \app\models\User::find()->where('id = '.$user_id)->one();
+//        \Yii::$app->language=$user->locale;
+//    }
+//}
+//
+
+
+//var_dump($lang);
+//var_dump(Yii::$app->language);die();
+
 
 
 ?>
@@ -78,7 +100,7 @@ else
     <div class="br-hr hidden-xs"></div>
 
 
-    <h2 class="title-main text-center">ПОПУЛЯРНЫЕ ГОРОДА</h2>
+    <h2 class="title-main text-center"><?=\Yii::t('app','Popular cities');?></h2>
     <div class="container md">
 
         <?php
@@ -95,7 +117,7 @@ else
         <div class="clear"></div>
     </div>
 
-    <h2 class="title-main text-center">ПОПУЛЯРНЫЕ СТРАНЫ</h2>
+    <h2 class="title-main text-center"><?=\Yii::t('app','Popular countries');?></h2>
     <div class="container md">
 
         <?php
@@ -112,7 +134,7 @@ else
         <div class="clear"></div>
     </div>
 
-   <h2 class="title-main text-center">РЕКОМЕНДУЕМЫЕ</h2>
+   <h2 class="title-main text-center"><?=\Yii::t('app','Recommended');?></h2>
     <div class="container md">
         <div class="masonry grid__m ">
 
@@ -132,22 +154,22 @@ else
 
     <div class="container md">
 
-        <div class="col-xs-10 col-sm-4 info-box">
+        <div class="col-xs-12 col-sm-4 info-box">
             <div class="info br">
                 <div class="icon-fast icon"></div>
-                <div class="text-min">Мгновеное подтверждения брони</div>
+                <div class="text-min"><?=\Yii::t('app','Momentaly booking');?></div>
             </div>
         </div>
-        <div class="col-xs-10 col-sm-4 info-box ">
+        <div class="col-xs-12 col-sm-4 info-box ">
             <div class="info pay">
                 <div class="icon-sec icon"></div>
-                <div class="text-min">О безопасности платежей</div>
+                <div class="text-min"><?=\Yii::t('app','Payment security');?></div>
             </div>
         </div>
-        <div class="col-xs-10 col-sm-4 info-box">
+        <div class="col-xs-12 col-sm-4 info-box">
             <div class="info br margin-right">
                 <div class="icon-pay icon"></div>
-                <div class="text-min">О гарантии лучшей цены</div>
+                <div class="text-min"><?=\Yii::t('app','Best price guarantee');?></div>
             </div>
         </div>
     </div>

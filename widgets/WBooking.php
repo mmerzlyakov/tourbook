@@ -50,7 +50,7 @@ class WBooking extends Widget {
                 <div class="item col-md-4 col-sm-6">
                     <div class="content-item">
                         <div class="image"><a href="/site/booking?id=<?=$this->model->id?>"><img src="/<?= $imagePath->path ?>" alt=""></a>
-                            <div class="glyphicon glyphicon-heart like"></div>
+                            <div class="glyphicon glyphicon-heart like" data-id="<?=$this->model->id?>"></div>
                             <div class="money">
                                 <div>US</div>
                                 <div><?= $this->model->price ?> $</div>
