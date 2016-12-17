@@ -15,7 +15,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-8">
-                        <h1>Arc de Triomphe</h1>
+                        <h1><?=$model->name?></h1>
                         <span>Champ de Mars, 5 Avenue Anatole, 75007 Paris.</span>
                     </div>
                     <div class="col-md-4 col-sm-4">
@@ -69,7 +69,6 @@
                     <li><i class="icon_set_1_icon-29"></i>Tour guide</li>
                 </ul>
             </div>
-            <h1 class="title"><?=$model->name?></h1>
             <div class="text">
                 <?=$model->description?>
             </div>
