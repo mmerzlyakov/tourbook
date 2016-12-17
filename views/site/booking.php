@@ -9,19 +9,35 @@
 ?>
 <div id="private-tour">
     <div class="booking-button-m"><div class="glyphicon glyphicon-plane"></div><div class="name">Booking</div></div>
-    <div class="gallery">
-        <div class="items">
-            <div class="image"><img src="/files/gallery/1001.jpg" class="rad"/></div>
-            <div class="image"><img src="/files/gallery/1002.jpg" class="rad"/></div>
-            <div class="image"><img src="/files/gallery/1003.jpg" class="rad"/></div>
+
+    <div class="parallax-window" data-parallax="scroll" data-image-src="/files/gallery/1001.jpg" data-natural-width="1400" data-natural-height="470">
+        <div class="parallax-content-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8">
+                        <h1>Arc de Triomphe</h1>
+                        <span>Champ de Mars, 5 Avenue Anatole, 75007 Paris.</span>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div id="price_single_main">
+                            from/per person <span><sup>$</sup>52</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End section -->
+    <div class="breadcrumb-content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="icon-balun"><a href="#">Главная</a></li>
+                <li><a href="#">Библиотека</a></li>
+                <li>Данные</li>
+            </ol>
         </div>
     </div>
     <div class="container">
-        <ol class="breadcrumb">
-            <li class="icon-balun"><a href="#">Главная</a></li>
-            <li><a href="#">Библиотека</a></li>
-            <li>Данные</li>
-        </ol>
+
 
         <?php if(Yii::$app->user->can('GodMode')){ ?>
 
@@ -30,7 +46,7 @@
         <?php } ?>
 
         <div class="col-xs-12 col-md-8">
-            <div class="services">
+            <div class="services hidden">
                 <div class="block">
                     <span class="icon-service"><b class="name">Museum</b></span>
                     <span class="icon-service md-1"><b class="name">Audio guide</b></span>
@@ -41,6 +57,17 @@
                     <span class="icon-service md-6"><b class="name">Pet allowed</b></span>
                 </div>
                 <div class="clear"></div>
+            </div>
+            <div id="single_tour_feat">
+                <ul>
+                    <li><i class="icon_set_1_icon-4"></i>Museum</li>
+                    <li><i class="icon_set_1_icon-83"></i>3 Hours</li>
+                    <li><i class="icon_set_1_icon-13"></i>Accessibiliy</li>
+                    <li><i class="icon_set_1_icon-82"></i>144 Likes</li>
+                    <li><i class="icon_set_1_icon-22"></i>Pet allowed</li>
+                    <li><i class="icon_set_1_icon-97"></i>Audio guide</li>
+                    <li><i class="icon_set_1_icon-29"></i>Tour guide</li>
+                </ul>
             </div>
             <h1 class="title"><?=$model->name?></h1>
             <div class="text">

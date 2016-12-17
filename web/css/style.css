@@ -1,12 +1,6 @@
-/*Поключение шрифт*/
-/*
-@font-face {
-   font-family: Ampir Deco;
-   src: local("Ampir Deco"),
-   url('fon/ampir_deco.ttf'); 
-}*/
-
-/* End of Yahoo! CSS Reset */
+@import url("/icon/css/icon_set_1.css");
+@import url("/icon/css/icon_set_2.css");
+@import url("/icon/css/fontello.css");
 
 html,body {
 	height: 100%;
@@ -481,26 +475,26 @@ div.br-hr-title {
 }
 /*Привытный тур*/
 #private-tour {
-
-    background: #F4F4F4;
+    /*background-color: #F4F4F4;*/
 }
 
 #private-tour div.gallery {
     overflow: hidden;
     width: 100%;
     margin: 0 0 10px;
+    position: relative;
+}
+#private-tour .breadcrumb-content {
+    background: #333333;
 }
 #private-tour .breadcrumb {
-    background: #000000;
+    background: #333333;
     border-radius: 0px;
     margin: 0px;
 }
 #private-tour .breadcrumb a,#private-tour .breadcrumb li {
     color: #fff;
     text-decoration: none;
-}
-#private-tour div.gallery div.image{
-
 }
 #private-tour div.gallery div.thumbnails {
     background: #e9e9e9;
@@ -547,9 +541,6 @@ div.br-hr-title {
 #private-tour div.services .md-2 .name {
     left: -11px;
 }
-#private-tour div.text {
-
-}
 #private-tour div.info-text {
     border-top: 1px solid #a4a4a4;
     padding: 10px 0;
@@ -565,7 +556,66 @@ div.br-hr-title {
     color: #575757;
     font-weight: normal;
 }
-
+#private-tour .parallax-content-2 {
+    background: rgba(0, 0, 0, 0) url("/images/shadow_single.png") repeat-x scroll left bottom;
+    color: #fff;
+    font-size: 13px;
+    left: 0;
+    padding: 18px 0 20px;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    z-index: 200;
+}
+.parallax-content-2 div h1 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+}
+.parallax-content-2 {
+    color: #fff;
+    font-size: 13px;
+}
+#price_single_main {
+    font-weight: normal;
+    text-align: right;
+}
+#price_single_main span {
+    color: #3cf;
+    font-size: 60px;
+}
+#price_single_main sup {
+    font-size: 22px;
+    position: relative;
+    top: -25px;
+}
+.parallax-window {
+    background: transparent none repeat scroll 0 0;
+    min-height: 470px;
+    position: relative;
+}
+#single_tour_feat ul {
+    border-bottom: 2px solid #555;
+    display: table;
+    list-style: outside none none;
+    margin: 0 0 30px;
+    padding: 0;
+}
+#single_tour_feat ul li {
+    display: table-cell;
+    padding: 0 10px 20px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 1%;
+}
+#single_tour_feat ul li i {
+    display: block;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
 div.sidebar{
     padding-top: 40px;
     padding-bottom: 40px;
