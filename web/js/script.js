@@ -20,6 +20,17 @@ $(document).ready(function(){
         autoplay: true,
         autoplaySpeed: 6000
     });
+    // Карусель;
+    $('div.carousel div.items').slick({
+        infinite: true,
+        dots: false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        centerMode: true,
+        arrows:true,
+        prevArrow: '<div class="prev"></div>',
+        nextArrow:'<div class="next"></div>',
+    });
     $("#main input.search").on('click',function(){
         $("#main .search-group .prompt").toggle();
     });

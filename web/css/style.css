@@ -724,3 +724,67 @@ div.sidebar .contact .phone {
     position: relative;
     bottom: -1px;
 }
+/*-----------------Корзина---------------------*/
+@font-face {
+    font-family: 'fontello';
+    src: url('/font/fontello.eot?32974303');
+    src: url('/font/fontello.eot?32974303#iefix') format('embedded-opentype'),
+    url('/font/fontello.woff?32974303') format('woff'),
+    url('/font/fontello.ttf?32974303') format('truetype'),
+    url('/font/fontello.svg?32974303#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+#basket {
+
+}
+.icon-ccw-2::before {
+    content: "";
+}
+.icon-trash::before {
+    content: "";
+}
+[class^="icon-"]::before, [class*=" icon-"]::before {
+    display: inline-block;
+    font-family: "fontello";
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    text-align: center;
+    text-decoration: inherit;
+    text-transform: none;
+    width: 1em;
+}
+#basket .table.cart-list th,#basket .table.options_cart th {
+    background-color: #fff;
+    text-transform: uppercase;
+}
+#basket  .table.cart-list td {
+    vertical-align: middle;
+}
+#basket .options i {
+    font-size: 22px;
+}
+#basket .thumb_cart {
+    border: 1px solid #ddd;
+    float: left;
+    height: 60px;
+    margin-right: 10px;
+    overflow: hidden;
+    width: 60px;
+}
+#basket  .thumb_cart img {
+    height: auto;
+    padding: 1px;
+    width: 58px;
+}
+#basket .item_cart {
+    display: inline-block;
+    margin-top: 20px;
+}
+#basket  .counts__m {
+
+}

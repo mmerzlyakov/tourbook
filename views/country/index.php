@@ -68,6 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $images = \app\models\CountryImages::find()->where('country_id = ' . $model->id)->all();
                         if (!empty($images)) {
                             foreach ($images as $item) {
+
                                 $str.="<img src='/" . $item->path . "' width=80 id='"
                                     . $item->id
                                     . "'>";
