@@ -10,7 +10,7 @@
 <div id="private-tour">
     <div class="booking-button-m"><div class="glyphicon glyphicon-plane"></div><div class="name">Booking</div></div>
 
-    <div class="parallax-window" data-parallax="scroll" data-image-src="/files/gallery/1001.jpg" data-natural-width="1400" data-natural-height="470">
+    <div class="parallax-window" data-parallax="scroll" data-image-src="/files/gallery/admin_top.jpg" data-natural-width="1400" data-natural-height="470">
         <div class="parallax-content-2">
             <div class="container">
                 <div class="row">
@@ -93,7 +93,7 @@
             </ul></div>
 
             <div class="info-text">
-                <ul>
+                <ul class="list_ok">
                     <li>Советы:<br>
                         <small>Вы можете найти бесплатный WiFi доступный у входа в Сингапурский зоопарк</small></li>
                     <li>Дополнительная информация:<br>

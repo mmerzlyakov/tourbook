@@ -616,6 +616,25 @@ div.br-hr-title {
     font-size: 36px;
     margin-bottom: 10px;
 }
+ul.list_ok {
+    line-height: 22px;
+    list-style: outside none none;
+}
+ul.list_ok li {
+    position: relative;
+    padding-left: 25px;
+}
+ul.list_ok li::before {
+    color: #e04f67;
+    content: "l";
+    font-family: "icon_set_1";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
 div.sidebar{
     padding-top: 40px;
     padding-bottom: 40px;
