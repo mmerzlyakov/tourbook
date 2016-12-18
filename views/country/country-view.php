@@ -25,11 +25,15 @@ $this->title = "About ".$model->name;
             
             <?php
 
-            foreach ($images as $item) {
-                echo "<img src='/" . $item->path . "' width=250 id='"
-                    . $item->id
-                    . "'>";
+            // Список галерея;
+            echo '<div class="carousel">
+                <div class="items">';
+            foreach ($images as $items) {
+                echo "
+                          <div class='images'><img src='/" . $items->path . "' id='" .$items->id. "'></div>
+                        ";
             }
+            echo '</div></div>';
         }
     }
 
@@ -66,12 +70,15 @@ $this->title = "About ".$model->name;
             ?>
 
             <?php
-
-            foreach ($images as $items) {
-                echo "<img src='/" . $items->path . "' width=250 id='"
-                    . $items->id
-                    . "'>";
-            }
+            // Список галерея;
+            echo '<div class="carousel">
+                <div class="items">';
+                foreach ($images as $items) {
+                    echo "
+                          <div class='images'><img src='/" . $items->path . "' id='" .$items->id. "'></div>
+                        ";
+                }
+            echo '</div></div>';
         }
     }
 

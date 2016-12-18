@@ -20,6 +20,35 @@ $(document).ready(function(){
         autoplay: true,
         autoplaySpeed: 6000
     });
+    // Карусель;
+    $('div.carousel div.items').slick({
+        infinite: true,
+        dots: false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        centerMode: true,
+        arrows:true,
+        prevArrow: '<div class="prev"></div>',
+        nextArrow:'<div class="next"></div>',
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    //arrows: false
+                }
+            },
+            {
+                breakpoint: 580,
+                settings: {
+                    slidesToShow: 2,
+                    // arrows: false
+                }
+            },
+
+        ]
+    });
+
     $("#main input.search").on('click',function(){
         $("#main .search-group .prompt").toggle();
     });
@@ -92,6 +121,7 @@ $(document).ready(function(){
     $('#header .dropdown').on('show.bs.dropdown', function () {
         $('#header .dropdown-toggle').tooltip('hide');
     });
+    $('.parallax-window').parallax({}); /* Parallax modal*/
     /*
     $(document).on('mouseenter','#header .dropdown-toggle',function() {
         // Удаляем интервал;
@@ -106,7 +136,11 @@ $(document).ready(function(){
         }, this), 1600));
     });*/
 });
-
+/*Плагины*/
+$(function () {
+    'use strict';
+    $('.parallax-window').parallax({}); /* Parallax modal*/
+});
 // plus;
 $(document).on('click','.counts__m .plus',function(){
     var  count =  $(this).siblings(".count").val();

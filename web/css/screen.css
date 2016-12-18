@@ -106,6 +106,9 @@
 
 }
 @media only screen and (max-width: 767px) {
+    #header .toolltip {
+
+    }
     #header .navbar-inverse {
 
     }
@@ -149,7 +152,7 @@
     /*Меню*/
     #navbar-collapse {
         padding: 15px 0;
-        margin-top: 25px;
+        margin-top: 0px;
         position: relative;
     }
     #navbar div.navigation {
@@ -314,7 +317,7 @@
         height: 9.5em
     }
     .box__max div.item .name .name-box {
-        font-size: 28px;
+        font-size: 22px;
     }
     .grid__m div.item div.content-item .title {
         font-size: 17px;
@@ -326,9 +329,7 @@
     .box__max div.item {
         height: 7.5em
     }
-    .box__max div.item .name .name-box {
-        font-size: 28px;
-    }
+
 }
 @media only screen and (max-width: 360px) {
     .grid__m div.item {

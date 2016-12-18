@@ -757,6 +757,40 @@ table.table-search tr td span:last-child::after {
     background: #606060 none repeat scroll 0 0;
     color: #fff;
 }
+.counts__m.count_basket {
+    padding: 15px 0;
+}
+.counts__m.count_basket .counts .plus, .counts__m.count_basket .counts .minus, .counts__m.count_basket .counts .count {
+    width: 33px;
+    height: 40px;
+    border: 1px solid #ccc;
+    font-family: "Glyphicons Halflings";
+}
+.counts__m.count_basket .counts .plus {
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    position: relative;
+}
+.counts__m.count_basket .counts .plus::before,.counts__m.count_basket .counts .minus::before {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    top: 10px;
+}
+.counts__m.count_basket .counts .minus {
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    position: relative;
+}
+.counts__m.count_basket .counts .count {
+    margin: 0px;
+    border-radius: 0px;
+    font-family: Montserrat;
+}
+.counts__m.count_basket .counts {
+    margin: 0px;
+}
 .booking-button-m {
     background: #407FCF;
     border-radius: 100%;
@@ -795,7 +829,6 @@ table.table-search tr td span:last-child::after {
 .nav-menu-left {
     background: #efefef none repeat scroll 0 0;
     display: block;
-    float: left;
     padding: 20px 10px;
     list-style: outside none none;
 }
@@ -839,4 +872,66 @@ table.table-search tr td span:last-child::after {
 }
 .nav-menu-left li ul li a {
     padding-left: 25px;
+}
+/*Карусель*/
+.carousel {
+    margin-bottom: 10px;
+    padding: 5px 0 10px;
+    width: 100%;
+}
+.carousel div.items {
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 96%;
+
+}
+.carousel div.items div.images {
+    cursor: pointer;
+    float: left;
+    height: 180px;
+    overflow: hidden;
+    padding: 5px;
+    position: relative;
+}
+.carousel div.items div.images img{
+    height: 100%;
+    width: 100%;
+    background: gray none repeat scroll 0 0;
+}
+.carousel div.items div.prev,.carousel div.items div.next {
+    cursor: pointer;
+    height: 30px;
+    margin: 0 -15px;
+    position: absolute;
+    top: 17px;
+    z-index: 500;
+    width: 26px;
+}
+.carousel div.items div.prev {
+    left: 0;
+}
+.carousel div.items div.next {
+   right: 0px;
+}
+.carousel div.items div.next::before {
+    border-color: transparent transparent transparent #575757;
+    border-style: solid;
+    border-width: 70px 0 70px 25px;
+    content: "→";
+    font-size: 0;
+    position: absolute;
+    top: 0;
+}
+.carousel div.items div.prev::before {
+    border-color: transparent #575757 transparent transparent;
+    border-style: solid;
+    border-width: 70px 25px 70px 0;
+    content: "←";
+    font-size: 0;
+    position: absolute;
+    top: 0;
+}
+/*-------Контент-------*/
+#basket {
+    margin-top: 65px;
 }
