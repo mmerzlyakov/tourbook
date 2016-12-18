@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
         'js/global.js',
         'scripts/sliders/slider.js',
         'scripts/masonry.js',
+        'scripts/parallax.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
