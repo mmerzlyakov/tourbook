@@ -157,7 +157,6 @@ $(document).on('click','.counts__m .minus',function(){
         $(this).siblings(".count").val(count);
     }
 });
-
 $(document).on('click','.booking-button-m',function(){
     $(".sidebar,.br-shadow").fadeIn();
     $(".booking-button-m").fadeOut();
