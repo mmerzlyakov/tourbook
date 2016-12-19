@@ -1,5 +1,8 @@
 <?php
 
+\app\libs\Language::select();
+
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
@@ -20,7 +23,7 @@ use dosamigos\tinymce\TinyMce;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'country_id')->DropDownList(ArrayHelper::map($countries, 'id', 'name'))->label('Country')->hint('Here we should select the country which this city belows'); ?>
+    <?= $form->field($model, 'country_id')->DropDownList(ArrayHelper::map($countries, 'id', 'name')); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

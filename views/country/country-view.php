@@ -1,5 +1,8 @@
 <?php
 
+\app\libs\Language::select();
+
+
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
