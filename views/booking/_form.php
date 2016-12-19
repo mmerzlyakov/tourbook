@@ -1,4 +1,5 @@
 <?php
+\app\libs\Language::select();
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -49,97 +50,123 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
     <?= $form->field($model, 'child_before')->textInput() ?>
 
     <?php
-    $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 
-    //Get the initial city description
-    //$tagsDesc = empty($model->tags) ? '' : \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->one()->description;
-    //$data=['5','4','3','2'];
-    //var_dump($data);
+    if(!empty($model->id)) {
 
-    $tagsLinks = \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->andWhere('status = 1')->all();
-    $arr=[];
-    foreach ($tagsLinks as $i=>$item)
-        $arr[]=\app\models\Tags::find()->select('name')->where('id = '.$item->tag_id)->andWhere('status = 1')->one()->name;
+        $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 
-    $model->tags =$arr;
-    echo $form->field($model, 'tags')->widget(Select2::classname(), [
-        'initValueText' => $model->tags,
-        'options' => ['placeholder' => 'Search for a tags ...', 'multiple' => true],
-        'id' => 'tagsLinks',
-        'pluginOptions' => [
-            'allowClear' => true,
-            'minimumInputLength' => 2,
-            'language' => [
-                'errorLoading' =>
-                    new JsExpression("function () { return 'Waiting for results...'; }"),
+        //Get the initial city description
+        //$tagsDesc = empty($model->tags) ? '' : \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->one()->description;
+        //$data=['5','4','3','2'];
+        //var_dump($data);
+
+        $tagsLinks = \app\models\TagsLinks::find()->where(
+            'booking_id = ' . $model->id
+        )->andWhere('status = 1')->all();
+        $arr = [];
+        foreach ($tagsLinks as $i => $item) {
+            $arr[] = \app\models\Tags::find()->select('name')->where(
+                'id = ' . $item->tag_id
+            )->andWhere('status = 1')->one()->name;
+        }
+
+        $model->tags = $arr;
+        echo $form->field($model, 'tags')->widget(
+            Select2::classname(), [
+            'initValueText' => $model->tags,
+            'options' => ['placeholder' => 'Search for a tags ...',
+                          'multiple' => true],
+            'id' => 'tagsLinks',
+            'pluginOptions' => [
+                'allowClear' => true,
+                'minimumInputLength' => 2,
+                'language' => [
+                    'errorLoading' =>
+                        new JsExpression(
+                            "function () { return 'Waiting for results...'; }"
+                        ),
+                ],
+                'ajax' => [
+                    'url' => $url,
+                    'dataType' => 'json',
+                    'cache' => true,
+                    'data' => new JsExpression(
+                        'function(params) { return {q:params.term}; }'
+                    )
+                ],
+                'escapeMarkup' => new JsExpression(
+                    'function (markup) { return markup; }'
+                ),
+                'templateResult' => new JsExpression(
+                    'function(item) { return item.text; }'
+                ),
+                'templateSelection' => new JsExpression(
+                    'function (item) { return item.text; }'
+                ),
             ],
-            'ajax' => [
-                'url' => $url,
-                'dataType' => 'json',
-                'cache' => true,
-                'data' => new JsExpression('function(params) { return {q:params.term}; }')
-            ],
-            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-            'templateResult' => new JsExpression('function(item) { return item.text; }'),
-            'templateSelection' => new JsExpression('function (item) { return item.text; }'),
-        ],
-        'pluginEvents' => [
-            'select2:unselecting' =>
-                new JsExpression('
+            'pluginEvents' => [
+                'select2:unselecting' =>
+                    new JsExpression(
+                        '
                 function(e) { 
                     //console.log(e.params.args.data);
                      if(confirm(\'Are you sure?\')){
                     $.get(\'/tags/del-book-links\',
                     {
                         tag_name: e.params.args.data.id, 
-                        booking_id: '.$model->id.'
+                        booking_id: ' . $model->id . '
                     })
                     .done(function( data ) { if(data==1) alert(\'Successfully deleted!\'); else alert(data); });
                     
-                } else { alert(\'Canceled\'); return false; }}'),
+                } else { alert(\'Canceled\'); return false; }}'
+                    ),
 
-            'select2:selecting' =>
-                new JsExpression(
-                'function(e) { 
+                'select2:selecting' =>
+                    new JsExpression(
+                        'function(e) { 
                     //console.log(e.params.args.data);
 
                     $.get(\'/tags/add-book-links\',
                     {
                         tag_id: e.params.args.data.id, 
-                        booking_id: '.$model->id.'
+                        booking_id: ' . $model->id . '
                     })
                     .done(function( data ) { });
-                } '),
-        ],
-    ]);
+                } '
+                    ),
+            ],
+        ]
+        );
 
 
+        /*
+            $data = [
+                "red" => "red",
+                "green" => "green",
+                "blue" => "blue",
+                "orange" => "orange",
+                "white" => "white",
+                "black" => "black",
+                "purple" => "purple",
+                "cyan" => "cyan",
+                "teal" => "teal"
+            ];
 
-/*
-    $data = [
-        "red" => "red",
-        "green" => "green",
-        "blue" => "blue",
-        "orange" => "orange",
-        "white" => "white",
-        "black" => "black",
-        "purple" => "purple",
-        "cyan" => "cyan",
-        "teal" => "teal"
-    ];
+            // Tagging support Multiple
+            $model->tags =  ['red', 'green']; // initial value
+            echo $form->field($model, 'tags')->widget(Select2::classname(), [
+                'data' => $data,
+                    'options' => ['placeholder' => 'Select a color ...', 'multiple' => true],
+                'pluginOptions' => [
+                    'tags' => true,
+                    'tokenSeparators' => [',', ' '],
+                    'maximumInputLength' => 10
+                ],
+            ])->label('Tag Multiple');
+        */
 
-    // Tagging support Multiple
-    $model->tags =  ['red', 'green']; // initial value
-    echo $form->field($model, 'tags')->widget(Select2::classname(), [
-        'data' => $data,
-            'options' => ['placeholder' => 'Select a color ...', 'multiple' => true],
-        'pluginOptions' => [
-            'tags' => true,
-            'tokenSeparators' => [',', ' '],
-            'maximumInputLength' => 10
-        ],
-    ])->label('Tag Multiple');
-*/
+    }
+
     ?>
     <?php //= $form->field($model, 'options')->textInput()
 
