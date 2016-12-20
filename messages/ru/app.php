@@ -49,9 +49,11 @@ return [
 	'Description' => 'Описание',
 	'type_id' => 'ID Типа',
 	'Type ID' => 'ID Типа',
+	'Type' => 'Тип',
 	'price' => 'Цена',
 	'Price' => 'Цена',
 	'price_child' => 'Цена для детей',
+	'Price Child' => 'Цена для детей',
 	'Price for child' => 'Цена для детей',
 	'child_before' => 'Дети от',
 	'Child before' => 'Дети от',
@@ -75,6 +77,8 @@ return [
 	'Full description' => 'Полное описание',
 	'Full Description' => 'Полное описание',
 	'city_id' => 'ID Города',
+	'City Id' => 'ID Города',
+	'City ID' => 'ID Города',
 	'code' => 'Промо-код',
 	'Code' => 'Промо-код',
 	'type' => 'Тип',
@@ -145,12 +149,14 @@ return [
 
 
 	'Tags' => 'Тэги и свойства',
+	'tags' => 'Тэги и свойства',
 	'Countries' => 'Страны',
 	'Cities' => 'Города',
 	'Booking' => 'Туры',
 	'Orders' => 'Заказы',
 	'Transactions' => 'Транзакции',
 	'Users' => 'Пользователи',
+	'Booking Type' => 'Типы туров',
 
 	'Tourbook management' => 'Управление TourBook',
 	'Are you sure you want to delete this item?' => 'Вы уверены, что хотите удалить?',
@@ -162,6 +168,7 @@ return [
 	//'Search' => 'Поиск',
 	'Reset' => 'Сброс',
 	'Bookings' => 'Туры',
+	'Feedbacks' => 'Отзывы',
 
 	'Create Tags'=> 'Добавить тэг',
 	'Update Tags'=> 'Обновить тэг',
@@ -175,8 +182,40 @@ return [
 	'Create Booking'=> 'Добавить тур',
 	'Update Booking'=> 'Обновить тур',
 
+	'Create Orders'=> 'Добавить заказ',
+	'Update Orders'=> 'Обновить заказ',
+
+	'Create Types'=> 'Добавить тип',
+	'Update Type'=> 'Обновить тип',
+
+	'Create Transactions'=> 'Добавить транзакцию',
+	'Update Transaction'=> 'Обновить транзакцию',
+
+	'Create User'=> 'Добавить пользователя',
+	'Update User'=> 'Обновить пользователя',
+
+	'Create Whislists'=> 'Добавить список желаний',
+	'Update Whislists'=> 'Обновить список желаний',
+
+	'Create Feedback'=> 'Добавить отзыв',
+	'Update Feedback'=> 'Обновить отзыв',
+
 	'Country' => 'Страна',
 	'City' => 'Город',
+
+	'User' => 'Пользователь',
+	'Types' => 'Типы туров',
+	'User ID' => 'Пользователь',
+	'Booking ID' => 'ID Тура',
+	'Event date' => 'Дата исполнения',
+	'Comment & Content' => 'Коментарии и содержание',
+	'Transaction ID' => 'ID Транзакции',
+	'Order ID'=>'ID Заказа',
+	'Error Code'=>'Код ошибки',
+
+	'First Name' =>'Имя',
+	'Second Name' =>'Фамилия',
+	'Last Name' =>'Отчество',
 
 ];
 

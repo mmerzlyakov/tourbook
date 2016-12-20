@@ -4,8 +4,8 @@
 
 function setLocale(name){
     $.post('/site/set-locale', {locale_name: name }).done(function(result){
-        console.log(result);
+    //    console.log(result);
+        location.reload();
     });
-    location.reload();
     return false;
 }

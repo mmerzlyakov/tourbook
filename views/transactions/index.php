@@ -1,5 +1,6 @@
 <?php
 
+\app\libs\Language::select();
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -39,8 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
              'date',
             // 'comment:ntext',
             // 'error_code',
-            // 'status',
-
+            [
+                'attribute'=>'status',
+                //'label' => 'Статус',
+                'content' => function($model){
+                    return $model->status ? "<span class='text-success'>".Yii::t('app', 'Active')."</span>" : "<span class='text-danger'>".Yii::t('app', 'Not active')."</span>";
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

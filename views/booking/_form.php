@@ -36,8 +36,8 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 <div class="booking-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-    <?= $form->field($model, 'city_id')->dropDownList(ArrayHelper::map($cities, 'id','name'))->label('City') ?>
-    <?= $form->field($model, 'type_id')->dropDownList(ArrayHelper::map($types, 'id','description'))->label('Type') ?>
+    <?= $form->field($model, 'city_id')->dropDownList(ArrayHelper::map($cities, 'id','name')) ?>
+    <?= $form->field($model, 'type_id')->dropDownList(ArrayHelper::map($types, 'id','description')) ?>
     <?= $form->field($model, 'name')->textInput() ?>
 
     <?php //= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
