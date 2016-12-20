@@ -1,5 +1,6 @@
 <?php
 
+\app\libs\Language::select();
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\User;
@@ -30,7 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'user_id',
             [
                 'attribute' => 'user_id',
-                'label' => 'User',
+                'label' => Yii::t('app','User'),
+                //'label' => 'User',
                 'content' => function($data){
                     $user = User::find()->where('id = '.$data['user_id'])->one();
                     return $user->name."<br><br>".$user->email;
@@ -39,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'booking_id',
             [
                 'attribute' => 'date',
-                'label' => 'Event date',
+                'label' =>  Yii::t('app','Event date'),
             ],
             //'price',
 
@@ -47,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'status_id',
              [
                     'attribute' => 'comment',
-                    'label' => 'Comment & Content',
+                    'label' => Yii::t('app','Comment & Content'),
                     'content' => function($data){
                         $items = OrdersItems::find()->where('order_id = '.$data['id'])->all();
 
@@ -80,12 +82,12 @@ $this->params['breadcrumbs'][] = $this->title;
              'transaction_id',
             // 'status',
             [
-                'attribute' => 'status',
-                'content' => function($data){
-                    return ($data['status']==1) ? 'Active' : 'Not active';
-                },
+                'attribute'=>'status',
+                //'label' => 'Статус',
+                'content' => function($model){
+                    return $model->status ? "<span class='text-success'>".Yii::t('app', 'Active')."</span>" : "<span class='text-danger'>".Yii::t('app', 'Not active')."</span>";
+                }
             ],
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

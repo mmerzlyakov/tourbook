@@ -41,6 +41,9 @@ echo "<div class='row'>";
                     ['label' => Yii::t('app','Booking management'), 'url' => ['booking/index'], 'items' => [
                         //['label' => 'New booking', 'url' => ['booking/create']],
                     ]],
+                    ['label' => Yii::t('app','Booking Type'), 'url' => ['types/index'], 'items' => [
+                        //['label' => 'New booking', 'url' => ['booking/create']],
+                    ]],
                     ['label' => Yii::t('app','Orders management'), 'url' => ['orders/index'], 'items' => [
                     ]],
                     ['label' => Yii::t('app','Transactions management'), 'url' => ['transactions/index'], 'items' => [
