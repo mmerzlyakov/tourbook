@@ -9,8 +9,10 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
-//$session = Yii::$app->session;
+\app\libs\Language::select();
 
+//$session = Yii::$app->session;
+/*
 $lang = \Yii::$app->session->get("locale");
 
 if(!\Yii::$app->user->isGuest) {
@@ -28,6 +30,8 @@ elseif(!empty($lang)) {
 
 //var_dump($lang);
 //var_dump(Yii::$app->language);die();
+
+*/
 
 ?>
 

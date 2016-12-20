@@ -1,5 +1,8 @@
 <?php
 
+\app\libs\Language::select();
+
+
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -7,8 +10,14 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\TagsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+
+
+
+
 $this->title = Yii::t('app', 'Tags');
 $this->params['breadcrumbs'][] = $this->title;
+
+
 ?>
 <div class="tags-index">
 
@@ -28,9 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
            [
                'attribute'=>'status',
-               'label' => 'Статус',
+               //'label' => 'Статус',
                'content' => function($model){
-                   return $model->status ? "<span class='text-success'>Активный</span>" : "<span class='text-danger'>Не активный</span>";
+                   return $model->status ? "<span class='text-success'>".Yii::t('app', 'Active')."</span>" : "<span class='text-danger'>".Yii::t('app', 'Not active')."</span>";
                }
            ],
 
