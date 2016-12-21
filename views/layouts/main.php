@@ -94,7 +94,6 @@ elseif(!empty($lang)) {
                                     $flagsImages[$item->id]['path'] = $temp->path;
                                 else
                                     $flagsImages[$item->id]['path'] = "";
-
                                 $flagsImages[$item->id]['currency'] = $item->currency;
                             }
                             ?>
