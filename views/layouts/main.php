@@ -94,11 +94,10 @@ elseif(!empty($lang)) {
                                     $flagsImages[$item->id]['path'] = $temp->path;
                                 else
                                     $flagsImages[$item->id]['path'] = "";
-
                                 $flagsImages[$item->id]['currency'] = $item->currency;
                             }
                             ?>
-                            <a href="#" role="button" class="dropdown-toggle white no-border" data-toggle="dropdown" data-placement="left" title="<?=\Yii::t('app','Language')?> ">
+                            <a href="#" role="button" class="dropdown-toggle white no-border" data-placement="left" title="<?=\Yii::t('app','Language')?> ">
 
                                 <img class="flag" src="/<?=$flagsImages[$index]['path']?>" width="30">
                                 <?=\Yii::t('app',$flagsImages[$index]['name'])?><b class="caret"></b></a>
@@ -121,7 +120,7 @@ elseif(!empty($lang)) {
                             </ul>
                         </div -->
                         <div class="dropdown">
-                            <a href="#" role="button" class="dropdown-toggle white" data-toggle="dropdown" data-placement="right" title="<?=\Yii::t('app','Currency')?>"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
+                            <a href="#" role="button" class="dropdown-toggle white"  data-placement="right" title="<?=\Yii::t('app','Currency')?>"><?=$flagsImages[$index]['currency']?><b class="caret"></b></a>
 
                             <ul class="dropdown-menu currency" role="menu" aria-labelledby="drop1">
 
