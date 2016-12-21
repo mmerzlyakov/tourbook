@@ -36,6 +36,7 @@
             </ol>
         </div>
     </div>
+    <div id="map" style="width: 100%; height: 400px; display: none"></div>
     <div class="container">
 
 
@@ -46,18 +47,6 @@
         <?php } ?>
 
         <div class="col-xs-12 col-md-8">
-            <div class="services hidden">
-                <div class="block">
-                    <span class="icon-service"><b class="name">Museum</b></span>
-                    <span class="icon-service md-1"><b class="name">Audio guide</b></span>
-                    <span class="icon-service md-2"><b class="name">Accessibiliy</b></span>
-                    <span class="icon-service md-3"><b class="name">Tour guide</b></span>
-                    <span class="icon-service md-4"><b class="name">Transport</b></span>
-                    <span class="icon-service md-5"><b class="name">Hours</b></span>
-                    <span class="icon-service md-6"><b class="name">Pet allowed</b></span>
-                </div>
-                <div class="clear"></div>
-            </div>
             <div id="single_tour_feat">
                 <ul>
                     <li><i class="icon_set_1_icon-4"></i>Museum</li>
@@ -154,12 +143,9 @@
             <div class="price"><b>взрослый - <?=$model->price?></b></div>
             <div class="price"><b>дестский - <?=$model->price_child?></b></div>
             <div class="sh">дети до <?=$model->child_before?> лет бесплатно</div>
-            <div class="button map"><div class="oran">
-
-                    <div id="map" style="width: 100%; height: 200px;"></div>
-
-
-                </div></div>
+            <p class="hidden-sm hidden-xs">
+                <a class="btn_map collapsed" href="/" onclick="$('#map').toggle(); return false">View on map</a>
+            </p>
             <!--Бронь-->
             <div class="booking">
                 <div class="title">-Booking-</div>

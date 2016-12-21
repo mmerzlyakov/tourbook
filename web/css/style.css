@@ -857,3 +857,23 @@ div.sidebar .contact .phone {
 #basket  .counts__m {
 
 }
+a.btn_map {
+    background: #e04f67 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: bold;
+    outline: medium none;
+    padding: 12px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+}
+a.btn_map:hover,a.btn_map:focus {
+    background: #333 none repeat scroll 0 0;
+    text-decoration: none;
+}

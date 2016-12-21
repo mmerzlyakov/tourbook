@@ -117,7 +117,7 @@ $(document).ready(function(){
         //  percentPosition: true,
     });
     //Выпадашка и подсказака;
-    $('#header .dropdown-toggle').tooltip('toggle').tooltip('hide');
+    $('#header .dropdown-toggle').tooltip();
     $('#header .dropdown').on('show.bs.dropdown', function () {
         $('#header .dropdown-toggle').tooltip('hide');
     });
