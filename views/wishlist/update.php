@@ -1,14 +1,14 @@
 <?php
 
+\app\libs\Language::select();
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\WishList */
 
-$this->title = Yii::t('app', 'Update {modelClass}: ', [
-    'modelClass' => 'Wish List',
-]) . $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Wish Lists'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Update')." ". Yii::t('app', 'WishLists')." : ".$model->id;
+
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'WishLists'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>

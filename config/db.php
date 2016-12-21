@@ -6,4 +6,7 @@ return [
     'username' => 'nikola16_tour',
     'password' => 'qwert12345',
     'charset' => 'utf8',
+    'enableSchemaCache' => true,
+    'schemaCacheDuration' => 3600,
+    'schemaCache' => 'cache',
 ];

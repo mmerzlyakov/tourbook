@@ -1,5 +1,5 @@
 <?php
-
+\app\libs\Language::select();
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */

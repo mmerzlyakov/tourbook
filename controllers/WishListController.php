@@ -10,6 +10,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
+
+//news
 /**
  * WhisListController implements the CRUD actions for WishList model.
  */
@@ -34,6 +36,13 @@ class WishlistController extends BackendController
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator', 'user'],
+                    ],
+                    [
+                        'actions' => [
+                            'index',
+                        ],
+                        'allow' => true,
+                        'roles' => ['?', '@'],
                     ],
                 ],
             ],
