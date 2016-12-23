@@ -66,18 +66,18 @@ class SiteController extends Controller
                     $user = UserOnce::find()->where('id = '.$user_id)->one();
                     $user->locale=$name;
                     if($user->save()) {
-                       // echo "SUCCESS";
+                        echo "SUCCESS";
                         return true;
                     }
                     else {
-                       /// echo "FAIL";
+                        echo "FAIL";
                         return json_encode($user->errors);
                     }
                 }
             }
         }
         else{
-            //echo "SESSION";
+            echo "SESSION";
             \Yii::$app->session->set("locale",$name);
             return true;
         }
