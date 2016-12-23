@@ -7,5 +7,5 @@ function setLocale(name){
     //    console.log(result);
         location.reload();
     });
-    return false;
+    return true;
 }
