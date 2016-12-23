@@ -135,6 +135,14 @@ $(document).ready(function(){
             $(this).children('.dropdown-toggle').attr('aria-expanded',false);
         }, this), 1600));
     });*/
+
+    //
+    $(".btn_map").on('click',function(){
+        $("#map").toggle();
+        initMap();
+    });
+
+
 });
 /*Плагины*/
 $(function () {
