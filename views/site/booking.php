@@ -36,7 +36,7 @@
             </ol>
         </div>
     </div>
-    <div id="map" style="width: 100%; height: 400px; display: none"></div>
+    <div id="map"></div>
     <div class="container">
 
 
@@ -144,7 +144,7 @@
             <div class="price"><b>дестский - <?=$model->price_child?></b></div>
             <div class="sh">дети до <?=$model->child_before?> лет бесплатно</div>
             <p class="hidden-sm hidden-xs">
-                <a class="btn_map collapsed" href="/" onclick="$('#map').toggle(); return false">View on map</a>
+                <a class="btn_map collapsed" href="/" onclick="return false">View on map</a>
             </p>
             <!--Бронь-->
             <div class="booking">
