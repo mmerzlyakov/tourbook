@@ -18,10 +18,12 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/tempale.css',
         'scripts/sliders/slider.css',
         'css/style.css',
         'css/global.css',
         'css/screen.css',
+
 
 
     ];

@@ -13,13 +13,13 @@ $this->title = "About ".$model->name;
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Countries'), 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-view">
+<div class="country-view container margin_60">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
 
     <?php
-
+    echo 'A';
     //output images
     if(!empty($model->id)) {
         $images = \app\models\CityImages::find()->where('city_id = ' . $model->id)->all();
