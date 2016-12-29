@@ -48,9 +48,9 @@ class WToursList extends Widget {
                     <div class="clearfix visible-xs-block"></div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="tour_list_desc">
-                            <div class="rating"><i class="icon-smile voted"></i><i class="icon-smile  voted"></i><i class="icon-smile  voted"></i><i class="icon-smile  voted"></i><i class="icon-smile"></i><small>(75)</small></div>
+                            <div class="rating"><i class="icon-star voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star-empty"></i></div>
                             <h3><strong><?=$this->model->name?></strong></h3>
-                            <p><?=StringHelper::truncate(strip_tags($this->model->description),250,'...');?></p>
+                            <p class="text-min"><?=StringHelper::truncate(strip_tags($this->model->description),250,'...');?></p>
                             <ul class="add_info">
                                 <li>
                                     <div class="tooltip_styled tooltip-effect-4">

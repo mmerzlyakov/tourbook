@@ -638,8 +638,11 @@ ul#cat_nav i {
 	font-size: 22px;
 	margin-right: 5px;
 	float: left;
+	display: flex;
 }
-
+ul#cat_nav a {
+	text-decoration: none;
+}
 #tools {
 	background: #eee;
 	padding: 5px;
@@ -718,7 +721,12 @@ ul#cat_nav i {
 	margin: 15px 0 3px -3px;
 	font-size: 15px;
 }
+.tour_list_desc .rating .rating-icon{
 
+}
+.tour_list_desc .text-min {
+	height: 70px;
+}
 .img_list {
 	overflow: hidden;
 	min-height: 220px;

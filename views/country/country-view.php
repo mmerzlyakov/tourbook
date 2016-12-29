@@ -72,17 +72,19 @@ $this->title = "About ".$model->name;
                  print \app\widgets\WToursList::widget(['model' => $model,'images'=>$images]);
             }
             ?>
-            <hr>
+
             <?php
         $cities = \app\models\City::find()->where('country_id = '.$model->id)->andWhere('status = 1')->all();
         foreach ($cities as $item) { ?>
             <?php
+
             //output images
             if(!empty($item->id)) {
                 $images = \app\models\CityImages::find()->where('city_id = ' . $item->id)->all();
-                print \app\widgets\WToursList::widget(['model' => $model,'images'=>$images]);
+                print \app\widgets\WToursList::widget(['model' => $item,'images'=>$images]);
             }
         }?>
+            <hr>
         </div><!-- End col lg-9 -->
     </div><!-- End row -->
 </div>

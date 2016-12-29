@@ -128,6 +128,7 @@ class CountryController extends BackendController
      */
     public function actionCountryView($id)
     {
+        $this->layout = 'main';
         return $this->render('country-view', [
             'model' => $this->findModel($id),
         ]);
