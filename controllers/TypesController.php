@@ -2,13 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\TypesImages;
 use Yii;
 use app\models\types;
 use app\models\TypesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\File;
+use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 /**
  * TypesController implements the CRUD actions for types model.
  */
@@ -20,13 +23,104 @@ class TypesController extends BackendController
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => [
+                            'index',
+                            'update',
+                            'create',
+                            'view',
+                            'delete',
+                            'upload',
+                            'get-tags-list',
+                            'add-new-tag',
+                            'add-book-links',
+                            'del-book-links',
+                            'add-type-links',
+                            'del-type-links',
+                            'del-type-image',
+                            'add-main-type-image-status',
+                        ],
+                        'allow' => true,
+                        'roles' => ['GodMode', 'admin', 'operator','supplier'],
+                    ],
+                ],
+            ],
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    //  'delete' => ['GET'],
                 ],
             ],
         ];
+    }
+
+    public function actionUpload($model_id)
+    {
+        $model = new File();
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstances($model, 'imageFile');
+            $path = $model->upload($model_id);
+
+            $str = str_replace('\\','',$path);
+            $str = str_replace('[','',$str);
+            $str = str_replace('"','',$str);
+            $str = str_replace(']','',$str);
+
+            $type = new TypesImages();
+            $type->status=1;
+            $type->path=$str;
+            $type->type_id=$model_id;
+            $type->save();
+            return true;
+        }
+        return false;
+    }
+
+
+    public function actionDelTypeImage($image_id = null)
+    {
+        if(!empty($image_id)) {
+            $typeImages = TypesImages::find()
+                ->where('id = '.$image_id)->one();
+            $typeImages->status=0;
+            if($typeImages->save()) {
+                return true;
+            }else {
+                return json_encode($typeImages->errors);
+            }
+        }
+        return false;
+    }
+
+
+    public function actionAddMainTypeImageStatus($type_id = null, $image_id = null)
+    {
+        if(!empty($image_id) && !empty($type_id)) {
+            $typeImages = TypesImages::find()
+                ->where('type_id = '.$type_id)->all();
+
+            foreach ($typeImages as $typeImage) {
+                $typeImage->main=0;
+                $typeImage->save();
+            }
+
+            $typeImages = TypesImages::find()
+                ->where('type_id = '.$type_id)
+                ->andWhere('id = '.$image_id)->one();
+            $typeImages->main=1;
+            $typeImages->status=1;
+
+            if($typeImages->save()) {
+                return true;
+            }else {
+                return json_encode($typeImages->errors);
+            }
+        }
+        return false;
     }
 
     /**
@@ -64,12 +158,14 @@ class TypesController extends BackendController
     public function actionCreate()
     {
         $model = new types();
+        $model_file = new File();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'model_file' => $model_file,
             ]);
         }
     }
@@ -83,12 +179,15 @@ class TypesController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model_file = new File();
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'model_file' => $model_file,
             ]);
         }
     }

@@ -307,6 +307,9 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
         return true;
     }
 
+
+
+
     function addNewTag(){
         var name = $('#tag_name').val();
         $.get('/tags/add-new-tag', {tag_name: name });
@@ -314,7 +317,6 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
         //location.reload();
         return false;
     }
-
 </script>
 
 <script async defer

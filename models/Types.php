@@ -15,6 +15,7 @@ use Yii;
  */
 class Types extends \yii\db\ActiveRecord
 {
+    public $tags;
     /**
      * @inheritdoc
      */
@@ -33,6 +34,7 @@ class Types extends \yii\db\ActiveRecord
             [['description', 'options'], 'string'],
             [['status'], 'integer'],
             [['name'], 'string', 'max' => 255],
+            ['tags','safe'],
         ];
     }
 

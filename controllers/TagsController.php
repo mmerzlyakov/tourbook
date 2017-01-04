@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\TagsImages;
 use app\models\TagsLinks;
+use app\models\TypesLinks;
 use Yii;
 use app\models\Tags;
 use app\models\TagsSearch;
@@ -10,6 +12,10 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use app\models\Types;
+use app\models\File;
+use yii\web\UploadedFile;
+
 
 /**
  * TagsController implements the CRUD actions for Tags model.
@@ -34,6 +40,10 @@ class TagsController extends BackendController
                             'add-new-tag',
                             'add-book-links',
                             'del-book-links',
+                            'add-type-links',
+                            'del-type-links',
+                            'del-tag-image',
+                            'add-main-tag-image-status',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
@@ -50,6 +60,84 @@ class TagsController extends BackendController
         ];
     }
 
+
+    public function actionUpload($model_id)
+    {
+        $model = new File();
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstances($model, 'imageFile');
+            $path = $model->upload($model_id);
+
+            $str = str_replace('\\','',$path);
+            $str = str_replace('[','',$str);
+            $str = str_replace('"','',$str);
+            $str = str_replace(']','',$str);
+
+            $tags = new TagsImages();
+            $tags->status=1;
+            $tags->path=$str;
+            $tags->tag_id=$model_id;
+
+            if($tags->save()) {
+                return true;
+            }else {
+
+                var_dump($tags->errors);die();
+
+                return json_encode($tags->errors);
+            }
+            //return true;
+        }
+        return false;
+    }
+
+
+    public function actionDelTagImage($image_id = null)
+    {
+        if(!empty($image_id)) {
+            $tagsImages = TagsImages::find()
+                ->where('id = '.$image_id)->one();
+            $tagsImages->status=0;
+            if($tagsImages->save()) {
+                return true;
+            }else {
+                return json_encode($tagsImages->errors);
+            }
+        }
+        return false;
+    }
+
+
+    public function actionAddMainTagImageStatus($tag_id = null, $image_id = null)
+    {
+        if(!empty($image_id) && !empty($tag_id)) {
+            $tagsImages = TagsImages::find()
+                ->where('tag_id = '.$tag_id)->all();
+
+            foreach ($tagsImages as $tagsImage) {
+                $tagsImage->main=0;
+                $tagsImage->save();
+            }
+
+            $tagsImages = TagsImages::find()
+                ->where('tag_id = '.$tag_id)
+                ->andWhere('id = '.$image_id)->one();
+            $tagsImages->main=1;
+            $tagsImages->status=1;
+
+            if($tagsImages->save()) {
+                return true;
+            }else {
+                return json_encode($tagsImages->errors);
+            }
+        }
+        return false;
+    }
+    
+
+    //AJAX
+    
+    
     /**
      * @return Action
      */
@@ -66,7 +154,7 @@ class TagsController extends BackendController
         }
         return false;
     }
-    
+
 
     public function actionDelBookLinks($tag_name=null, $booking_id = null)
     {
@@ -84,10 +172,10 @@ class TagsController extends BackendController
             if(!empty($tag_IDs)){
                 foreach ($tag_IDs as $tag_id) {
 
-                $tagsLinks = TagsLinks::find()
-                    ->where('tag_id = '.$tag_id->id)
-                    ->andWhere('booking_id = '.$booking_id)
-                    ->andWhere('status = 1')->all();
+                    $tagsLinks = TagsLinks::find()
+                        ->where('tag_id = '.$tag_id->id)
+                        ->andWhere('booking_id = '.$booking_id)
+                        ->andWhere('status = 1')->all();
 
                     foreach ($tagsLinks as $item) {
                         $item->status=0;
@@ -114,6 +202,57 @@ class TagsController extends BackendController
                 return true;
             else
                 return json_encode($tagsLinks->errors);
+        }
+        return false;
+    }
+
+    public function actionDelTypeLinks($tag_name=null, $type_id = null)
+    {
+        if(!empty($tag_name) && !empty($type_id))
+        {
+            $tag_IDs = Tags::find()
+                ->andFilterWhere(['like','name',$tag_name])
+                //->where('name = '.$tag_name)
+                ->all();
+
+            //var_dump($tag_IDs);
+
+            //return json_encode($tag_IDs);
+
+            if(!empty($tag_IDs)){
+                foreach ($tag_IDs as $tag_id) {
+
+                    $typesLinks = TypesLinks::find()
+                        ->where('tag_id = '.$tag_id->id)
+                        ->andWhere('type_id = '.$type_id)
+                        ->andWhere('status = 1')->all();
+
+                    foreach ($typesLinks as $item) {
+                        $item->status=0;
+                        $item->save();
+                    }
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    public function actionAddTypeLinks($tag_id=null, $type_id = null)
+    {
+        if(!empty($tag_id) && !empty($type_id))
+        {
+            $typesLinks = new TypesLinks();
+            $typesLinks->tag_id=$tag_id;
+            $typesLinks->type_id=$type_id;
+            $typesLinks->status=1;
+
+            if($typesLinks->save())
+                return true;
+            else
+                return json_encode($typesLinks->errors);
         }
         return false;
     }
@@ -172,12 +311,14 @@ class TagsController extends BackendController
     public function actionCreate()
     {
         $model = new Tags();
+        $model_file = new File();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'model_file' => $model_file,
             ]);
         }
     }
@@ -191,6 +332,7 @@ class TagsController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model_file = new File();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
@@ -200,6 +342,7 @@ class TagsController extends BackendController
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'model_file' => $model_file,
             ]);
         }
     }

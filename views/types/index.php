@@ -10,6 +10,8 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('app', 'Types');
 $this->params['breadcrumbs'][] = $this->title;
+
+
 ?>
 <div class="types-index">
 
@@ -29,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description:ntext',
             'options:ntext',
- //           'status',
+            //'status',
             [
                 'attribute' => 'status',
                 'content' => function($data){
