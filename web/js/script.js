@@ -141,7 +141,10 @@ $(document).ready(function(){
         $("#map").toggle();
         initMap();
     });
-
+    $('input.style-m').iCheck({
+        checkboxClass: 'icheckbox_square-grey',
+        radioClass: 'iradio_square-grey'
+    });
 
 });
 /*Плагины*/

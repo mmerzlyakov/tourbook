@@ -18,11 +18,12 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/tempale.css',
         'scripts/sliders/slider.css',
         'css/style.css',
         'css/global.css',
         'css/screen.css',
-
+        'css/skins/square/grey.css',
 
     ];
     public $js = [
@@ -31,6 +32,7 @@ class AppAsset extends AssetBundle
         'scripts/sliders/slider.js',
         'scripts/masonry.js',
         'scripts/parallax.min.js',
+        'scripts/icheck.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
