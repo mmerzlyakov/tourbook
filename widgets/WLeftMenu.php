@@ -1,6 +1,8 @@
 <?php
 
 namespace app\widgets;
+use app\models\Booking;
+use app\models\Types;
 use yii\base\Widget;
 use yii\helpers\Url;
 use Yii;
@@ -21,14 +23,44 @@ class WLeftMenu extends Widget {
         ?>
         <div class="box_style_cat">
             <ul id="cat_nav">
-                <li><a href="#" id="active"><i class="icon_set_1_icon-51"></i>All tours <span>(141)</span></a></li>
-                <li><a href="#"><i class="icon_set_1_icon-3"></i>City sightseeing <span>(20)</span></a></li>
-                <li><a href="#"><i class="icon_set_1_icon-4"></i>Museum tours <span>(16)</span></a></li>
-                <li><a href="#"><i class="icon_set_1_icon-44"></i>Historic Buildings <span>(12)</span></a></li>
-                <li><a href="#"><i class="icon_set_1_icon-37"></i>Walking tours <span>(11)</span></a></li>
-                <li><a href="#"><i class="icon_set_1_icon-14"></i>Eat & Drink <span>(20)</span></a></li>
-                <li><a href="#"><i class="icon_set_1_icon-43"></i>Churces <span>(08)</span></a></li>
-                <li><a href="#"><i class="icon_set_1_icon-28"></i>Skyline tours <span>(11)</span></a></li>
+
+                <?php
+
+                $types = Types::find()
+                    ->select('types.id, types.name, types_images.path')
+                    ->leftJoin('types_images','types_images.type_id = types.id')
+                    ->where('types.status = 1')
+                    ->andWhere('types_images.status = 1')
+                    ->asArray()
+                    ->all();
+
+              //  var_dump($types);die();
+
+                foreach ($types as $type) {
+
+                    $bookings = Booking::find()
+                        ->where('status = 1')
+                        ->andWhere('type_id = '.$type['id'])
+                        ->all();
+
+                    //var_dump($bookings);
+
+                    $count = count($bookings);
+
+                    ?>
+
+                    <li>        <a href="/types/types-view?id=<?=$type['id']?>" id="active">
+                                <i><img src="/<?=$type['path']?>" height="30"></i>
+                                <?=$type['name']?> <span>(<?=$count?>)</span>
+                                </a>
+                    </li>
+
+                    <?php
+
+                }
+                ?>
+
+
             </ul>
         </div>
         <?php

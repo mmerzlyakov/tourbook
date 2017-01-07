@@ -46,6 +46,14 @@ class TypesController extends BackendController
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
                     ],
+                    [
+                        'actions' => [
+                            'types-view',
+                            //'addwish',
+                        ],
+                        'allow' => true,
+                        'roles' => ['?', '@'],
+                    ],
                 ],
             ],
 
@@ -135,6 +143,20 @@ class TypesController extends BackendController
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Displays a single Country model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionTypesView($id)
+    {
+        $this->layout = 'main';
+        return $this->render('types-view', [
+            'model' => $this->findModel($id),
+            //'id' => $id,
         ]);
     }
 

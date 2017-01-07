@@ -51,7 +51,39 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 
     <?php
 
+
+
     if(!empty($model->id)) {
+
+
+
+        $tagsWithImages = \app\models\TagsLinks::find()
+            ->select('tags.*, tags_images.*, tags_links.*')
+            ->leftJoin('tags','tags.id = tags_links.tag_id')
+            ->leftJoin('tags_images','tags_links.tag_id = tags_images.tag_id')
+            ->where('booking_id = ' . $model->id)
+            //->andWhere('tags_images.status = 1')
+            ->andWhere('tags_links.status = 1')
+            ->groupBy('tags_links.tag_id')
+            ->asArray()
+            ->all();
+
+
+        //var_dump($tagsWithImages); die();
+
+        foreach ($tagsWithImages as $i => $item) {
+
+            if(!empty($item['name'])) {
+                ?>
+
+                <img width="40" src="/<?=$item['path']?>"><?=$item['name']?>
+
+                <?php
+            }
+        }
+
+
+
 
         $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 
@@ -65,9 +97,12 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
         )->andWhere('status = 1')->all();
         $arr = [];
         foreach ($tagsLinks as $i => $item) {
-            $arr[] = \app\models\Tags::find()->select('name')->where(
+
+            $arr[] = !empty(\app\models\Tags::find()->select('name')->where(
                 'id = ' . $item->tag_id
-            )->andWhere('status = 1')->one()->name;
+            )->andWhere('status = 1')->one()->name) ? \app\models\Tags::find()->select('name')->where(
+                'id = ' . $item->tag_id
+            )->andWhere('status = 1')->one()->name : '';
         }
 
         $model->tags = $arr;

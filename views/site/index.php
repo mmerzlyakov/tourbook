@@ -99,6 +99,22 @@ elseif(!empty($lang)) {
     <div class="clear"></div>
     <div class="br-hr hidden-xs"></div>
 
+    <h2 class="title-main text-center"><?=\Yii::t('app','Popular categories');?></h2>
+    <div class="container md">
+
+        <?php
+        $types = \app\models\Types::find()->where('status = 1')->limit(9)->all();
+        foreach($types as $item){
+            echo \app\widgets\WType::widget([
+                'model' => $item,
+            ]);
+        }
+
+        ?>
+
+
+        <div class="clear"></div>
+    </div>
 
     <h2 class="title-main text-center"><?=\Yii::t('app','Popular cities');?></h2>
     <div class="container md">
@@ -154,24 +170,25 @@ elseif(!empty($lang)) {
 
     <div class="container md">
 
+        <?php
+            $static = \app\models\StaticPages::find()
+                    ->where('status = 1')
+                    ->limit(3)
+                    ->all();
+
+        foreach ($static as $item) {
+
+        ?>
+
         <div class="col-xs-12 col-sm-4 info-box">
             <div class="info br">
                 <div class="icon-fast icon"></div>
-                <div class="text-min"><?=\Yii::t('app','Momentaly booking');?></div>
+                <div class="text-min"><a class="white no-border" href="/static-pages/page-view?id=<?=$item->id?>"><?=\Yii::t('app',$item->name);?></div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-4 info-box ">
-            <div class="info pay">
-                <div class="icon-sec icon"></div>
-                <div class="text-min"><?=\Yii::t('app','Payment security');?></div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 info-box">
-            <div class="info br margin-right">
-                <div class="icon-pay icon"></div>
-                <div class="text-min"><?=\Yii::t('app','Best price guarantee');?></div>
-            </div>
-        </div>
+
+        <?php } ?>
+        
     </div>
     <div class="clear"></div>
 

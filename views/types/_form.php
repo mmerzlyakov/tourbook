@@ -30,6 +30,32 @@ use yii\helpers\Url;
 
     if(!empty($model->id)) {
 
+        $tagsWithImages = \app\models\TypesLinks::find()
+            ->select('tags.*, tags_images.*, types_links.*')
+            ->leftJoin('tags','tags.id = types_links.tag_id')
+            ->leftJoin('tags_images','types_links.tag_id = tags_images.tag_id')
+
+            ->where('types_links.type_id = ' . $model->id)
+            //->andWhere('tags_images.status = 1')
+            ->andWhere('types_links.status = 1')
+            ->groupBy('types_links.tag_id')
+            ->asArray()
+            ->all();
+
+
+        //var_dump($tagsWithImages); die();
+
+        foreach ($tagsWithImages as $i => $item) {
+
+            if(!empty($item['name'])) {
+                ?>
+
+                <img width="40" src="/<?=$item['path']?>"><?=$item['name']?>
+
+                <?php
+            }
+        }
+
         $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 
         //Get the initial city description

@@ -49,14 +49,51 @@
         <div class="col-xs-12 col-md-8">
             <div id="single_tour_feat">
                 <ul>
-                    <li><i class="icon_set_1_icon-4"></i>Museum</li>
-                    <li><i class="icon_set_1_icon-83"></i>3 Hours</li>
-                    <li><i class="icon_set_1_icon-13"></i>Hours</li>
-                    <li><i class="icon_set_1_icon-82"></i>144 Likes</li>
-                    <li><i class="icon_set_1_icon-22"></i>Pet allowed</li>
-                    <li><i class="icon_set_1_icon-97"></i>Audio guide</li>
-                    <li><i class="icon_set_1_icon-29"></i>Tour guide</li>
+                <?php
+
+                $tagsWithImages = \app\models\TagsLinks::find()
+                    ->select('tags.*, tags_images.*, tags_links.*')
+                    ->leftJoin('tags','tags.id = tags_links.tag_id')
+                    ->leftJoin('tags_images','tags_links.tag_id = tags_images.tag_id')
+                    ->where('booking_id = ' . $model->id)
+                    //->andWhere('tags_images.status = 1')
+                    ->andWhere('tags_links.status = 1')
+                    ->groupBy('tags_links.tag_id')
+                    ->asArray()
+                    ->all();
+
+                $typesWithImages = \app\models\TypesLinks::find()
+                    ->select('tags.*, tags_images.*, types_links.*')
+                    ->leftJoin('tags','tags.id = types_links.tag_id')
+                    ->leftJoin('tags_images','types_links.tag_id = tags_images.tag_id')
+
+                    ->where('types_links.type_id = ' . $model->id)
+                    //->andWhere('tags_images.status = 1')
+                    ->andWhere('types_links.status = 1')
+                    ->groupBy('types_links.tag_id')
+                    ->asArray()
+                    ->all();
+
+                $ar = array_merge($typesWithImages, $tagsWithImages);
+                $tagsAndTypesWithImages = \app\libs\Arrays::unique_multidim_array($ar, 'name');
+
+                foreach ($tagsAndTypesWithImages as $i => $item) {
+
+                    if(!empty($item['name'])) {
+                        ?>
+
+                        <li><i><img width="40" src="/<?=$item['path']?>"></i><?=$item['name']?></li>
+
+
+                        <?php
+                    }
+                }
+
+                ?>
+
+
                 </ul>
+
             </div>
             <div class="text">
                 <?=$model->description?>
