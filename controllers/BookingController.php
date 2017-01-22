@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Banners;
 use app\models\Basket;
 use app\models\BookingImages;
+use app\models\FileBanner;
 use app\models\TagsLinks;
 use app\models\WishList;
 use Yii;
@@ -44,6 +46,9 @@ class BookingController extends BackendController
                             'upload',
                             'add-main-image-status',
                             'del-booking-image',
+                            'upload-banner',
+                            'add-main-banner-status',
+                            'del-booking-banner',
                         ],
                         'allow' => true,
                         'roles' => ['GodMode', 'admin', 'operator','supplier'],
@@ -96,6 +101,49 @@ class BookingController extends BackendController
             }
 
             $bookingImages = BookingImages::find()
+                ->where('booking_id = '.$booking_id)
+                ->andWhere('id = '.$image_id)->one();
+            $bookingImages->main=1;
+            $bookingImages->status=1;
+
+            if($bookingImages->save()) {
+                return true;
+            }else {
+                return json_encode($bookingImages->errors);
+            }
+        }
+        return false;
+    }
+
+    //baner
+    public function actionDelBookingBanner($image_id = null)
+    {
+        if(!empty($image_id)) {
+            $bookingImages = Banners::find()
+                ->where('id = '.$image_id)->one();
+            $bookingImages->status=0;
+            if($bookingImages->save()) {
+                return true;
+            }else {
+                return json_encode($bookingImages->errors);
+            }
+        }
+        return false;
+    }
+
+
+    public function actionAddMainBannerStatus($booking_id = null, $image_id = null)
+    {
+        if(!empty($image_id) && !empty($booking_id)) {
+            $bookingImages = Banners::find()
+                ->where('booking_id = '.$booking_id)->all();
+
+            foreach ($bookingImages as $bookingImage) {
+                $bookingImage->main=0;
+                $bookingImage->save();
+            }
+
+            $bookingImages = Banners::find()
                 ->where('booking_id = '.$booking_id)
                 ->andWhere('id = '.$image_id)->one();
             $bookingImages->main=1;
@@ -214,6 +262,8 @@ class BookingController extends BackendController
         $model_file = new File();
         $model = new Booking();
 
+        $model_banner = new FileBanner();
+
         $tagsList = []; //new TagsLinks();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -223,6 +273,7 @@ class BookingController extends BackendController
             return $this->render('create', [
                 'model' => $model,
                 'model_file' => $model_file,
+                'model_banner' => $model_banner,
                 'types' => $types,
                 'cities' => $cities,
             ]);
@@ -253,20 +304,45 @@ class BookingController extends BackendController
     }
 
 
-/*public function actionUpload($model_id)
-{
-    $model = new BookingImages();
-    if (Yii::$app->request->isPost) {
-        $model->imageFile = UploadedFile::getInstances($model, 'imageFile');
-        $model->path = $model->upload($model_id);
-        //if($model->save()) {
-        //     var_dump($model->errors);
-        // file is uploaded successfully
-        return true;
-        // }
+
+
+    public function actionUploadBanner($model_id)
+    {
+        $model = new FileBanner();
+        if (Yii::$app->request->isPost) {
+            $model->bannerFile = UploadedFile::getInstances($model, 'bannerFile');
+            $path = $model->upload($model_id);
+
+            $str = str_replace('\\','',$path);
+            $str = str_replace('[','',$str);
+            $str = str_replace('"','',$str);
+            $str = str_replace(']','',$str);
+
+            $book = new Banners();
+            $book->status=1;
+            $book->path=$str;
+            $book->booking_id=$model_id;
+            $book->save();
+            return true;
+        }
+        return false;
     }
-    return false;
-}*/
+
+
+    /*public function actionUpload($model_id)
+    {
+        $model = new BookingImages();
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstances($model, 'imageFile');
+            $model->path = $model->upload($model_id);
+            //if($model->save()) {
+            //     var_dump($model->errors);
+            // file is uploaded successfully
+            return true;
+            // }
+        }
+        return false;
+    }*/
 
 
     /**
@@ -278,11 +354,14 @@ class BookingController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
         $types = \app\models\Types::find()->select('id, name, description')->where('id > 0')->all();
         $cities = \app\models\City::find()->select('id, name, description')->where('id > 0')->all();
         //$tagsList = TagsLinks::find()->where('booking_id = '.$model->id)->all();
 
         $model_file = new File();
+        $model_banner = new FileBanner();
+
         $model = Booking::find()->where('id = '.$id)->one();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -294,6 +373,7 @@ class BookingController extends BackendController
             return $this->render('update', [
                 'model' => $model,
                 'model_file' => $model_file,
+                'model_banner' => $model_banner,
                 'types' => $types,
                 'cities' => $cities,
                 //'tagsList' => $tagsList,

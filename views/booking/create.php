@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model_file' => $model_file,
         'types' => $types,
         'cities' => $cities,
+        'model_banner' => $model_banner,
     ]) ?>
 
 </div>

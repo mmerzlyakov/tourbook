@@ -6,21 +6,33 @@
  * Time: 7:38
  */
 
+
+
+
+$mainBannerPath = \app\models\Banners::find()->where('booking_id = '.$model->id)->andWhere('main = 1')->one();
+if(!empty($mainBannerPath))
+    $mainBannerPath = \app\models\Banners::find()->where('booking_id = '.$model->id)->andWhere('main = 1')->one()->path;
+else
+    $mainBannerPath = "";
+
+//var_dump($mainBannerPath);die();
+
+
 ?>
 <div id="private-tour">
     <div class="booking-button-m"><div class="glyphicon glyphicon-plane"></div><div class="name">Booking</div></div>
 
-    <div class="parallax-window" data-parallax="scroll" data-image-src="/files/gallery/admin_top.jpg" data-natural-width="1400" data-natural-height="470">
+    <div class="parallax-window" data-parallax="scroll" data-image-src="/<?=$mainBannerPath?>" data-natural-width="1400" data-natural-height="470">
         <div class="parallax-content-2">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-8">
                         <h1><?=$model->name?></h1>
-                        <span>Champ de Mars, 5 Avenue Anatole, 75007 Paris.</span>
+                        <span><?=$model->address?></span>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div id="price_single_main">
-                            from/per person <span><sup>$</sup>52</span>
+                            from/per person <span><sup>$</sup><?=$model->price?></span>
                         </div>
                     </div>
                 </div>

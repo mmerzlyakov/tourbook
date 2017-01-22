@@ -37,8 +37,8 @@ class Booking extends \yii\db\ActiveRecord
     {
         return [
             [['type_id', 'price', 'status'], 'required'],
-            [['type_id', 'price', 'price_child', 'child_before','status', 'bonus', 'discount', 'city_id'], 'integer'],
-            [['name', 'description','options', 'coords_lat', 'coords_lng'], 'string'],
+            [['type_id', 'price', 'price_child', 'child_before','status', 'bonus', 'discount', 'city_id', 'price_private'], 'integer'],
+            [['name', 'description','options', 'coords_lat', 'coords_lng','notice', 'included', 'not_included', 'address'], 'string'],
             ['tags', 'safe'],
         ];
     }
@@ -51,6 +51,7 @@ class Booking extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'description' => Yii::t('app', 'Description'),
+            'address' => Yii::t('app', 'Address'),
             'type_id' => Yii::t('app', 'Type ID'),
             'price' => Yii::t('app', 'Price'),
             'price_child' => Yii::t('app', 'Price Child'),
@@ -61,6 +62,10 @@ class Booking extends \yii\db\ActiveRecord
             'bonus' => Yii::t('app', 'Bonus'),
             'discount' => Yii::t('app', 'Discount'),
             'coords' => Yii::t('app', 'Coordinates'),
+            'price_private' => Yii::t('app', 'Private price'),
+            'notice' => Yii::t('app', 'Notice'),
+            'included' => Yii::t('app', 'Included'),
+            'not_included' => Yii::t('app', 'Not included'),
         ];
     }
 }

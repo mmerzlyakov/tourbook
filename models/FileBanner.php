@@ -11,17 +11,17 @@ namespace app\models;
 use yii\base\Model;
 use yii\web\UploadedFile;
 
-class FileFlag extends Model
+class FileBanner extends Model
 {
     /**
      * @var UploadedFile
      */
-    public $imageFileFlag;
+    public $bannerFile;
 
     public function rules()
     {
         return [
-            [['imageFileFlag'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 2],
+            [['bannerFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 10],
         ];
     }
 
@@ -31,7 +31,7 @@ class FileFlag extends Model
         $random = rand(0,100000000);
         if (!empty($model_id)) {
             if ($this->validate()) {
-                foreach ($this->imageFileFlag as $file) {
+                foreach ($this->bannerFile as $file) {
                     $file->saveAs('uploads/' . $model_id . '.'. $random . '.' . $file->extension);
                     $path[] = 'uploads/' . $model_id . '.' . $random .  '.' . $file->extension;
                 }
@@ -41,21 +41,4 @@ class FileFlag extends Model
         }
     }
 
-    /* public function upload($model_id)
-     {
-         if(!empty($model_id)) {
-
-             if ($this->validate()) {
-                 foreach ($this->imageFile as $file) {
-                     $file->saveAs(
-                         'uploads/' . $model_id.'-'.$file->baseName . '.' . $file->extension
-                     );
-                 }
-                 return '{}';
-             } else {
-                 return false;
-             }
-         }
-         else return false;
-     } */
 }

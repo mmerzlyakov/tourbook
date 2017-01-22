@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         'model' => $model,
         'types' => $types,
         'cities' => $cities,
+        'model_banner' => $model_banner,
         //'tagsList' => $tagsList,
     ]) ?>
 

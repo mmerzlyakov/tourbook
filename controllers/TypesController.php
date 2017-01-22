@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\models\TypesImages;
 use Yii;
-use app\models\types;
+use app\models\Types;
 use app\models\TypesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -236,7 +236,7 @@ class TypesController extends BackendController
      */
     protected function findModel($id)
     {
-        if (($model = types::findOne($id)) !== null) {
+        if (($model = Types::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -36,9 +36,15 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 <div class="booking-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+    <?= $form->field($model, 'coords_lat')->hiddenInput(['id' => 'coords_lat'])->label('') ?>
+    <?= $form->field($model, 'coords_lng')->hiddenInput(['id' => 'coords_lng'])->label('') ?>
+
+    <h3>Основные параметры предложения</h3>
+
     <?= $form->field($model, 'city_id')->dropDownList(ArrayHelper::map($cities, 'id','name')) ?>
     <?= $form->field($model, 'type_id')->dropDownList(ArrayHelper::map($types, 'id','description')) ?>
     <?= $form->field($model, 'name')->textInput() ?>
+    <?= $form->field($model, 'address')->textInput() ?>
 
     <?php //= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'description')->widget(TinyMce::className(), [
@@ -46,16 +52,39 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
     ]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
+    <?= $form->field($model, 'price_private')->textInput() ?>
     <?= $form->field($model, 'price_child')->textInput() ?>
+
     <?= $form->field($model, 'child_before')->textInput() ?>
 
+    <?= $form->field($model, 'bonus')->textInput() ?>
+    <?= $form->field($model, 'discount')->textInput()->label('Discount %') ?>
+
+    <?= $form->field($model, 'status')->checkbox()->label('') ?>
+
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') :
+            Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+
+    <h3>Выбрать включенные свойства</h3>
+
     <?php
+
+    //if empty generate new ID
+    if(empty($model->id)){
+      $mid = \app\models\Booking::find()->select('id')->asArray()->all();
+      $model_id = array_pop($mid);
+      $model_id_insert = intval($model_id['id'])+1;
+      $model->id = $model_id_insert;
+    }
 
 
 
     if(!empty($model->id)) {
-
-
 
         $tagsWithImages = \app\models\TagsLinks::find()
             ->select('tags.*, tags_images.*, tags_links.*')
@@ -83,14 +112,7 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
         }
 
 
-
-
         $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
-
-        //Get the initial city description
-        //$tagsDesc = empty($model->tags) ? '' : \app\models\TagsLinks::find()->where('booking_id = '.$model->id)->one()->description;
-        //$data=['5','4','3','2'];
-        //var_dump($data);
 
         $tagsLinks = \app\models\TagsLinks::find()->where(
             'booking_id = ' . $model->id
@@ -172,67 +194,87 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
             ],
         ]
         );
-
-
-        /*
-            $data = [
-                "red" => "red",
-                "green" => "green",
-                "blue" => "blue",
-                "orange" => "orange",
-                "white" => "white",
-                "black" => "black",
-                "purple" => "purple",
-                "cyan" => "cyan",
-                "teal" => "teal"
-            ];
-
-            // Tagging support Multiple
-            $model->tags =  ['red', 'green']; // initial value
-            echo $form->field($model, 'tags')->widget(Select2::classname(), [
-                'data' => $data,
-                    'options' => ['placeholder' => 'Select a color ...', 'multiple' => true],
-                'pluginOptions' => [
-                    'tags' => true,
-                    'tokenSeparators' => [',', ' '],
-                    'maximumInputLength' => 10
-                ],
-            ])->label('Tag Multiple');
-        */
-
     }
 
     ?>
+
+
+    <h3>Добавить новые свойства</h3>
+
     <?php //= $form->field($model, 'options')->textInput()
 
 
     echo Html::input('text', 'tag_name', '', ['class' => 'form-control', 'minlength' => 4, 'maxlength' => 100, 'id' => 'tag_name']);
     echo Html::a('Create a new tag', '', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary',
-    'onClick'=>'return addNewTag();']);
+                                          'onClick'=>'return addNewTag();']);
 
     ?>
 
-    <?= $form->field($model, 'status')->checkbox()->label('') ?>
-    <?= $form->field($model, 'bonus')->textInput() ?>
-    <?= $form->field($model, 'discount')->textInput()->label('Discount %') ?>
-
-    <?= $form->field($model, 'coords_lat')->hiddenInput(['id' => 'coords_lat'])->label('') ?>
-    <?= $form->field($model, 'coords_lng')->hiddenInput(['id' => 'coords_lng'])->label('') ?>
-
-    <div id="map" style="width: 100%; height: 200px;"></div>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') :
-                Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-
-
-    <?php ActiveForm::end(); ?>
-
-
     <?php
+
+    /////////////////////////////
+    /////////////////////////////
+    /////////////////////////////
+
     //output images
+    if(!empty($model->id)) {
+        $images = \app\models\Banners::find()->where('booking_id = ' . $model->id)
+            ->andWhere('status = 1')->all();
+
+    if (!empty($images)) {
+?>
+
+        <h3>Баннеры</h3>
+        <?php
+
+        foreach ($images as $item) {
+                echo "<div style='margin: 5px; position: relative; display: inline-block;'>";
+
+                if($item->main==1)
+                        echo "<div class='close' style='opacity: 1; font-size: 14pt; color: greenyellow; position: absolute; right: 30px; top: 10px; '>V</div>";
+
+                ?>
+                <div class='close' style='opacity: 1; font-size: 26pt; color: red; position: absolute; right: 3px; top: 3px; '
+                     onClick='return delBanner(<?=$item->id?>)'>&times;
+                </div>
+                <img src='/<?=$item->path?>' width=250 id='<?=$item->id ?>'
+                     onClick='return setMainBanner(<?=$model->id?>, <?=$item->id?>)'>
+                </div>
+                <?php
+            }
+        }
+    }
+
+    //add banners
+
+    if(!empty($model->id)) {
+    ?>
+
+    <h3>Добавить баннер</h3>
+
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
+
+        echo $form->field($model_banner, 'bannerFile[]')->widget(
+            FileInput::classname(), [
+                'options' => ['multiple' => true],
+                'pluginOptions' => ['previewFileType' => 'any',
+                                    'uploadUrl' => Url::to(
+                                        ['/booking/upload-banner?model_id=' . $model->id]
+                                    )],
+            ]
+        );
+
+        ActiveForm::end();
+
+    }
+
+?>
+
+
+
+<?php
+
+//output images
     if(!empty($model->id)) {
         $images = \app\models\BookingImages::find()->where('booking_id = ' . $model->id)
             ->andWhere('status = 1')->all();
@@ -254,7 +296,7 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
                 <div class='close' style='opacity: 1; font-size: 26pt; color: red; position: absolute; right: 3px; top: 3px; '
                      onClick='return delImage(<?=$item->id?>)'>&times;
                 </div>
-                     <img src='/<?=$item->path?>' width=250 id='<?=$item->id ?>'
+                     <img title="Нажмите чтобы сделать главной картинкой" src='/<?=$item->path?>' width=250 id='<?=$item->id ?>'
                      onClick='return setMainImage(<?=$model->id?>, <?=$item->id?>)'>
                 </div>
 
@@ -281,10 +323,19 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
             );
 
         ActiveForm::end();
+
     }
+
+
     ?>
 
 </div>
+
+<h3>Выбрать месторасположение на карте</h3>
+
+<div id="maps" style="width: 100%; height: 200px;"></div>
+
+<br><br>
 
 <script type="text/javascript">
 
@@ -301,7 +352,7 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
 
         <?php } ?>
 
-        map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('maps'), {
             center: myLatlng,
             zoom: 12
         });
@@ -343,6 +394,17 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
     }
 
 
+    function delBanner(i){
+        $.get('/booking/del-booking-banner', {image_id: i});
+        location.reload();
+        return true;
+    }
+
+    function setMainBanner(b,i){
+        $.get('/booking/add-main-banner-status', {booking_id: b , image_id: i });
+        location.reload();
+        return true;
+    }
 
 
     function addNewTag(){
