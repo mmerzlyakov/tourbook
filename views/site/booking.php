@@ -114,13 +114,14 @@ else
 
             <div class="info-text">
             <ul>
+                <h3>Что не включено?</h3>
             <?php
             $tags = \app\models\Tags::find()
-                    ->select('tags.*, tags_links.*')
-                    ->leftJoin('tags_links','tags.id = tags_links.tag_id')
+                    ->select('tags.*, tags_no_links.*')
+                    ->leftJoin('tags_no_links','tags.id = tags_no_links.tag_id')
                     ->where('booking_id = '.$model->id)
                     ->andWhere('tags.status = 1')
-                    ->andWhere('tags_links.status = 1')
+                    ->andWhere('tags_no_links.status = 1')
                     ->all();
 //            var_dump($tags);die();
             foreach ($tags as $item) {
@@ -188,10 +189,16 @@ else
         </div>
         <div class="col-xs-12 col-md-4 sidebar ">
             <button type="button" class="close" aria-hidden="true">&times;</button>
+
             <h4 class="oran">Стоимость:</h4>
             <div class="price"><b>взрослый - <?=$model->price?></b></div>
             <div class="price"><b>дестский - <?=$model->price_child?></b></div>
             <div class="sh">дети до <?=$model->child_before?> лет бесплатно</div>
+
+            <h4 class="oran">Отмена брони:</h4>
+            <div class="sh"><b>Вы можете отменить бронь за <?=$model->return_before?> часов до назначенной даты</b></div>
+
+
             <p class="hidden-sm hidden-xs">
                 <a class="btn_map collapsed" href="/" onclick="return false">View on map</a>
             </p>

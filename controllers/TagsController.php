@@ -15,7 +15,7 @@ use yii\filters\AccessControl;
 use app\models\Types;
 use app\models\File;
 use yii\web\UploadedFile;
-
+use app\models\TagsNoLinks;
 
 /**
  * TagsController implements the CRUD actions for Tags model.
@@ -40,6 +40,8 @@ class TagsController extends BackendController
                             'add-new-tag',
                             'add-book-links',
                             'del-book-links',
+                            'add-book-no-links',
+                            'del-book-no-links',
                             'add-type-links',
                             'del-type-links',
                             'del-tag-image',
@@ -151,6 +153,58 @@ class TagsController extends BackendController
                 return true;
             else
                 return json_encode($tag->errors);
+        }
+        return false;
+    }
+
+
+
+    public function actionDelBookNoLinks($tag_name=null, $booking_id = null)
+    {
+        if(!empty($tag_name) && !empty($booking_id))
+        {
+            $tag_IDs = Tags::find()
+                ->andFilterWhere(['like','name',$tag_name])
+                //->where('name = '.$tag_name)
+                ->all();
+
+            //var_dump($tag_IDs);
+
+            //return json_encode($tag_IDs);
+
+            if(!empty($tag_IDs)){
+                foreach ($tag_IDs as $tag_id) {
+
+                    $tagsLinks = TagsNoLinks::find()
+                        ->where('tag_id = '.$tag_id->id)
+                        ->andWhere('booking_id = '.$booking_id)
+                        ->andWhere('status = 1')->all();
+
+                    foreach ($tagsLinks as $item) {
+                        $item->status=0;
+                        $item->save();
+                    }
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    public function actionAddBookNoLinks($tag_id=null, $booking_id = null)
+    {
+        if(!empty($tag_id) && !empty($booking_id))
+        {
+            $tagsLinks = new TagsNoLinks();
+            $tagsLinks->tag_id=$tag_id;
+            $tagsLinks->booking_id=$booking_id;
+            $tagsLinks->status=1;
+            if($tagsLinks->save())
+                return true;
+            else
+                return json_encode($tagsLinks->errors);
         }
         return false;
     }

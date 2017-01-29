@@ -56,9 +56,10 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
     <?= $form->field($model, 'price_child')->textInput() ?>
 
     <?= $form->field($model, 'child_before')->textInput() ?>
+    <?= $form->field($model, 'return_before')->textInput()->hint('Время до отмены тура') ?>
 
-    <?= $form->field($model, 'bonus')->textInput() ?>
-    <?= $form->field($model, 'discount')->textInput()->label('Discount %') ?>
+    <?php // = $form->field($model, 'bonus')->textInput() ?>
+    <?php // = $form->field($model, 'discount')->textInput()->label('Discount %') ?>
 
     <?= $form->field($model, 'status')->checkbox()->label('') ?>
 
@@ -105,7 +106,7 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
             if(!empty($item['name'])) {
                 ?>
 
-                <img width="40" src="/<?=$item['path']?>"><?=$item['name']?>
+                <a href="/tags/update?id=<?=$item['tag_id']?>" target="_blank"><img width="40" src="/<?=$item['path']?>"><?=$item['name']?></a>
 
                 <?php
             }
@@ -193,6 +194,125 @@ $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
                     ),
             ],
         ]
+        );
+    }
+
+    ?>
+
+    <h3>Выбрать НЕ включенные свойства</h3>
+
+    <?php
+    //NO TAGS Links tables
+
+    if(!empty($model->id)) {
+
+        $tagsWithImages = \app\models\TagsNoLinks::find()
+            ->select('tags.*, tags_images.*, tags_no_links.*')
+            ->leftJoin('tags','tags.id = tags_no_links.tag_id')
+            ->leftJoin('tags_images','tags_no_links.tag_id = tags_images.tag_id')
+            ->where('booking_id = ' . $model->id)
+            //->andWhere('tags_images.status = 1')
+            ->andWhere('tags_no_links.status = 1')
+            ->groupBy('tags_no_links.tag_id')
+            ->asArray()
+            ->all();
+
+
+        //var_dump($tagsWithImages); die();
+
+        foreach ($tagsWithImages as $i => $item) {
+
+            if(!empty($item['name'])) {
+                ?>
+
+                <a href="/tags/update?id=<?=$item['tag_id']?>" target="_blank"><img width="40" src="/<?=$item['path']?>"><?=$item['name']?></a>
+
+                <?php
+            }
+        }
+
+
+        $url = \yii\helpers\Url::to(['/tags/get-tags-list']);
+
+        $tagsLinks = \app\models\TagsNoLinks::find()->where(
+            'booking_id = ' . $model->id
+        )->andWhere('status = 1')->all();
+        $arr = [];
+        foreach ($tagsLinks as $i => $item) {
+
+            $arr[] = !empty(\app\models\Tags::find()->select('name')->where(
+                'id = ' . $item->tag_id
+            )->andWhere('status = 1')->one()->name) ? \app\models\Tags::find()->select('name')->where(
+                'id = ' . $item->tag_id
+            )->andWhere('status = 1')->one()->name : '';
+        }
+
+        $model->notags = $arr;
+        echo $form->field($model, 'notags')->widget(
+            Select2::classname(), [
+                'initValueText' => $model->notags,
+                'options' => ['placeholder' => 'Search for a tags ...',
+                              'multiple' => true],
+                'id' => 'tagsLinks',
+                'pluginOptions' => [
+                    'allowClear' => true,
+                    'minimumInputLength' => 2,
+                    'language' => [
+                        'errorLoading' =>
+                            new JsExpression(
+                                "function () { return 'Waiting for results...'; }"
+                            ),
+                    ],
+                    'ajax' => [
+                        'url' => $url,
+                        'dataType' => 'json',
+                        'cache' => true,
+                        'data' => new JsExpression(
+                            'function(params) { return {q:params.term}; }'
+                        )
+                    ],
+                    'escapeMarkup' => new JsExpression(
+                        'function (markup) { return markup; }'
+                    ),
+                    'templateResult' => new JsExpression(
+                        'function(item) { return item.text; }'
+                    ),
+                    'templateSelection' => new JsExpression(
+                        'function (item) { return item.text; }'
+                    ),
+                ],
+                'pluginEvents' => [
+                    'select2:unselecting' =>
+                        new JsExpression(
+                            '
+                function(e) { 
+                    //console.log(e.params.args.data);
+                     if(confirm(\'Are you sure?\')){
+                    $.get(\'/tags/del-book-no-links\',
+                    {
+                        tag_name: e.params.args.data.id, 
+                        booking_id: ' . $model->id . '
+                    })
+                    .done(function( data ) { if(data==1) alert(\'Successfully deleted!\'); else alert(data); });
+                    
+                } else { alert(\'Canceled\'); return false; }}'
+                        ),
+
+                    'select2:selecting' =>
+                        new JsExpression(
+                            'function(e) { 
+                    //console.log(e.params.args.data);
+
+                    $.get(\'/tags/add-book-no-links\',
+                    {
+                        tag_id: e.params.args.data.id, 
+                        booking_id: ' . $model->id . '
+                    })
+                    .done(function( data ) { });
+                } '
+                        ),
+                ],
+            ]
         );
     }
 

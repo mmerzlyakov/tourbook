@@ -21,6 +21,7 @@ use Yii;
 class Booking extends \yii\db\ActiveRecord
 {
     public $tags;
+    public $notags;
     /**
      * @inheritdoc
      */
@@ -37,7 +38,7 @@ class Booking extends \yii\db\ActiveRecord
     {
         return [
             [['type_id', 'price', 'status'], 'required'],
-            [['type_id', 'price', 'price_child', 'child_before','status', 'bonus', 'discount', 'city_id', 'price_private'], 'integer'],
+            [['type_id', 'price', 'price_child', 'child_before','status', 'bonus', 'discount', 'city_id', 'price_private', 'return_before'], 'integer'],
             [['name', 'description','options', 'coords_lat', 'coords_lng','notice', 'included', 'not_included', 'address'], 'string'],
             ['tags', 'safe'],
         ];
